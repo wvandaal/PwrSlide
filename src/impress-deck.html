@@ -30,113 +30,66 @@
 	</template>
 	<script>
 		(function() {
-			var SLIDE_CLASSES_ = ['far-past', 'past', 'current', 'next', 'far-next'];
+			var SLIDE_CLASSES_ 	= ['far-past', 'past', 'current', 'next', 'far-next'],
+					prevSlide_ 			= 0,
+					onKeyDown_			= function(e) {
+					  if (/^(input|textarea)$/i.test(e.target.nodeName) ||
+					      e.target.isContentEditable || !this.controlsActive) {
+					    return;
+					  }
 
-			Polymer('impress-deck', {
-				curSlide: 0,
-				prevSlide: 0,
-				controlsActive: false,
+						switch (e.keyCode) {
+					    case 39: // right arrow
+					    case 32: // space
+					    case 34: // PgDn
+					    case 40: // down arrow
+					      this.nextSlide();
+					      e.preventDefault();
+					      break;
 
-				addEventListeners: function() {
-					document.addEventListener('keydown', this.onBodyKeydown.bind(this), false);
+					    case 37: // left arrow
+					    case 33: // PgUp
+					    case 38: // up arrow
+					      this.prevSlide();
+					      e.preventDefault();
+					      break;
+					  }
 				},
-
-				toggleKeyControls: function(e) {
-					e.stopPropagation();
-					this.controlsActive = this.controlsActive ? false : true;
+				addEventListeners_ = function() {
+					document.addEventListener('keydown', onKeyDown_.bind(this), false);
 				},
-
-				onBodyKeydown: function(e) {
-				  if (/^(input|textarea)$/i.test(e.target.nodeName) ||
-				      e.target.isContentEditable || !this.controlsActive) {
-				    return;
-				  }
-
-					switch (e.keyCode) {
-
-				    case 39: // right arrow
-				    case 32: // space
-				    case 34: // PgDn
-				    case 40: // down arrow
-				      this.nextSlide();
-				      e.preventDefault();
-				      break;
-
-				    case 37: // left arrow
-				    case 33: // PgUp
-				    case 38: // up arrow
-				      this.previousSlide();
-				      e.preventDefault();
-				      break;
-				  }
-				},
-
-				// TODO:
-				// Add slide fragment support
-				// Add overview support
-				// Add code highlighting
-				// Toggle speaker notes
-				nextSlide: function() {
-					if (this.curSlide < this.totalSlides - 1) {
-						var that = this;
-						this.prevSlide = this.curSlide++;
-						this.getSlide(this.prevSlide).animateOut();
-						window.setTimeout(function() {
-							that.updateSlides();
-						}, 500);
-						this.getSlide(this.curSlide).animateIn();
-					}
-				},
-
-				// TODO:
-				// Add slide fragment support
-				// Add overview support
-				// Add code highlighting
-				// Toggle speaker notes
-				previousSlide: function() {
-					if (this.curSlide > 0) {
-						var that = this;
-						this.prevSlide = this.curSlide--;
-						this.getSlide(this.prevSlide).animateOut()
-						window.setTimeout(function() {
-							that.updateSlides();
-						}, 500);
-						this.getSlide(this.curSlide).animateIn();
-					}
-				},
-
 				// TODO:
 				// trigger slide events
 				// enable iframe preloading
 				// add support for overview mode
-				updateSlides: function() {
-					var curSlide = this.curSlide;
+				updateSlides_ 		= function() {
+					var curSlide 					= this.curSlide,
+							updateSlideClass	= updateSlideClass_.bind(this);
 					for (var i = 0; i < this.totalSlides; ++i) {
 						switch(i) {
 							case curSlide - 2:
-								this.updateSlideClass(i, 'far-past');
+								updateSlideClass(i, 'far-past');
 								break;
 							case curSlide - 1:
-								this.updateSlideClass(i, 'past');
+								updateSlideClass(i, 'past');
 								break;
 				      case curSlide:
-				        this.updateSlideClass(i, 'current');
-				        // this.getSlide(i).animateIn();
+				        updateSlideClass(i, 'current');
 				        break;
 				      case curSlide + 1:
-				        this.updateSlideClass(i, 'next');
+				        updateSlideClass(i, 'next');
 				        break;
 				      case curSlide + 2:
-				        this.updateSlideClass(i, 'far-next');
+				        updateSlideClass(i, 'far-next');
 				        break;
 				      default:
-				        this.updateSlideClass(i);
+				        updateSlideClass(i);
 				        break;							
 						}
 					}
 				},
 
-				updateSlideClass: function(slideNum, className) {
+				updateSlideClass_ = function(slideNum, className) {
 					var slide = this.getSlide(slideNum);
 
 					if (!slide) {
@@ -151,6 +104,49 @@
 						if (className != slideClass) {
 							slide.classList.remove(slideClass);
 						}
+					}
+				};
+
+			Polymer('impress-deck', {
+				curSlide: 0,
+				controlsActive: false,
+
+				toggleKeyControls: function(e) {
+					e.stopPropagation();
+					this.controlsActive = this.controlsActive ? false : true;
+				},
+
+				// TODO:
+				// Add slide fragment support
+				// Add overview support
+				// Add code highlighting
+				// Toggle speaker notes
+				nextSlide: function() {
+					if (this.curSlide < this.totalSlides - 1) {
+						var that = this;
+						prevSlide_ = this.curSlide++;
+						this.getSlide(prevSlide_).animateOut();
+						window.setTimeout(function() {
+							updateSlides_.bind(that)();
+						}, 500);
+						this.getSlide(this.curSlide).animateIn();
+					}
+				},
+
+				// TODO:
+				// Add slide fragment support
+				// Add overview support
+				// Add code highlighting
+				// Toggle speaker notes
+				prevSlide: function() {
+					if (this.curSlide > 0) {
+						var that = this;
+						prevSlide_ = this.curSlide--;
+						this.getSlide(prevSlide_).animateOut()
+						window.setTimeout(function() {
+							updateSlides_.bind(that)();
+						}, 500);
+						this.getSlide(this.curSlide).animateIn();
 					}
 				},
 
@@ -171,8 +167,8 @@
 					this.slides = this.$.slides.getDistributedNodes();
 					this.totalSlides = this.slides.length;
 
-					this.addEventListeners();
-					this.updateSlides();
+					addEventListeners_.bind(this)();
+					updateSlides_.bind(this)();
 				}
 			});
 		})()
