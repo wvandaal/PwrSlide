@@ -1,0 +1,27 @@
+impress-deck {
+	width: 800px;
+	height: 400px;
+}
+
+impress-slide {
+	padding: 5%;
+	color: white;
+	font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
+}
+
+.inner {
+	float: right;
+	width: 350px;
+	height: 300px;
+}
+
+.red-background{
+	background: rgba(160,0,0,.9);
+}
+.blue-background {
+	background-color: rgba(0,0,150,.8);
+}
+
+.green {
+	background-color: #0da861;
+}

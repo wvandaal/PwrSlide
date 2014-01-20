@@ -1,0 +1,78 @@
+	<polymer-element name="impress-slide" constructor="ImpressSlide" attributes="exit entrance">
+		<template>
+			<link rel="stylesheet" type="text/css" href="basic-animations.css">
+			<style type="text/css">
+				:host{
+				  position: relative;
+				  top: 0;
+				  left: 0;
+				  overflow: hidden;
+				  display: none;
+	  			width: 100%;
+					height: 100%;
+					margin: 0;
+				  -webkit-box-sizing: border-box;
+				  -moz-box-sizing: border-box;
+				  box-sizing: border-box;	
+
+				  /* Animate.css */
+				  -webkit-animation: 1s both;
+				  animation: 1s both;
+				}
+
+			  /* polyfill specific rule */
+        /* @polyfill-rule */
+        :host {
+				  -webkit-animation-name: {{ animation }} !important;
+				  animation-name: {{ animation }} !important; 
+			  }
+
+				:host(.past:host) {
+				  /*opacity: 0;*/
+				}
+
+				:host(.current:host) {
+				  display: block;
+				}
+
+				:host(.next:host) {
+				  pointer-events: none;
+				}
+			</style>
+			<content></content>
+		</template>
+		<script type="text/javascript">
+			(function() {
+				Polymer('impress-slide', {
+					entrance: 'bounceIn',
+					exit: 'fadeOutRightBig',
+					animation: "",
+
+					animateIn: function() {
+						// this.opacity = 1;
+						this.animation = this.entrance;
+					},
+
+					animateOut: function() {
+						// this.opacity = 0;
+						this.animation = this.exit;
+					},
+
+					ready: function() {
+
+					},
+
+					// TODO:
+					// Polyfill solution for binding in style tags
+					registerCallback: function(declaration) {
+              // add shimmedStyles to this instance
+              if (window.ShadowDOMPolyfill) {
+                var content = declaration.templateContent();
+                console.log(content.firstChild)
+                content.insertBefore(content.shimmedStyle, content.firstChild);
+              }
+          }
+				})
+			})();
+		</script>
+	</polymer-element>

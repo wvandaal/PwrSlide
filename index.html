@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>&lt;my-element&gt;</title>
+
+	<!-- Importing Web Component's Polyfill -->
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.3/platform.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.3/polymer.js"></script>
+	<!-- Importing Custom Elements -->
+	<link rel="import" href="src/impress-deck.html">
+	<link rel="import" href="src/impress-slide.html">
+	<link rel="stylesheet" type="text/css" href="sample-styles.css">
+</head>
+<body>
+
+	<!-- Using Custom Elements -->
+	<impress-deck unresolved curslide="2">
+		<impress-slide class="red-background">
+			<h1>Beautiful Slides</h1>
+			<h3>What more could you ask for?</h3>
+		</impress-slide>
+		<impress-slide class="blue-background">
+			<h2>Oh the possibilities!</h2>
+			<h4 style="text-align:right;">( The mind reels )</h4>
+			<ul>
+				<li>Fill slides with valid HTML</li>
+				<li>Never feel restricted again</li>
+				<li>Keep your markup clean, as it was meant to be</li>
+			</ul>
+		</impress-slide>
+		<impress-slide class="green">
+			<h1 style="float: left;">Enter the Matrix</h1>
+			<impress-deck class="inner">
+					<impress-slide class="red-background">
+			<h1>Holy Sh!t</h1>
+			<h3>Slides IN slides!??</h3>
+			<br>
+			<p style="text-align: right;">Surely you jest...</p>
+		</impress-slide>
+		<impress-slide class="blue-background">
+			<h2>Oh the possibilities!</h2>
+			<h4 style="text-align:right;">( The mind reels )</h4>
+			<ul>
+				<li>Fill slides with valid HTML</li>
+				<li>Never feel restricted again</li>
+				<li>Keep your markup clean, as it was meant to be</li>
+			</ul>
+		</impress-slide>
+			</impress-deck>
+		</impress-slide>
+		<impress-slide>A</impress-slide>
+		<impress-slide>Slide</impress-slide>
+	</impress-deck>
+
+</body>
+</html>

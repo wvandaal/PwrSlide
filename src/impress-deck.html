@@ -1,0 +1,180 @@
+<polymer-element name="impress-deck" attributes="curSlide" constructor="ImpressDeck" on-mouseover="{{toggleKeyControls}}" on-mouseout="{{toggleKeyControls}}">
+	<template>
+		<style type="text/css">
+			:host {
+			  display: block;
+			  overflow: hidden;
+			  -webkit-transform: translate3d(0, 0, 0);
+			  -moz-transform: translate3d(0, 0, 0);
+			  -ms-transform: translate3d(0, 0, 0);
+			  -o-transform: translate3d(0, 0, 0);
+			  transform: translate3d(0, 0, 0);
+			  -webkit-perspective: 1000;
+			  -moz-perspective: 1000;
+			  -ms-perspective: 1000;
+			  -o-perspective: 1000;
+			  perspective: 1000;
+			  -webkit-transform-style: preserve-3d;
+			  -moz-transform-style: preserve-3d;
+			  -ms-transform-style: preserve-3d;
+			  -o-transform-style: preserve-3d;
+			  transform-style: preserve-3d;
+			  -webkit-transition: opacity 800ms ease-in;
+			  -webkit-transition-delay: 100ms;
+			  -moz-transition: opacity 800ms ease-in 100ms;
+			  -o-transition: opacity 800ms ease-in 100ms;
+			  transition: opacity 800ms ease-in 100ms;
+			}
+		</style>
+		<content id="slides" select="impress-slide"></content>
+	</template>
+	<script>
+		(function() {
+			var SLIDE_CLASSES_ = ['far-past', 'past', 'current', 'next', 'far-next'];
+
+			Polymer('impress-deck', {
+				curSlide: 0,
+				prevSlide: 0,
+				controlsActive: false,
+
+				addEventListeners: function() {
+					document.addEventListener('keydown', this.onBodyKeydown.bind(this), false);
+				},
+
+				toggleKeyControls: function(e) {
+					e.stopPropagation();
+					this.controlsActive = this.controlsActive ? false : true;
+				},
+
+				onBodyKeydown: function(e) {
+				  if (/^(input|textarea)$/i.test(e.target.nodeName) ||
+				      e.target.isContentEditable || !this.controlsActive) {
+				    return;
+				  }
+
+					switch (e.keyCode) {
+
+				    case 39: // right arrow
+				    case 32: // space
+				    case 34: // PgDn
+				    case 40: // down arrow
+				      this.nextSlide();
+				      e.preventDefault();
+				      break;
+
+				    case 37: // left arrow
+				    case 33: // PgUp
+				    case 38: // up arrow
+				      this.previousSlide();
+				      e.preventDefault();
+				      break;
+				  }
+				},
+
+				// TODO:
+				// Add slide fragment support
+				// Add overview support
+				// Add code highlighting
+				// Toggle speaker notes
+				nextSlide: function() {
+					if (this.curSlide < this.totalSlides - 1) {
+						var that = this;
+						this.prevSlide = this.curSlide++;
+						this.getSlide(this.prevSlide).animateOut();
+						window.setTimeout(function() {
+							that.updateSlides();
+						}, 500);
+						this.getSlide(this.curSlide).animateIn();
+					}
+				},
+
+				// TODO:
+				// Add slide fragment support
+				// Add overview support
+				// Add code highlighting
+				// Toggle speaker notes
+				previousSlide: function() {
+					if (this.curSlide > 0) {
+						var that = this;
+						this.prevSlide = this.curSlide--;
+						this.getSlide(this.prevSlide).animateOut()
+						window.setTimeout(function() {
+							that.updateSlides();
+						}, 500);
+						this.getSlide(this.curSlide).animateIn();
+					}
+				},
+
+				// TODO:
+				// trigger slide events
+				// enable iframe preloading
+				// add support for overview mode
+				updateSlides: function() {
+					var curSlide = this.curSlide;
+					for (var i = 0; i < this.totalSlides; ++i) {
+						switch(i) {
+							case curSlide - 2:
+								this.updateSlideClass(i, 'far-past');
+								break;
+							case curSlide - 1:
+								this.updateSlideClass(i, 'past');
+								break;
+				      case curSlide:
+				        this.updateSlideClass(i, 'current');
+				        // this.getSlide(i).animateIn();
+				        break;
+				      case curSlide + 1:
+				        this.updateSlideClass(i, 'next');
+				        break;
+				      case curSlide + 2:
+				        this.updateSlideClass(i, 'far-next');
+				        break;
+				      default:
+				        this.updateSlideClass(i);
+				        break;							
+						}
+					}
+				},
+
+				updateSlideClass: function(slideNum, className) {
+					var slide = this.getSlide(slideNum);
+
+					if (!slide) {
+						return;
+					}
+
+					if (className) {
+						slide.classList.add(className);
+					}
+
+					for (var i = 0, slideClass; slideClass = SLIDE_CLASSES_[i]; ++i) {
+						if (className != slideClass) {
+							slide.classList.remove(slideClass);
+						}
+					}
+				},
+
+				getSlide: function(slideNum) {
+					if ((slideNum < 0) || (slideNum >= this.totalSlides)) {
+						return null;
+					} else {
+						return this.slides[slideNum];
+					}
+				},
+
+				/* TODO
+				 * 1) use Modernizr to allow for smartphones
+				 * 2?) load config
+				 * 3) 
+				 */
+				ready: function() {
+					this.slides = this.$.slides.getDistributedNodes();
+					this.totalSlides = this.slides.length;
+
+					this.addEventListeners();
+					this.updateSlides();
+				}
+			});
+		})()
+	</script>
+</polymer-element>
