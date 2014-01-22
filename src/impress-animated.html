@@ -4,7 +4,6 @@
 	</template>
 	<script type="text/javascript">
 		(function() {
-
 			// Fallback procedure to animate functions in the 
 			// event of unsupported browsers/polyfills
 			var animateFallback_ = function(animationName) {
@@ -24,6 +23,7 @@
 
 				// Animates the object into the deck and calls the 
 				// ontransition callback
+				// TODO: Validate animations
 				animateIn: function() {
 					this.animateEl(this.animations.entrance);	
 
@@ -34,19 +34,24 @@
 				},
 
 				// Animate the object out
+				// TODO: Validate animations
 				animateOut: function() {
 					this.animateEl(this.animations.exit);
 				},
 
-				// TODO:
-				// Validate animations
+				// Animates an element
+				// Can be used as utility method through prototype
+				// e.g. ImpressAnimated.prototype.animateEl.call($('#someEl'), "fadeIn")
 				animateEl: function(animationName) {
-					console.log();
 					if (!!window.ShadowDOMPolyfill || !(this instanceof ImpressAnimated)) {
 						animateFallback_.call(this, animationName);
 					} else {
 						this.animationName = animationName;
 					}
+				}, 
+
+				removeAnimations: function() {
+					this.animateEl('');
 				}
 			});
 		})();

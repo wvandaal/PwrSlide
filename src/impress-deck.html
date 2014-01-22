@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="basic-animations.css">
-<polymer-element name="impress-deck" attributes="curSlide" constructor="ImpressDeck" on-mouseover="{{toggleKeyControls}}" on-mouseout="{{toggleKeyControls}}">
+<polymer-element name="impress-deck" attributes="curSlide" constructor="ImpressDeck" on-mouseover="{{keyControlsOn}}" on-mouseout="{{keyControlsOff}}">
 	<template>
 		<style type="text/css">
 			:host {
@@ -97,9 +97,14 @@
 				curSlide: 0,
 				controlsActive: false,
 
-				toggleKeyControls: function(e) {
+				keyControlsOff: function(e) {
 					e.stopPropagation();
-					this.controlsActive = this.controlsActive ? false : true;
+					this.controlsActive = false;
+				},
+
+				keyControlsOn: function(e) {
+					e.stopPropagation();
+					this.controlsActive = true;
 				},
 
 				// TODO:

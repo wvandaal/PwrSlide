@@ -50,6 +50,9 @@
 						this.curFragment.animateOut();
 						return true;
 					} else {
+						[].map.call(this.fragments, function(el) {
+							el.removeAnimations();
+						});
 						return false;
 					}
 				},
