@@ -1,0 +1,43 @@
+<polymer-element name="impress-animated" attributes="animations"  constructor="ImpressAnimated">
+	<template>
+		<content></content>
+	</template>
+	<script type="text/javascript">
+		(function() {
+			var animateFallback_ = function(animationName) {
+				if ((this.style.animationName != animationName) || 
+						(this.style.webkitAnimationName != animationName)) {
+							this.style.webkitAnimation = this.style.animation = animationName + " 1s both";
+				}
+			};
+
+			Polymer('impress-animated', {
+				animationName: "",
+				animations: {entrance: "fadeIn", exit: "fadeOut"},
+
+				animateIn: function(callback) {
+					this.animateEl(this.animations.entrance, callback);				
+				},
+
+				animateOut: function(callback) {
+					this.animateEl(this.animations.exit, callback);
+				},
+
+				// TODO:
+				// Validate animations
+				animateEl: function(animationName, callback) {
+					console.log();
+					if (!!window.ShadowDOMPolyfill || !(this instanceof ImpressAnimated)) {
+						animateFallback_.call(this, animationName);
+					} else {
+						this.animationName = animationName;
+					}
+
+					if (callback instanceof Function) {
+						callback();
+					}
+				}
+			});
+		})();
+	</script>
+</polymer-element>

@@ -1,4 +1,11 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+
 impress-deck {
+	margin: 10px;
 	width: 800px;
 	height: 400px;
 }

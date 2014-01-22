@@ -10,21 +10,26 @@
 	<!-- Importing Custom Elements -->
 	<link rel="import" href="src/impress-deck.html">
 	<link rel="import" href="src/impress-slide.html">
+	<link rel="import" href="src/impress-fragment.html">
+
 	<link rel="stylesheet" type="text/css" href="sample-styles.css">
 </head>
 <body>
 
 	<!-- Using Custom Elements -->
-	<impress-deck unresolved curslide="2">
-		<impress-slide class="red-background">
-			<h1>Beautiful Slides</h1>
+	<impress-deck unresolved curslide="1">
+		<impress-slide class="red-background" animations='{"entrance":"bounceInDown", "exit":"fadeOutRightBig"}'>
+			<impress-fragment hidden>
+				<h1>Beautiful Slides</h1>
+			</impress-fragment>
 			<h3>What more could you ask for?</h3>
 		</impress-slide>
 		<impress-slide class="blue-background">
+		<input type="date"></input>
 			<h2>Oh the possibilities!</h2>
 			<h4 style="text-align:right;">( The mind reels )</h4>
 			<ul>
-				<li>Fill slides with valid HTML</li>
+				<impress-fragment hidden><li>Fill slides with valid HTML</li></impress-fragment>
 				<li>Never feel restricted again</li>
 				<li>Keep your markup clean, as it was meant to be</li>
 			</ul>
@@ -52,6 +57,5 @@
 		<impress-slide>A</impress-slide>
 		<impress-slide>Slide</impress-slide>
 	</impress-deck>
-
 </body>
 </html>

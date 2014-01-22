@@ -1,68 +1,35 @@
-<polymer-element name="impress-slide" constructor="ImpressSlide" attributes="exit entrance">
+<link rel="import" href="impress-animated.html">
+<polymer-element extends="impress-animated" name="impress-fragment" constructor="ImpressFragment" attributes="hide">
 	<template>
 		<style type="text/css">
-			:host{
-			  position: relative;
-			  top: 0;
-			  left: 0;
-			  overflow: hidden;
-			  display: none;
-  			width: 100%;
-				height: 100%;
-				margin: 0;
-			  -webkit-box-sizing: border-box;
-			  -moz-box-sizing: border-box;
-			  box-sizing: border-box;	
-
-			  /* Animate.css */
-			  -webkit-animation: 1s both;
+			:host {
+				display: block;
+				-webkit-animation: 1s both;
 			  animation: 1s both;
 			  -webkit-animation-name: {{ animation }} !important;
 			  animation-name: {{ animation }} !important; 
-		  }
-
-			:host(.past:host) {
-			  /*opacity: 0;*/
 			}
 
-			:host(.current:host) {
-			  display: block;
-			}
-
-			:host(.next:host) {
-			  pointer-events: none;
+			:host(:host[hide]) {
+				visibility: hidden;
 			}
 		</style>
 		<content></content>
 	</template>
 	<script type="text/javascript">
 		(function() {
-			Polymer('impress-slide', {
-				entrance: 'bounceInDown',
-				exit: 'fadeOutRightBig',
-				animation: "",
+			Polymer('impress-fragment', {
+				animations: {entrance: "fadeIn"},
 
 				animateIn: function() {
-					this.animation = this.entrance;
-					// Fallback for polyfill
-					if (window.ShadowDOMPolyfill && ((this.style.animationName != this.entrance) || 
-							(this.style.webkitAnimationName != this.entrance))) {
-						this.style.webkitAnimation = this.style.animation = this.entrance + " 1s both";
-					}						
-				},
-
-				animateOut: function() {
-					this.animation = this.exit;
-					// Fallback for polyfill 
-					if (window.ShadowDOMPolyfill && ((this.style.animationName != this.exit) || 
-							(this.style.webkitAnimationName != this.exit))) {
-						this.style.webkitAnimationName = this.style.animationName = this.exit;
-					}
+					this.removeAttribute("hidden");
+					this.super();
 				},
 
 				ready: function() {
 
-				},
+				}
+
 			});
 		})();
 	</script>
