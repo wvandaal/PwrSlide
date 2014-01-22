@@ -1,5 +1,5 @@
 <link rel="import" href="impress-animated.html">
-<polymer-element extends="impress-animated" name="impress-slide" constructor="ImpressSlide" attributes="on-transition">
+<polymer-element extends="impress-animated" name="impress-slide" constructor="ImpressSlide">
 	<template>
 		<style type="text/css">
 			:host{
@@ -37,7 +37,6 @@
 	<script type="text/javascript">
 		(function() {
 			Polymer('impress-slide', {
-				"on-transition" : "",
 
 				animateNextFragment: function() {
 

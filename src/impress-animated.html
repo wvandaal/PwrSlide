@@ -1,9 +1,12 @@
-<polymer-element name="impress-animated" attributes="animations"  constructor="ImpressAnimated">
+<polymer-element name="impress-animated" attributes="animations ontransition"  constructor="ImpressAnimated">
 	<template>
 		<content></content>
 	</template>
 	<script type="text/javascript">
 		(function() {
+
+			// Fallback procedure to animate functions in the 
+			// event of unsupported browsers/polyfills
 			var animateFallback_ = function(animationName) {
 				if ((this.style.animationName != animationName) || 
 						(this.style.webkitAnimationName != animationName)) {
@@ -12,29 +15,36 @@
 			};
 
 			Polymer('impress-animated', {
+				// bound to the <style> tags in subclasses
 				animationName: "",
+
+				// define entrance and exit animations
 				animations: {entrance: "fadeIn", exit: "fadeOut"},
 
-				animateIn: function(callback) {
-					this.animateEl(this.animations.entrance, callback);				
+				// Animates the object into the deck and calls the 
+				// ontransition callback
+				animateIn: function() {
+					this.animateEl(this.animations.entrance);	
+
+					// Rewrite without Function constructor
+					if (this.ontransition) {
+						new Function(this.ontransition)();
+					}			
 				},
 
-				animateOut: function(callback) {
-					this.animateEl(this.animations.exit, callback);
+				// Animate the object out
+				animateOut: function() {
+					this.animateEl(this.animations.exit);
 				},
 
 				// TODO:
 				// Validate animations
-				animateEl: function(animationName, callback) {
+				animateEl: function(animationName) {
 					console.log();
 					if (!!window.ShadowDOMPolyfill || !(this instanceof ImpressAnimated)) {
 						animateFallback_.call(this, animationName);
 					} else {
 						this.animationName = animationName;
-					}
-
-					if (callback instanceof Function) {
-						callback();
 					}
 				}
 			});
