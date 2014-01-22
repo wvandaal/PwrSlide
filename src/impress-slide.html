@@ -37,14 +37,33 @@
 	<script type="text/javascript">
 		(function() {
 			Polymer('impress-slide', {
+				fragments: [],
+				animateInFragments: [],
+				animateOutFragments: [],
+				curFragment: '',
 
 				animateNextFragment: function() {
-
+					if (this.curFragment = this.animateInFragments.shift()) {
+						this.curFragment.animateIn();
+						return true;
+					} else if (this.curFragment = this.animateOutFragments.shift()) {
+						this.curFragment.animateOut();
+						return true;
+					} else {
+						return false;
+					}
 				},
 
 				ready: function() {
 					this.fragments = this.querySelectorAll('impress-fragment');
-
+					this.animateInFragments = [].filter.call(
+						this.fragments, function(el) {
+							return typeof el.animations.entrance === "string";
+						});
+					this.animateOutFragments = [].filter.call(
+						this.fragments, function(el) {
+							return typeof el.animations.exit === "string";
+						});
 				},
 			});
 		})();

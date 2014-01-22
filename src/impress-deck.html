@@ -108,6 +108,10 @@
 				// Add code highlighting
 				// Toggle speaker notes
 				nextSlide: function() {
+					if (this.getSlide(this.curSlide).animateNextFragment()) {
+						return;
+					}
+
 					if (this.curSlide < this.totalSlides - 1) {
 						var that = this;
 						prevSlide_ = this.curSlide++;
