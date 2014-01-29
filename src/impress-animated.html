@@ -1,6 +1,6 @@
-<polymer-element name="impress-animated" attributes="animations ontransition"  constructor="ImpressAnimated">
+<polymer-element name="impress-animated" attributes="entrance exit onentry onexit"  constructor="ImpressAnimated">
 	<template>
-		<content></content>
+		<!-- <content></content> -->
 	</template>
 	<script type="text/javascript">
 		(function() {
@@ -17,26 +17,20 @@
 				// bound to the <style> tags in subclasses
 				animationName: "",
 
-				// define entrance and exit animations
-				// Defaults: "fadeIn" and "fadeOut"
-				animations: {entrance: "fadeIn", exit: "fadeOut"},
-
 				// Animates the object into the deck and calls the 
 				// ontransition callback
 				// TODO: Validate animations
 				animateIn: function() {
-					this.animateEl(this.animations.entrance);	
-
-					// Rewrite without Function constructor
-					if (this.ontransition) {
-						new Function(this.ontransition)();
-					}			
+					this.animateEl(this.entrance);	
 				},
 
 				// Animate the object out
 				// TODO: Validate animations
 				animateOut: function() {
-					this.animateEl(this.animations.exit);
+					if (this.onexit) {
+						new Function(this.onexit)();
+					}		
+					this.animateEl(this.exit);
 				},
 
 				// Animates an element
@@ -52,6 +46,10 @@
 
 				removeAnimations: function() {
 					this.animateEl('');
+				},
+
+				ready: function() {
+
 				}
 			});
 		})();

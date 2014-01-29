@@ -4,14 +4,15 @@
 		<style type="text/css">
 			:host {
 				display: block;
+				/*opacity: 0;*/
 				-webkit-animation: 1s both;
 			  animation: 1s both;
-			  -webkit-animation-name: {{ animation }} !important;
-			  animation-name: {{ animation }} !important; 
+			  -webkit-animation-name: {{ animationName }} !important;
+			  animation-name: {{ animationName }} !important; 
 			}
 
 			:host(:host[hide]) {
-				visibility: hidden;
+				opacity: 0;
 			}
 		</style>
 		<content></content>
@@ -19,15 +20,15 @@
 	<script type="text/javascript">
 		(function() {
 			Polymer('impress-fragment', {
-				animations: {entrance: "fadeIn"},
+				entrance: "fadeIn",
 
 				animateIn: function() {
-					this.removeAttribute("hide");
 					this.super();
+					this.removeAttribute("hide");
 				},
 
 				ready: function() {
-
+					
 				}
 
 			});

@@ -17,19 +17,21 @@
 <body>
 
 	<!-- Using Custom Elements -->
-	<impress-deck unresolved curslide="1">
-		<impress-slide class="red-background" animations='{"entrance":"bounceInDown", "exit":"fadeOutRightBig"}'>
+	<impress-deck unresolved current="1">
+		<impress-slide class="red-background" entrance="bounceInDown" exit="fadeOutRightBig">
 			<impress-fragment hide>
 				<h1>Beautiful Slides</h1>
 			</impress-fragment>
-			<h3>What more could you ask for?</h3>
+			<impress-fragment hide>
+				<h3>What more could you ask for?</h3>
+			</impress-fragment>
 		</impress-slide>
-		<impress-slide class="blue-background" ontransition="console.log('howdy');">
-		<input type="date"></input>
+		<impress-slide class="blue-background" onentry="alert('hi there!');">
+
 			<h2>Oh the possibilities!</h2>
 			<h4 style="text-align:right;">( The mind reels )</h4>
 			<ul>
-				<impress-fragment hide><li>Fill slides with valid HTML</li></impress-fragment>
+				<impress-fragment hide entrance="bounceInDown"><li>Fill slides with valid HTML</li></impress-fragment>
 				<li>Never feel restricted again</li>
 				<li>Keep your markup clean, as it was meant to be</li>
 			</ul>

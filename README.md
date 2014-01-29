@@ -1,8 +1,10 @@
-# &lt;my-element&gt;
+# Impress
 
-TODO: Write a project description
+Adios Powerpoint! Impress is a simple and compact presentation interface built to help users emprace the future of interactive presentation software using the power of HTML5 and Web Components. A small set of intiutive custom tags allow you to build your presentations from the ground up and gives you the flexibility to embed complex web applications within your slideshow.
 
-> Maintained by [Your Name](https://github.com/yourname).
+Impress is an open source project implemented using the upcoming HTML5 standard of Web Components and the [Polymer.js library](http://polymer-project.org) by Google. 
+
+> Maintained by Willem van Daalen (https://github.com/wvandaal).
 
 ## Demo
 
@@ -10,23 +12,10 @@ TODO: Write a project description
 
 ## Usage
 
-1. Import Web Components' polyfill:
+Each Impress presentation is build using three main components, each denoted by a custom tag:
 
-	```html
-	<script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.0.20130711/polymer.min.js"></script>
-	```
+`<impress-deck>`
 
-2. Import Custom Element:
-
-	```html
-	<link rel="import" href="src/my-element.html">
-	```
-
-3. Start using it!
-
-	```html
-	<my-element></my-element>
-	```
 
 ## Options
 
@@ -47,8 +36,6 @@ Attribute  | Options                   | Default             | Description
 
 ## History
 
-* v0.0.1 August 19, 2013
-	* Started project using [boilerplate-element](https://github.com/customelements/boilerplate-element)
 
 ## License
 

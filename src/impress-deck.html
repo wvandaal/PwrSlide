@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="basic-animations.css">
-<polymer-element name="impress-deck" attributes="curSlide" constructor="ImpressDeck" on-mouseover="{{keyControlsOn}}" on-mouseout="{{keyControlsOff}}">
+<polymer-element name="impress-deck" attributes="current" constructor="ImpressDeck" on-mouseover="{{keyControlsOn}}" on-mouseout="{{keyControlsOff}}">
 	<template>
 		<style type="text/css">
 			:host {
@@ -11,13 +11,23 @@
 			  -o-transition: opacity 800ms ease-in 100ms;
 			  transition: opacity 800ms ease-in 100ms;
 			}
+
+			:host(:host:-webkit-full-screen) {
+				width: 100%;
+				height: 100%;
+				font-size: 1.5vw;
+			}
 		</style>
 		<content id="slides" select="impress-slide"></content>
 	</template>
 	<script>
 		(function() {
 			var SLIDE_CLASSES_ 	= ['far-past', 'past', 'current', 'next', 'far-next'],
+					PREFIXES_ 			= ["webkit", "moz", "MS", "o", ""],
 					prevSlide_ 			= 0,
+
+					// TODO:
+					// Fix fullscreen mode
 					onKeyDown_			= function(e) {
 					  if (/^(input|textarea)$/i.test(e.target.nodeName) ||
 					      e.target.isContentEditable || !this.controlsActive) {
@@ -39,33 +49,72 @@
 					      this.prevSlide();
 					      e.preventDefault();
 					      break;
+
+						  case 70: // F: Toggle fullscreen
+					      if (!(e.shiftKey && e.metaKey)) {
+					        if (this.mozRequestFullScreen) {
+					        	this.mozRequestFullScreen();
+					        } else if (this.webkitRequestFullScreen) {
+					          this.webkitRequestFullScreen();
+					        }
+					      }
+					      break;
 					  }
 				},
+
+				addPrefixedListeners_ = function(elem, type, callback) {
+					for (var i = PREFIXES_.length - 1; i >= 0; i--) {
+						elem.addEventListener(PREFIXES_[i]+type, callback, false);					
+					}
+				},
+
 				addEventListeners_ = function() {
 					document.addEventListener('keydown', onKeyDown_.bind(this), false);
+					addPrefixedListeners_(this, 'AnimationEnd', handleAnimated_.bind(this));
 				},
+
+				handleAnimated_ = function(e) {
+					console.log(e);
+					if (e.target instanceof ImpressAnimated) {
+						var el = e.target;
+						e.stopPropagation();
+						// Exit animation actions
+						if (e.animationName === el.exit) {
+							if (el.nodeName === "IMPRESS-SLIDE") {
+								this.getSlide(this.curslide).animateIn();
+								updateSlides_.call(this);
+							}
+						// Entrance animation actions
+						} else if (e.animationName === el.entrance) {
+							if (el.onentry) {
+								new Function(el.onentry)();
+							}
+						}
+					}
+				},
+
 				// TODO:
 				// trigger slide events
 				// enable iframe preloading
 				// add support for overview mode
 				updateSlides_ 		= function() {
-					var curSlide 					= this.curSlide,
+					var curslide 					= this.curslide,
 							updateSlideClass	= updateSlideClass_.bind(this);
 					for (var i = 0; i < this.totalSlides; ++i) {
 						switch(i) {
-							case curSlide - 2:
+							case curslide - 2:
 								updateSlideClass(i, 'far-past');
 								break;
-							case curSlide - 1:
+							case curslide - 1:
 								updateSlideClass(i, 'past');
 								break;
-				      case curSlide:
+				      case curslide:
 				        updateSlideClass(i, 'current');
 				        break;
-				      case curSlide + 1:
+				      case curslide + 1:
 				        updateSlideClass(i, 'next');
 				        break;
-				      case curSlide + 2:
+				      case curslide + 2:
 				        updateSlideClass(i, 'far-next');
 				        break;
 				      default:
@@ -94,8 +143,35 @@
 				};
 
 			Polymer('impress-deck', {
-				curSlide: 0,
+				current: 0,
+				curslide: 0,
 				controlsActive: false,
+				// observe: {
+				// 	curslide: 'curslideChanged'
+				// },
+				currentChanged: function(oldVal, newVal) {
+					// Prevents the initial slide transition on load (since this is the
+					// only time prevSlide_ and curslide are both falsey 0)
+					if (!(!!!prevSlide_ && !!!this.curslide)) {
+						this.loadSlide(newVal);
+					} else {
+						this.curslide = this.current;
+						updateSlides_.call(this);
+					}
+				},
+
+				/* TODO
+				 * 1) use Modernizr to allow for smartphones
+				 * 2?) load config
+				 * 3) 
+				 */
+				ready: function() {
+					this.slides = this.$.slides.getDistributedNodes();
+					this.totalSlides = this.slides.length;
+
+					addEventListeners_.call(this);
+					updateSlides_.call(this);
+				},
 
 				keyControlsOff: function(e) {
 					e.stopPropagation();
@@ -113,18 +189,12 @@
 				// Add code highlighting
 				// Toggle speaker notes
 				nextSlide: function() {
-					if (this.getSlide(this.curSlide).animateNextFragment()) {
+					if (this.getSlide(this.curslide).animateNextFragment()) {
 						return;
 					}
 
-					if (this.curSlide < this.totalSlides - 1) {
-						var that = this;
-						prevSlide_ = this.curSlide++;
-						this.getSlide(prevSlide_).animateOut();
-						window.setTimeout(function() {
-							updateSlides_.call(that);
-						}, 900);
-						this.getSlide(this.curSlide).animateIn();
+					if (this.curslide < this.totalSlides - 1) {
+						this.loadSlide(this.curslide + 1);
 					}
 				},
 
@@ -134,14 +204,9 @@
 				// Add code highlighting
 				// Toggle speaker notes
 				prevSlide: function() {
-					if (this.curSlide > 0) {
-						var that = this;
-						prevSlide_ = this.curSlide--;
-						this.getSlide(prevSlide_).animateOut()
-						window.setTimeout(function() {
-							updateSlides_.call(that);
-						}, 900);
-						this.getSlide(this.curSlide).animateIn();
+					if (this.curslide > 0) {
+						this.loadSlide(this.curslide - 1);
+						// this.getSlide(prevSlide_).animateOut();
 					}
 				},
 
@@ -153,17 +218,15 @@
 					}
 				},
 
-				/* TODO
-				 * 1) use Modernizr to allow for smartphones
-				 * 2?) load config
-				 * 3) 
-				 */
-				ready: function() {
-					this.slides = this.$.slides.getDistributedNodes();
-					this.totalSlides = this.slides.length;
-
-					addEventListeners_.bind(this)();
-					updateSlides_.bind(this)();
+				loadSlide: function(slideNum) {
+					if ((slideNum < 0) || (slideNum >= this.totalSlides)) {
+						return null;
+					} else {
+						console.log(prevSlide_);
+						prevSlide_ = this.curslide;
+						this.curslide = slideNum;
+						this.getSlide(prevSlide_).animateOut();
+					}
 				}
 			});
 		})()
