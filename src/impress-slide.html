@@ -39,11 +39,27 @@
 	</template>
 	<script type="text/javascript">
 		(function() {
+			var collectAnimationFragments_ = function() {
+					this.animateInFragments = [].filter.call(
+						this.fragments, function(el) {
+							return typeof el.entrance === "string";
+						});
+					this.animateOutFragments = [].filter.call(
+						this.fragments, function(el) {
+							return typeof el.exit === "string";
+						});
+				};
+
 			Polymer('impress-slide', {
 				entrance: "fadeInLeftBig", 
 				exit: "fadeOutRightBig",
 
 				animateNextFragment: function() {
+					// Collect animateIn/animateOut fragments on the first call
+					if (!this.animateInFragments || !this.animateOutFragments) {
+						collectAnimationFragments_.call(this);
+					}
+
 					if (this.curFragment = this.animateInFragments.shift()) {
 						this.curFragment.animateIn();
 						return true;
@@ -60,21 +76,7 @@
 				},
 
 				ready: function() {
-					// define entrance and exit animations
-					// Defaults: "fadeIn" and "fadeOut"
-
 					this.fragments = this.querySelectorAll('impress-fragment');
-					var that = this;
-					window.setTimeout(function() {
-						that.animateInFragments = [].filter.call(
-							that.fragments, function(el) {
-								return typeof el.entrance === "string";
-							});
-						that.animateOutFragments = [].filter.call(
-							that.fragments, function(el) {
-								return typeof el.exit === "string";
-							});
-					}, 100);
 				},
 			});
 		})();

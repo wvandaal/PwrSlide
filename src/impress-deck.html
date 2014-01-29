@@ -5,6 +5,7 @@
 			:host {
 			  display: block;
 			  overflow: hidden;
+			  position: relative;
 			  -webkit-transition: opacity 800ms ease-in;
 			  -webkit-transition-delay: 100ms;
 			  -moz-transition: opacity 800ms ease-in 100ms;
@@ -74,7 +75,6 @@
 				},
 
 				handleAnimated_ = function(e) {
-					console.log(e);
 					if (e.target instanceof ImpressAnimated) {
 						var el = e.target;
 						e.stopPropagation();
@@ -84,10 +84,15 @@
 								this.getSlide(this.curslide).animateIn();
 								updateSlides_.call(this);
 							}
+
 						// Entrance animation actions
 						} else if (e.animationName === el.entrance) {
+
+							// onentry callback called after animation ends
+							// NOTE: onexit callback called before exit animation begins
+							// (see ImpressAnimated)
 							if (el.onentry) {
-								new Function(el.onentry)();
+								new Function(el.onentry)();	
 							}
 						}
 					}
@@ -146,9 +151,7 @@
 				current: 0,
 				curslide: 0,
 				controlsActive: false,
-				// observe: {
-				// 	curslide: 'curslideChanged'
-				// },
+
 				currentChanged: function(oldVal, newVal) {
 					// Prevents the initial slide transition on load (since this is the
 					// only time prevSlide_ and curslide are both falsey 0)
@@ -160,11 +163,6 @@
 					}
 				},
 
-				/* TODO
-				 * 1) use Modernizr to allow for smartphones
-				 * 2?) load config
-				 * 3) 
-				 */
 				ready: function() {
 					this.slides = this.$.slides.getDistributedNodes();
 					this.totalSlides = this.slides.length;
@@ -184,29 +182,20 @@
 				},
 
 				// TODO:
-				// Add slide fragment support
 				// Add overview support
-				// Add code highlighting
-				// Toggle speaker notes
 				nextSlide: function() {
 					if (this.getSlide(this.curslide).animateNextFragment()) {
 						return;
 					}
 
 					if (this.curslide < this.totalSlides - 1) {
-						this.loadSlide(this.curslide + 1);
+						this.current++;
 					}
 				},
 
-				// TODO:
-				// Add slide fragment support
-				// Add overview support
-				// Add code highlighting
-				// Toggle speaker notes
 				prevSlide: function() {
 					if (this.curslide > 0) {
-						this.loadSlide(this.curslide - 1);
-						// this.getSlide(prevSlide_).animateOut();
+						this.current--;
 					}
 				},
 
@@ -222,7 +211,6 @@
 					if ((slideNum < 0) || (slideNum >= this.totalSlides)) {
 						return null;
 					} else {
-						console.log(prevSlide_);
 						prevSlide_ = this.curslide;
 						this.curslide = slideNum;
 						this.getSlide(prevSlide_).animateOut();
