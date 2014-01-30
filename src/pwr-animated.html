@@ -1,0 +1,57 @@
+<polymer-element name="pwr-animated" attributes="entrance exit onentry onexit"  constructor="PwrAnimated">
+	<template>
+		<!-- <content></content> -->
+	</template>
+	<script type="text/javascript">
+		(function() {
+			// Fallback procedure to animate functions in the 
+			// event of unsupported browsers/polyfills
+			var animateFallback_ = function(animationName) {
+				if ((this.style.animationName != animationName) || 
+						(this.style.webkitAnimationName != animationName)) {
+							this.style.webkitAnimation = this.style.animation = animationName + " 1s both";
+				}
+			};
+
+			Polymer('pwr-animated', {
+				// bound to the <style> tags in subclasses
+				animationName: "",
+
+				// Animates the object into the deck and calls the 
+				// ontransition callback
+				// TODO: Validate animations
+				animateIn: function() {
+					this.animateEl(this.entrance);	
+				},
+
+				// Animate the object out
+				// TODO: Validate animations
+				animateOut: function() {
+					if (this.onexit) {
+						new Function(this.onexit)();
+					}		
+					this.animateEl(this.exit);
+				},
+
+				// Animates an element
+				// Can be used as utility method through prototype
+				// e.g. PwrAnimated.prototype.animateEl.call($('#someEl'), "fadeIn")
+				animateEl: function(animationName) {
+					if (!!window.ShadowDOMPolyfill || !(this instanceof PwrAnimated)) {
+						animateFallback_.call(this, animationName);
+					} else {
+						this.animationName = animationName;
+					}
+				}, 
+
+				removeAnimations: function() {
+					this.animateEl('');
+				},
+
+				ready: function() {
+
+				}
+			});
+		})();
+	</script>
+</polymer-element>

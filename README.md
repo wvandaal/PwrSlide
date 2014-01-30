@@ -1,4 +1,4 @@
-# Impress
+# PwrSlide
 
 Adios Powerpoint! Impress is a simple and compact presentation interface built to help users emprace the future of interactive presentation software using the power of HTML5 and Web Components. A small set of intiutive custom tags allow you to build your presentations from the ground up and gives you the flexibility to embed complex web applications within your slideshow.
 
@@ -12,9 +12,9 @@ Impress is an open source project implemented using the upcoming HTML5 standard 
 
 ## Usage
 
-Each Impress presentation is build using three main components, each denoted by a custom tag:
+Each PwrSlide presentation is build using three main components, each denoted by a custom tag:
 
-`<impress-deck>`
+`<pwr-deck>` is the container for you presentation. The majority of the application logic resides within 
 
 
 ## Options

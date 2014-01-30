@@ -4,13 +4,13 @@ html, body {
 	margin: 0;
 }
 
-impress-deck {
+pwr-deck {
 	margin: 10px;
 	width: 800px;
 	height: 400px;
 }
 
-impress-slide {
+pwr-slide {
 	padding: 5%;
 	color: white;
 	font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
