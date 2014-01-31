@@ -27,6 +27,14 @@
 					return this.super();
 				},
 
+				getParentSlide: function() {
+					var parent = this.parentNode;
+					while (!(parent instanceof PwrSlide)) {
+						parent = parent.parentNode;
+					}
+					return parent;
+				},
+
 				ready: function() {
 					
 				}
