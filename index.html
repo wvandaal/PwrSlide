@@ -73,7 +73,7 @@
 							PwrSlide ships with over 50 animations from <a href="https://daneden.me/animate/" target="_blank">Animate.css</a>
 						</li>
 					</pwr-piece>
-					<pwr-piece>
+					<pwr-piece onentry="this.getParentSlide().animatePiece(document.querySelector('#minideck-piece'))">
 						<li>PwrSlides and PwrPieces descend from the PwrAnimated Object
 							<ul>
 								<pwr-piece onentry="document.querySelector('#animations-minideck').loadSlide(2);"><li></li></pwr-piece>

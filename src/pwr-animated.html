@@ -31,7 +31,7 @@
 				// TODO: Validate animations
 				animateOut: function() {
 					if (this.onexit) {
-						new Function(this.onexit)();
+						new Function(this.onexit).call(this);
 					}		
 					this.animateEl(this.exit);
 					return this;

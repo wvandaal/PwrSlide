@@ -93,7 +93,7 @@
 							// NOTE: onexit callback called before exit animation begins
 							// (see PwrAnimated)
 							if (el.onentry) {
-								new Function(el.onentry)();	
+								new Function(el.onentry).call(el);	
 							}
 						}
 					}
