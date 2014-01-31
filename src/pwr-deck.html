@@ -1,4 +1,5 @@
-<polymer-element name="pwr-deck" attributes="current" constructor="PwrDeck" on-mouseover="{{keyControlsOn}}" on-mouseout="{{keyControlsOff}}">
+<link rel="import" href="pwr-base.html">
+<polymer-element name="pwr-deck" attributes="current" extends="pwr-base" constructor="PwrDeck" on-mouseover="{{keyControlsOn}}" on-mouseout="{{keyControlsOff}}">
 	<template>
 		<style type="text/css">
 			:host {
