@@ -1,12 +1,14 @@
 <polymer-element name="pwr-animated" attributes="entrance exit onentry onexit"  constructor="PwrAnimated">
 	<template>
-		<!-- <content></content> -->
 	</template>
 	<script type="text/javascript">
 		(function() {
 			// Fallback procedure to animate functions in the 
 			// event of unsupported browsers/polyfills
 			var animateFallback_ = function(animationName) {
+				if (window.getComputedStyle(this).display === "inline") {
+					this.style.display = "inline-block";
+				}
 				if ((this.style.animationName != animationName) || 
 						(this.style.webkitAnimationName != animationName)) {
 							this.style.webkitAnimation = this.style.animation = animationName + " 1s both";
@@ -22,6 +24,7 @@
 				// TODO: Validate animations
 				animateIn: function() {
 					this.animateEl(this.entrance);	
+					return this;
 				},
 
 				// Animate the object out
@@ -31,6 +34,7 @@
 						new Function(this.onexit)();
 					}		
 					this.animateEl(this.exit);
+					return this;
 				},
 
 				// Animates an element

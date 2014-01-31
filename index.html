@@ -2,17 +2,27 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>&lt;my-element&gt;</title>
+	<title>PwrSlide</title>
 
 	<!-- Importing Web Component's Polyfill -->
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.3/platform.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.3/polymer.js"></script>
-	<!-- Importing Custom Elements -->
-	<link rel="import" href="src/pwr-deck.html">
-	<link rel="import" href="src/pwr-slide.html">
-	<link rel="import" href="src/pwr-piece.html">
 
+	<!-- Importing Custom Elements -->
+ 	<link rel="import" href="src/PwrSlide.html">
+
+ 	<!-- Custom fonts -->
+ 	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+ 	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+ 	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+ 	<link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+
+ 	<!-- Document styles / custom animations -->
+<!--  	<link rel="stylesheet" type="text/css" href="bower_components/normalize-css/normalize.css"> -->
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="sample-styles.css">
+	<link rel="stylesheet" type="text/css" href="src/animate-custom.css">
+
 </head>
 <body>
 	<script type="text/javascript">
@@ -20,47 +30,83 @@
 	</script>
 
 	<!-- Using Custom Elements -->
-	<pwr-deck unresolved current="1">
-		<pwr-slide class="red-background" entrance="bounceInDown" exit="fadeOutRightBig">
-			<pwr-piece hide>
-				<h1>Beautiful Slides</h1>
-			</pwr-piece>
-			<pwr-piece hide>
-				<h3>What more could you ask for?</h3>
-			</pwr-piece>
-		</pwr-slide>
-		<pwr-slide class="blue-background" onentry="alert('hi there!');">
+	<pwr-deck unresolved current="3" slidenumbers="true">
 
-			<h2>Oh the possibilities!</h2>
-			<h4 style="text-align:right;">( The mind reels )</h4>
-			<ul>
-				<pwr-piece hide entrance="bounceInDown"><li>Fill slides with valid HTML</li></pwr-piece>
-				<li>Never feel restricted again</li>
-				<li>Keep your markup clean, as it was meant to be</li>
-			</ul>
+		<!-- Slide 1 -->
+		<pwr-slide id="slide1" class="title-slide red animated" entrance="bounceInDown" exit="fadeOutRightBig">
+			<hgroup>
+				<h1>PwrSlides!</h1>
+				<h2>Full-featured Slide Web-Components</h2>
+				<h3>Built in Exquisite HTML with Polymer</h3>
+				<br>
+			</hgroup>
+			<aside class="tip">(use the arrow keys or spacebar to navigate)</aside>
 		</pwr-slide>
-		<pwr-slide class="green">
-			<h1 style="float: left;">Enter the Matrix</h1>
-			<pwr-deck class="inner">
-					<pwr-slide class="red-background">
-			<h1>Holy Sh!t</h1>
-			<h3>Slides IN slides!??</h3>
-			<br>
-			<p style="text-align: right;">Surely you jest...</p>
+
+		<pwr-slide id="slide2" class="one-column-centered animated">
+			<hgroup>
+				<h1>Oh the possibilities!</h1>
+				<h2>Easily harness the power of HTML, CSS, and JavaScript</h2>
+			</hgroup>
+			<section>
+				<ul>
+					<pwr-piece><li>Build complex and full-featured presentation decks using web technologies you know and love</li></pwr-piece>
+					<pwr-piece><li>Harness the power of CSS to create your own custom animations</li></pwr-piece>
+					<pwr-piece>
+						<li>Fill your presentations with working HTML elements!</li>
+						<br>
+						<iframe width="100%" height="150" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/129682092&amp;auto_play=false&amp;hide_related=false&amp;visual=true"></iframe>
+					</pwr-piece>
+				</ul>
+			</section>
 		</pwr-slide>
-		<pwr-slide class="blue-background">
-			<h2>Oh the possibilities!</h2>
-			<h4 style="text-align:right;">( The mind reels )</h4>
-			<ul>
-				<li>Fill slides with valid HTML</li>
-				<li>Never feel restricted again</li>
-				<li>Keep your markup clean, as it was meant to be</li>
-			</ul>
+
+		<pwr-slide class="two-column">
+			<hgroup>
+				<h1>Animate It!</h1>
+				<h2>Powerful animation framework</h2>
+			</hgroup>
+			<section>
+				<ul>
+					<pwr-piece>
+						<li>
+							PwrSlide ships with over 50 animations from <a href="https://daneden.me/animate/" target="_blank">Animate.css</a>
+						</li>
+					</pwr-piece>
+					<pwr-piece>
+						<li>PwrSlides and PwrPieces descend from the PwrAnimated Object
+							<ul>
+								<pwr-piece onentry="document.querySelector('#animations-minideck').loadSlide(2);"><li></li></pwr-piece>
+							</ul>
+						</li>
+					</pwr-piece>
+
+					<pwr-piece onentry="document.querySelector('#animations-minideck').loadSlide(0);">
+						<li>Wrap any element in &lt;pwr-piece> tags for them to become animated
+							<ul>
+								<pwr-piece><li>&lt;pwr-piece> tags are animated by the slide in descending order</li></pwr-piece>
+								<pwr-piece onentry="document.querySelector('#animations-minideck').loadSlide(2);"><li>Add the 'show' attribute to the &lt;pwr-piece> tag to show its contents initially</li></pwr-piece>
+							</ul>
+						</li>
+					</pwr-piece>
+				</ul>
+			</section>
+			<section>
+				<pwr-piece id="minideck-piece">
+					<pwr-deck id="animations-minideck" slidenumbers="false">
+						<pwr-slide entrance="fadeInLeftBig" exit="fadeOutRightBig">
+							title
+						</pwr-slide>
+						<pwr-slide entrance="fadeInLeftBig" exit="fadeOutRightBig">
+							goes
+						</pwr-slide>
+						<pwr-slide entrance="fadeInLeftBig" exit="fadeOutRightBig">
+							here
+						</pwr-slide>					
+					</pwr-deck>
+				</pwr-piece>
+			</section>
 		</pwr-slide>
-			</pwr-deck>
-		</pwr-slide>
-		<pwr-slide>A</pwr-slide>
-		<pwr-slide>Slide</pwr-slide>
 	</pwr-deck>
 </body>
 </html>

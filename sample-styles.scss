@@ -1,0 +1,191 @@
+@import 'css/bourbon/bourbon';
+@import 'css/neat/neat';
+
+/*
+ * TEMPLATE STYLES
+ */
+
+/* Mixins */
+@mixin blank-slide() {
+	@include fill-parent;
+	@include box-sizing(border-box);
+	width: 100%;
+	max-width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+/* Colors */
+$gold: #D08239;
+$dark-blue: #0C0C32;
+$red1: #DE1B42;
+$red2: #BA2C41;
+
+/* Fonts */
+$title-font: 'Pacifico', cursive;
+$subheading-font: 'Raleway', sans-serif;
+$general-font: 'Questrial', sans-serif;
+
+$title-color: $red2;
+$subheading-color: grey;
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+/* Deck Styles */
+pwr-deck {
+	width: 100%;
+	height: 100%;
+	background: url('light_linen.png') repeat center center;
+	&:not([slidenumbers='false']):after {
+		font-family: 'Questrial', sans-serif;
+		padding:5px;
+		font-size: 20px;
+		width: 4%;
+		height: 30px;
+		position: absolute;
+		bottom: 0;
+		right: 48%;
+		opacity: .4;
+		content: attr(current) " / " attr(totalslides);
+	}
+}
+
+/* General slide styles */
+pwr-slide {
+	@include outer-container;
+	padding: 2% 0;
+	> hgroup {
+		margin-bottom: 30px;
+		text-align: left;
+		font-family: $subheading-font;
+		> h1 {
+			font-size: 3.5em;
+			color: $title-color;
+			font-family: $title-font;
+			margin: .6em 0;
+		}
+		> h2 {
+			font-size: 1.5em;
+		}
+		> h2, h3, h4, h5, h6 {
+			margin: .5em 0;
+			color: $subheading-color;	
+		}
+	}
+	> section {
+		font-family: $general-font;
+		font-size: 1.1em;
+		> header {
+			display: inline-block;
+			border-bottom: 1px solid lightgrey;
+			padding-right: 30px;
+			font-weight: bold;
+			font-size: 1.1em;
+		}
+		li {
+			padding: .7em 0;
+		}
+	}
+
+	&.blank {
+		@include blank-slide;
+	}
+
+	&.one-column-centered {
+		> hgroup, section {
+			@include span-columns(8);
+			@include shift(2);
+		}
+		> section {
+			@include omega();
+		}
+	}
+
+	&.two-column {
+		> section {
+			@include span-columns(6);
+			@include omega();
+		}
+	}
+	&.three-column {
+		> article {
+			@include span-columns(4);
+		}
+	}
+	&.animated[current] {
+		> aside.tip {
+			@include animation(fadeIn 1s both 5s, flash 5s infinite 6s);
+		}
+		> hgroup {
+			h1 {
+				@include animation(bounce 2s infinite);
+			}
+			hr {
+				@include animation(bounceIn 2s both 3s);
+			}
+			h2, h3{
+				@include animation(rollIn 2s both 1.5s);
+			}
+		}
+	}
+}
+
+
+/* Themed slide styles*/
+pwr-slide.title-slide {
+	@include blank-slide;
+	> aside.tip {
+		text-align: center;
+		font-family: $subheading-font;
+		color: rgba(255,255,255,0.7);
+		margin: 50px 0;
+	}
+	> hgroup {
+		text-align: center;
+		> h1 {
+			font-size: 6em;
+			margin: .7em 0;
+		}
+		> h2 {
+			font-size: 2em;
+		}
+		h2, h3, h4, h5, h6 {
+			margin: 1em 0;
+		}
+		> hr {
+			width: 300px;
+		}
+	}
+}
+
+
+
+
+
+.red {
+	background: rgba(160,0,0,.7);
+	> hgroup {
+		> h1, h2, h3, h4, h5, h6 {
+			color: black;
+		}
+	}
+}
+
+/* Slide-specific styles */
+
+#slide2 {
+	> hgroup {
+		text-align: center;
+	}
+}
+
+.blue-background {
+	background-color: rgba(0,0,150,.8);
+}
+
+.green {
+	background-color: #0da861;
+}

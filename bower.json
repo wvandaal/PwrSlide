@@ -1,0 +1,27 @@
+{
+  "name": "PwrSlide",
+  "version": "0.1.1",
+  "authors": [
+    "Willem C. van Daalen <wvandaalen@outlook.com>"
+  ],
+  "description": "Web-Components Slide Deck",
+  "main": "src/PwrSlide.html",
+  "keywords": [
+    "web-components",
+    "slides",
+    "presentation",
+    "polymer"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "~3.0.0"
+  }
+}
