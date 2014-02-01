@@ -1,5 +1,6 @@
 pre {
   font-family: 'Source Code Pro', 'Courier New', monospace !important;
+  font-weight: bold !important;
   font-size: 20px;
   line-height: 28px;
   padding: 10px 0 10px 60px !important;
@@ -7,7 +8,7 @@ pre {
   margin-bottom: 20px;
   width: 106%;
   background-color: rgba(200,200,200,0.5);
-  left: -60px;
+  left: -35px;
   position: relative;
   border-bottom-right-radius: 10px; 
   -webkit-box-sizing: border-box;
@@ -16,6 +17,7 @@ pre {
 }
 /* line 351, ../scss/default.scss */
 pre[data-lang]:after {
+  font-weight: normal !important;
   content: attr(data-lang);
   background-color: darkgrey;
   right: 0;

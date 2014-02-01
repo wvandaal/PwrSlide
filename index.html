@@ -12,6 +12,7 @@
  	<link rel="import" href="src/PwrSlide.html">
 
  	<!-- Custom fonts -->
+ 	<link href='http://fonts.googleapis.com/css?family=Average+Sans' rel='stylesheet' type='text/css'>
  	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
  	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
  	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
@@ -30,7 +31,7 @@
 	</script>
 
 	<!-- Using Custom Elements -->
-	<pwr-deck unresolved current="3" slidenumbers="true">
+	<pwr-deck unresolved current="4" slidenumbers="true">
 
 		<!-- Slide 1 -->
 		<pwr-slide id="slide1" class="title-slide red animated" entrance="bounceInDown" exit="fadeOutRightBig">
@@ -43,7 +44,7 @@
 			<aside class="tip">(use the arrow keys or spacebar to navigate)</aside>
 		</pwr-slide>
 
-		<pwr-slide id="slide2" class="one-column-centered animated">
+		<pwr-slide id="slide2" class="one-column-centered animated" exit="bounceOutUp">
 			<hgroup>
 				<h1>Oh the possibilities!</h1>
 				<h2>Easily harness the power of HTML, CSS, and JavaScript</h2>
@@ -61,10 +62,10 @@
 			</section>
 		</pwr-slide>
 
-		<pwr-slide id="slide3" class="segue-slide blue animated">
+		<pwr-slide id="slide3" class="segue-slide blue animated" exit="rotateOutUpRight">
 			<hgroup>
 				<h1>Built with Web-Components</h1>
-				<h2>Style and Function Encapsulation for Free</h2>
+				<h2>Style and Functionality Encapsulation for Free</h2>
 			</hgroup>
 		</pwr-slide>
 
@@ -137,10 +138,10 @@
 							<pre class="prettyprint" data-lang="javascript">
 
 PwrAnimated = {
-	animateIn: function() { ... },
-	animateOut: function() { ... },
-	animateEl: function(animationName) { ... },
-	removeAnimations: function() { ... }
+  animateIn: function() { ... },
+  animateOut: function() { ... },
+  animateEl: function(animationName) { ... },
+  removeAnimations: function() { ... }
 };
 							</pre>
 							<section>

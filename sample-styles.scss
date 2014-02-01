@@ -15,8 +15,16 @@
 	padding: 0;
 }
 
+@mixin flexbox() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Colors */
-$gold: #D08239;
+$gold: #FFBA52;	
+$green1: #00B964; /* rgb(0, 185, 100); */
+$green2: #008042; /* rgb(0, 130, 70); */
 $blue1: #216EB0; /* rgb(33, 110, 176) */
 $blue2: #2150B0; /* rgb(33, 80, 176) */
 $blue3: #2132B0; /* rgb(33, 50, 176) */
@@ -27,7 +35,7 @@ $red2: #BA2C41;
 /* Fonts */
 $title-font: 'Pacifico', cursive;
 $subheading-font: 'Raleway', sans-serif;
-$general-font: 'Questrial', sans-serif;
+$general-font: 'Average Sans', sans-serif;
 
 $title-color: $red2;
 $subheading-color: grey;
@@ -63,14 +71,16 @@ pwr-deck {
 /* Themed Deck Styles*/
 pwr-deck.inner-deck {
 	@include box-sizing(border-box);
-	min-height: 400px;
 	background: rgba(255,255,255,0.5);
 	font-size: .9em;
 	border: 1px solid lightgrey;
 	border-radius: 10px;
+	margin: auto;
 	> pwr-slide {
-		padding: 10px;
+		flex-direction: column;
+		padding: 20px;
 		> hgroup {
+			margin-bottom: 10px;
 			text-align: center;
 		}
 	}
@@ -124,22 +134,26 @@ pwr-slide {
 
 	/* Column layouts */
 	&.one-column-centered {
-		padding: 0;
-		@include outer-container;
-		> hgroup, section {
-			@include span-columns(8);
-			@include shift(2);
+		flex-direction: column;
+		> hgroup, {
+			width: 60%;
+			margin: 0 auto 10px;
 		}
 		> section {
-			@include omega();
+			width: 60%;
+			margin: 10px auto 40px;
 		}
 	}
 	&.two-column {
-		padding: 0;
-		@include outer-container;
+		flex-flow: row wrap;
+		> hgroup {
+			width: 100%;
+			margin: auto;
+		}
 		> section {
-			@include span-columns(6);
-			@include omega();
+			width: 50%;
+			margin: 0 auto auto;
+			@include transition(all 1s ease-in-out);
 		}
 	}
 	&.three-column {
@@ -150,16 +164,19 @@ pwr-slide {
 			@include omega();
 		}
 	}
-	&.animated[current] {
-		> aside.tip {
-			@include animation(fadeIn 1s both 5s, flash 5s infinite 6s);
-		}
-		> hgroup {
-			h1 {
-				@include animation(bounce 2s infinite);
+	&[current] {
+		@include flexbox;
+		&.animated {
+			> aside.tip {
+				@include animation(fadeIn 1s both 5s, flash 5s infinite 6s);
 			}
-			h2, h3{
-				@include animation(rollIn 2s both 0.5s);
+			> hgroup {
+				h1 {
+					@include animation(bounce 2s infinite);
+				}
+				h2, h3{
+					@include animation(rollIn 2s both 0.5s);
+				}
 			}
 		}
 	}
@@ -168,18 +185,22 @@ pwr-slide {
 
 /* Themed slide styles*/
 pwr-slide.title-slide {
-	@include blank-slide;
+	flex-direction: column;
 	> aside.tip {
+		order: 3;
+		max-width: 60%;
+		margin: auto;
 		text-align: center;
 		font-family: $subheading-font;
-		color: rgba(255,255,255,0.7);
-		margin: 50px 0;
 	}
 	> hgroup {
+		order: 1;
+		max-width: 80%;
+		margin: auto;
 		text-align: center;
 		> h1 {
 			font-size: 6em;
-			margin: .7em 0;
+/*			margin: .7em 0;*/
 		}
 		> h2 {
 			font-size: 2em;
@@ -188,10 +209,22 @@ pwr-slide.title-slide {
 			margin: 1em 0;
 		}
 	}
-	&.animated[current] {
-		> hgroup {
-			h2, h3{
-				@include animation(rollIn 2s both 1.5s);
+	&:after {
+		order: 2;
+		position: relative;
+		border-radius: 100px;
+		padding: 20px;
+		content: url(images/title-icon.png);
+	}
+	&[current] {
+		&.animated {
+			> hgroup {
+				h2, h3{
+					@include animation(rollIn 2s both 1.5s);
+				}
+			}
+			&:after {
+				@include animation(fadeInDownBig 1s both 0.5s, spin 2s linear 5s infinite);
 			}
 		}
 	}
@@ -199,7 +232,10 @@ pwr-slide.title-slide {
 
 pwr-slide.segue-slide {
 	@include blank-slide;
+	flex-direction: column;
 	> hgroup {
+		max-width: 80%;
+		margin: auto;
 		text-align: center;
 		h1 {
 			font-size: 4em;
@@ -212,24 +248,149 @@ pwr-slide.segue-slide {
 			margin: 1em 0;
 		}
 	}
-}
-
-
-.red {
-	background: rgba(160,0,0,.7);
-	> hgroup {
-		> h1, h2, h3, h4, h5, h6 {
-			color: black;
-		}
+	&:before {
+		position: relative;
+		top: 20%;
+		border-radius: 100px;
+		padding: 20px;
+		content: url(images/segue-icon.png);
+	}
+	&[current].animated:before {
+		@include animation(fadeInDownBig 1s both 0.5s, spin 2s linear 2s infinite);
 	}
 }
 
+/*
+ * Slide Color Themes
+ */
+
+
+/* Red Theme Styles */
+$redBG: 														rgba(160,0,0,0.7);
+$redBG-link-color:									$blue2;
+$redBG-visited-link-color:					black;
+$redBG-text-color: 									white;
+$redBG-heading-color: 							black;
+$redBG-subheading-color:						white;
+
+$redBG-segue-icon-color:						$gold;
+$redBG-title-icon-color:						$blue2;
+$redBG-title-tip-color:							$gold;
+
+$redBG-inner-deckBG: 								$blue2;
+$redBG-inner-deck-border-color:			black;
+$redBG-inner-deck-heading-color: 		rgba(255,255,255,0.8);
+$redBG-inner-deck-text-color:				rgba(255,255,255,0.8);
+$redBG-inner-deck-preBG:						url('light_linen.png');
+$redBG-inner-deck-pre-label-color:	$green1;
+
+
+.red {
+	color: $redBG-text-color;
+	background: $redBG;
+	a:link {color: $redBG-link-color;}
+	a:visited, a:hover {color: $redBG-visited-link-color;}
+	> hgroup {
+		h1 {
+			color: $redBG-heading-color;
+		}
+		h2, h3, h4, h5, h6 {
+			color: $redBG-subheading-color;
+		}
+	}
+	pwr-deck.inner-deck {
+		color: $redBG-inner-deck-text-color;
+		background: $redBG-inner-deckBG;
+		border-width: 0px;
+		border-color: $redBG-inner-deck-border-color;
+		> pwr-slide {
+			> hgroup {
+				h1, h2, h3, h4, h5, h6 {
+					color: $redBG-inner-deck-heading-color;
+				}
+			}
+			pre {
+				background: $redBG-inner-deck-preBG;
+				&[data-lang]:after {
+					background-color: $redBG-inner-deck-pre-label-color;
+				}
+			}
+		}
+	}
+	&.title-slide {
+		> aside.tip {
+			color: $redBG-title-tip-color;
+		}
+		&:after {
+			border: 10px solid $redBG-title-icon-color;
+			background-color: $redBG-title-icon-color;
+		}
+	}
+	&.segue-slide:before {
+		border: 10px solid $redBG-segue-icon-color;
+		background-color: $redBG-segue-icon-color;
+	}
+}
+
+/* Blue Theme Styles */
+$blueBG: 														rgba(33, 50, 176, 0.8);
+$blueBG-link-color:									lightsalmon;
+$blueBG-visited-link-color:					$gold;
+$blueBG-text-color:									white;
+$blueBG-heading-color: 							white;
+
+$blueBG-segue-icon-color:						$red1;
+$blueBG-title-tip-color:						$gold;
+$blueBG-title-icon-color:						$red1;
+
+$blueBG-inner-deckBG: 							$red1;
+$blueBG-inner-deck-border-color:		transparent;
+$blueBG-inner-deck-heading-color: 	white;
+$blueBG-inner-deck-preBG: 					url('light_linen.png');
+$blueBG-inner-deck-text-color:		 	white;
+$blueBG-inner-deck-pre-label-color:	$green1;
+
 .blue {
-	background-color: rgba(33, 50, 176, 0.8);
+	color: $blueBG-text-color;
+	background: $blueBG;
+	a:link {color: $blueBG-link-color;}
+	a:visited, a:hover {color: $blueBG-visited-link-color;}
 	> hgroup {
 		> h1, h2, h3, h4, h5, h6 {
-			color: white;
+			color: $blueBG-heading-color;
 		}
+	}
+	pwr-deck.inner-deck {
+		color: $blueBG-inner-deck-text-color;
+		background: $blueBG-inner-deckBG;
+		border-width: 0px;
+		border-color: $blueBG-inner-deck-border-color;
+		> pwr-slide {
+			> hgroup {
+				h1, h2, h3, h4, h5, h6 {
+					color: $blueBG-inner-deck-heading-color;
+				}
+			}
+			pre {
+				background: $blueBG-inner-deck-preBG;
+				&[data-lang]:after {
+					background-color: $blueBG-inner-deck-pre-label-color;
+				}
+			}
+		}
+	}
+	&.title-slide {
+		> aside.tip {
+			color: $blueBG-title-tip-color;
+		}
+		&:after {
+			border: 10px solid $blueBG-title-icon-color;
+			background-color: $blueBG-title-icon-color;
+		}
+	}
+	&.segue-slide:before {
+		border: 10px solid $blueBG-segue-icon-color;
+		background-color: $blueBG-segue-icon-color;
 	}
 }
 
