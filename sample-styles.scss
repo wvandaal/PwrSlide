@@ -17,6 +17,9 @@
 
 /* Colors */
 $gold: #D08239;
+$blue1: #216EB0; /* rgb(33, 110, 176) */
+$blue2: #2150B0; /* rgb(33, 80, 176) */
+$blue3: #2132B0; /* rgb(33, 50, 176) */
 $dark-blue: #0C0C32;
 $red1: #DE1B42;
 $red2: #BA2C41;
@@ -32,6 +35,10 @@ $subheading-color: grey;
 html, body {
 	width: 100%;
 	height: 100%;
+}
+
+em {
+	font-style: italic;
 }
 
 /* Deck Styles */
@@ -53,10 +60,25 @@ pwr-deck {
 	}
 }
 
+/* Themed Deck Styles*/
+pwr-deck.inner-deck {
+	@include box-sizing(border-box);
+	min-height: 400px;
+	background: rgba(255,255,255,0.5);
+	font-size: .9em;
+	border: 1px solid lightgrey;
+	border-radius: 10px;
+	> pwr-slide {
+		padding: 10px;
+		> hgroup {
+			text-align: center;
+		}
+	}
+}
+
 /* General slide styles */
 pwr-slide {
-	@include outer-container;
-	padding: 2% 0;
+	padding: 2% 2%;
 	> hgroup {
 		margin-bottom: 30px;
 		text-align: left;
@@ -81,20 +103,29 @@ pwr-slide {
 		> header {
 			display: inline-block;
 			border-bottom: 1px solid lightgrey;
+			margin-top: 10px;
 			padding-right: 30px;
 			font-weight: bold;
 			font-size: 1.1em;
 		}
 		li {
-			padding: .7em 0;
+			padding: .5em 0;
 		}
 	}
 
+	/* Slide types */
+	&.container {
+		padding: 0;
+		@include outer-container;
+	}
 	&.blank {
 		@include blank-slide;
 	}
 
+	/* Column layouts */
 	&.one-column-centered {
+		padding: 0;
+		@include outer-container;
 		> hgroup, section {
 			@include span-columns(8);
 			@include shift(2);
@@ -103,16 +134,20 @@ pwr-slide {
 			@include omega();
 		}
 	}
-
 	&.two-column {
+		padding: 0;
+		@include outer-container;
 		> section {
 			@include span-columns(6);
 			@include omega();
 		}
 	}
 	&.three-column {
-		> article {
+		padding: 0;
+		@include outer-container;
+		> section {
 			@include span-columns(4);
+			@include omega();
 		}
 	}
 	&.animated[current] {
@@ -123,11 +158,8 @@ pwr-slide {
 			h1 {
 				@include animation(bounce 2s infinite);
 			}
-			hr {
-				@include animation(bounceIn 2s both 3s);
-			}
 			h2, h3{
-				@include animation(rollIn 2s both 1.5s);
+				@include animation(rollIn 2s both 0.5s);
 			}
 		}
 	}
@@ -155,14 +187,32 @@ pwr-slide.title-slide {
 		h2, h3, h4, h5, h6 {
 			margin: 1em 0;
 		}
-		> hr {
-			width: 300px;
+	}
+	&.animated[current] {
+		> hgroup {
+			h2, h3{
+				@include animation(rollIn 2s both 1.5s);
+			}
 		}
 	}
 }
 
-
-
+pwr-slide.segue-slide {
+	@include blank-slide;
+	> hgroup {
+		text-align: center;
+		h1 {
+			font-size: 4em;
+			margin: .7em 0;
+		}
+		h2 {
+			font-size: 2em;
+		}
+		h2, h3, h4, h5, h6 {
+			margin: 1em 0;
+		}
+	}
+}
 
 
 .red {
@@ -174,9 +224,18 @@ pwr-slide.title-slide {
 	}
 }
 
-/* Slide-specific styles */
+.blue {
+	background-color: rgba(33, 50, 176, 0.8);
+	> hgroup {
+		> h1, h2, h3, h4, h5, h6 {
+			color: white;
+		}
+	}
+}
 
-#slide2 {
+
+/* Slide-specific styles */
+#slide2, #slide4 {
 	> hgroup {
 		text-align: center;
 	}

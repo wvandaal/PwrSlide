@@ -61,47 +61,99 @@
 			</section>
 		</pwr-slide>
 
-		<pwr-slide class="two-column">
+		<pwr-slide id="slide3" class="segue-slide blue animated">
+			<hgroup>
+				<h1>Built with Web-Components</h1>
+				<h2>Style and Function Encapsulation for Free</h2>
+			</hgroup>
+		</pwr-slide>
+
+		<pwr-slide id="slide4" class="two-column">
 			<hgroup>
 				<h1>Animate It!</h1>
-				<h2>Powerful animation framework</h2>
+				<h2>Built with a Powerful Animation Framework</h2>
 			</hgroup>
 			<section>
 				<ul>
 					<pwr-piece>
 						<li>
-							PwrSlide ships with over 50 animations from <a href="https://daneden.me/animate/" target="_blank">Animate.css</a>
+							PwrSlide.html ships with over 50 animations from <a href="https://daneden.me/animate/" target="_blank">Animate.css</a>
 						</li>
 					</pwr-piece>
-					<pwr-piece onentry="this.getParentSlide().animatePiece(document.querySelector('#minideck-piece'))">
+					<pwr-piece onentry="this.parentSlide().animatePiece(document.querySelector('#minideck-piece'))">
 						<li>PwrSlides and PwrPieces descend from the PwrAnimated Object
 							<ul>
-								<pwr-piece onentry="document.querySelector('#animations-minideck').loadSlide(2);"><li></li></pwr-piece>
+								<pwr-piece onentry="document.querySelector('#animations-minideck').current=1;">
+									<li>Custom attributes give fine-grain control over each animated component of your presentation</li>
+								</pwr-piece>
+								<pwr-piece onentry="document.querySelector('#animations-minideck').current=2;">
+									<li>Animated components have access to several powerful animation methods</li>
+								</pwr-piece>
 							</ul>
 						</li>
 					</pwr-piece>
 
-					<pwr-piece onentry="document.querySelector('#animations-minideck').loadSlide(0);">
-						<li>Wrap any element in &lt;pwr-piece> tags for them to become animated
+					<pwr-piece onentry="document.querySelector('#animations-minideck').current=2;">
+						<li>Wrap any regular HTML element in &lt;pwr-piece> tags for them to become animated
 							<ul>
-								<pwr-piece><li>&lt;pwr-piece> tags are animated by the slide in descending order</li></pwr-piece>
-								<pwr-piece onentry="document.querySelector('#animations-minideck').loadSlide(2);"><li>Add the 'show' attribute to the &lt;pwr-piece> tag to show its contents initially</li></pwr-piece>
+								<pwr-piece><li>Tags are animated by the slide in descending order</li></pwr-piece>
+								<pwr-piece><li>Add the 'show' attribute to the component to show its contents initially</li></pwr-piece>
 							</ul>
 						</li>
 					</pwr-piece>
 				</ul>
 			</section>
 			<section>
-				<pwr-piece id="minideck-piece">
-					<pwr-deck id="animations-minideck" slidenumbers="false">
-						<pwr-slide entrance="fadeInLeftBig" exit="fadeOutRightBig">
-							title
+				<pwr-piece id="minideck-piece" onentry="prettyPrint();">
+					<pwr-deck id="animations-minideck" class="inner-deck" slidenumbers="false">
+						<pwr-slide>
+							<hgroup>
+								<h2>PwrAnimated</h2>
+							</hgroup>
+							<pre class="prettyprint" data-lang="html">
+
+&lt;pwr-animated entrance exit onentry onexit>
+							</pre>
+							<section>
+								<header>
+									Attributes
+								</header>
+								<ul>
+									<li>entrance: specify the entrance animation name</li>
+									<li>exit: specify the exit animation name</li>
+									<li>onentry: optional callback executed after entrance animation</li>
+									<li>onexit: optional callback executed before exit animation
+										<ul>
+											<li>NOTE: callbacks are bound by default to the tag on which they are called</li>
+										</ul>
+									</li>
+								</ul>
+							</section>
 						</pwr-slide>
-						<pwr-slide entrance="fadeInLeftBig" exit="fadeOutRightBig">
-							goes
-						</pwr-slide>
-						<pwr-slide entrance="fadeInLeftBig" exit="fadeOutRightBig">
-							here
+						<pwr-slide>
+							<hgroup>
+								<h2>PwrAnimated</h2>
+							</hgroup>
+							<pre class="prettyprint" data-lang="javascript">
+
+PwrAnimated = {
+	animateIn: function() { ... },
+	animateOut: function() { ... },
+	animateEl: function(animationName) { ... },
+	removeAnimations: function() { ... }
+};
+							</pre>
+							<section>
+								<header>
+									Methods
+								</header>
+								<ul>
+									<li>animateIn( ): queue the target component's <em>entrance</em> animation</li>
+									<li>animateOut( ): queue the target component's <em>exit</em> animation</li>
+									<li>animateEl(<em>animationName</em>): applies the given <em>animationName</em> to the component</li>
+									<li>removeAnimations( ): removes any animations from the component</li>
+								</ul>
+							</section>
 						</pwr-slide>					
 					</pwr-deck>
 				</pwr-piece>

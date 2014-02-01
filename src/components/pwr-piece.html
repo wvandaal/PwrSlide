@@ -1,0 +1,45 @@
+<link rel="import" href="pwr-animated.html">
+<polymer-element extends="pwr-animated" name="pwr-piece" constructor="PwrPiece" attributes="hide">
+	<template>
+		<style type="text/css">
+			:host {
+				display: inherit;
+				opacity: 0;
+				-webkit-animation: 1s both;
+			  animation: 1s both;
+			  -webkit-animation-name: {{ animationName }} !important;
+			  animation-name: {{ animationName }} !important; 
+			}
+
+			:host(:host[show]) {
+				opacity: 1;
+			}
+		</style>
+		<content></content>
+	</template>
+	<script type="text/javascript">
+		(function() {
+			Polymer('pwr-piece', {
+				entrance: "fadeIn",
+
+				animateIn: function() {
+					this.setAttribute("show", "");
+					return this.super();
+				},
+
+				parentSlide: function() {
+					var parent = this.parentNode;
+					while (!(parent instanceof PwrSlide)) {
+						parent = parent.parentNode;
+					}
+					return parent;
+				},
+
+				ready: function() {
+					
+				}
+
+			});
+		})();
+	</script>
+</polymer-element>

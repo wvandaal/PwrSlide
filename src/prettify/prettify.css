@@ -1,0 +1,85 @@
+pre {
+  font-family: 'Source Code Pro', 'Courier New', monospace !important;
+  font-size: 20px;
+  line-height: 28px;
+  padding: 10px 0 10px 60px !important;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  width: 106%;
+  background-color: rgba(200,200,200,0.5);
+  left: -60px;
+  position: relative;
+  border-bottom-right-radius: 10px; 
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 351, ../scss/default.scss */
+pre[data-lang]:after {
+  content: attr(data-lang);
+  background-color: darkgrey;
+  right: 0;
+  top: 0;
+  position: absolute;
+  font-size: 16pt;
+  color: white;
+  padding: 2px 25px;
+  text-transform: uppercase;
+}
+
+pre[data-lang="go"] {
+  color: #333;
+}
+
+code {
+  font-size: 95%;
+  font-family: 'Source Code Pro', 'Courier New', monospace;
+  color: black;
+}
+
+.prettyprint .str,
+.prettyprint .atv {
+  /* a markup attribute value */
+  color: #009f5d;
+}
+
+/* line 597, ../scss/default.scss */
+.prettyprint .kwd,
+.prettyprint .tag {
+  /* a markup tag name */
+  color: #0066cc;
+}
+
+/* line 600, ../scss/default.scss */
+.prettyprint .com {
+  /* a comment */
+  color: #797979;
+  font-style: italic;
+}
+
+/* line 604, ../scss/default.scss */
+.prettyprint .lit {
+  /* a literal value */
+  color: #7f0000;
+}
+
+/* line 609, ../scss/default.scss */
+.prettyprint .pun,
+.prettyprint .opn,
+.prettyprint .clo {
+  color: #515151;
+}
+
+/* line 615, ../scss/default.scss */
+.prettyprint .typ,
+.prettyprint .atn,
+.prettyprint .dec,
+.prettyprint .var {
+  /* a declaration; a variable name */
+  color: #d94d3a;
+}
+
+/* line 618, ../scss/default.scss */
+.prettyprint .pln {
+  color: #515151;
+}
