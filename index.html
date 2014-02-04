@@ -19,7 +19,6 @@
  	<link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
 
  	<!-- Document styles / custom animations -->
-<!--  	<link rel="stylesheet" type="text/css" href="bower_components/normalize-css/normalize.css"> -->
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="sample-styles.css">
 	<link rel="stylesheet" type="text/css" href="src/animate-custom.css">
@@ -31,20 +30,20 @@
 	</script>
 
 	<!-- Using Custom Elements -->
-	<pwr-deck unresolved current="4" slidenumbers="true">
+	<pwr-deck unresolved current="5" slidenumbers="true">
 
 		<!-- Slide 1 -->
-		<pwr-slide id="slide1" class="title-slide red animated" entrance="bounceInDown" exit="fadeOutRightBig">
+		<pwr-slide id="slide1" class="title-slide red animated" entrance="bounceInDown" exit="fadeOutRightBig" onexit="prettyPrint();">
 			<hgroup>
-				<h1>PwrSlides!</h1>
-				<h2>Full-featured Slide Web-Components</h2>
+				<h1>PwrSlide!</h1>
+				<h2>Full-Featured Presentation Web-Components</h2>
 				<h3>Built in Exquisite HTML with Polymer</h3>
 				<br>
 			</hgroup>
 			<aside class="tip">(use the arrow keys or spacebar to navigate)</aside>
 		</pwr-slide>
 
-		<pwr-slide id="slide2" class="one-column-centered animated" exit="bounceOutUp">
+		<pwr-slide id="slide2" class="centered-column salmon animated" exit="bounceOutUp">
 			<hgroup>
 				<h1>Oh the possibilities!</h1>
 				<h2>Easily harness the power of HTML, CSS, and JavaScript</h2>
@@ -69,7 +68,34 @@
 			</hgroup>
 		</pwr-slide>
 
-		<pwr-slide id="slide4" class="two-column">
+		<pwr-slide id="slide4" class="centered-column green animated" exit="bounceOutUp">
+			<hgroup>
+				<h1>Show the World Your Code</h1>
+				<h2>Ideal for Technical Applications</h2>
+			</hgroup>
+    	<pre class="prettyprint" data-lang="javascript">
+&lt;script type='text/javascript'&gt;
+  // Say hello world until the user starts questioning
+  // the meaningfulness of their existence.
+  function helloWorld(world) {
+    <b>for (var i = 42; --i &gt;= 0;) {
+      alert('Hello ' + String(world));
+    }</b>
+  }
+&lt;/script&gt;
+    	</pre>
+			<section>
+				<ul>
+					<pwr-piece><li>Build complex and full-featured presentation decks using web technologies you know and love</li></pwr-piece>
+					<pwr-piece><li>Harness the power of CSS to create your own custom animations</li></pwr-piece>
+					<pwr-piece>
+						<li>Fill your presentations with working HTML elements!</li>
+					</pwr-piece>
+				</ul>
+			</section>
+		</pwr-slide>
+
+		<pwr-slide id="slide5" class="two-column gold animated">
 			<hgroup>
 				<h1>Animate It!</h1>
 				<h2>Built with a Powerful Animation Framework</h2>
@@ -105,14 +131,13 @@
 				</ul>
 			</section>
 			<section>
-				<pwr-piece id="minideck-piece" onentry="prettyPrint();">
+				<pwr-piece id="minideck-piece">
 					<pwr-deck id="animations-minideck" class="inner-deck" slidenumbers="false">
 						<pwr-slide>
 							<hgroup>
 								<h2>PwrAnimated</h2>
 							</hgroup>
 							<pre class="prettyprint" data-lang="html">
-
 &lt;pwr-animated entrance exit onentry onexit>
 							</pre>
 							<section>
@@ -136,7 +161,6 @@
 								<h2>PwrAnimated</h2>
 							</hgroup>
 							<pre class="prettyprint" data-lang="javascript">
-
 PwrAnimated = {
   animateIn: function() { ... },
   animateOut: function() { ... },
@@ -158,6 +182,42 @@ PwrAnimated = {
 						</pwr-slide>					
 					</pwr-deck>
 				</pwr-piece>
+			</section>
+		</pwr-slide>
+
+		<pwr-slide id="slide6" class="two-column black animated" exit="bounceOutUp">
+			<hgroup>
+				<h1>Show the World Your Code</h1>
+				<h2>Ideal for Technical Applications</h2>
+			</hgroup>
+    	<pre class="prettyprint" data-lang="javascript">
+&lt;script type='text/javascript'&gt;
+  // Say hello world until the user starts questioning
+  // the meaningfulness of their existence.
+  function helloWorld(world) {
+    <b>for (var i = 42; --i &gt;= 0;) {
+      alert('Hello ' + String(world));
+    }</b>
+  }
+&lt;/script&gt;
+    	</pre>
+			<section>
+				<ul>
+					<pwr-piece><li>Build complex and full-featured presentation decks using web technologies you know and love</li></pwr-piece>
+					<pwr-piece><li>Harness the power of CSS to create your own custom animations</li></pwr-piece>
+					<pwr-piece>
+						<li>Fill your presentations with working HTML elements!</li>
+					</pwr-piece>
+				</ul>
+			</section>
+			<section>
+				<ul>
+					<pwr-piece><li>Build complex and full-featured presentation decks using web technologies you know and love</li></pwr-piece>
+					<pwr-piece><li>Harness the power of CSS to create your own custom animations</li></pwr-piece>
+					<pwr-piece>
+						<li>Fill your presentations with working HTML elements!</li>
+					</pwr-piece>
+				</ul>
 			</section>
 		</pwr-slide>
 	</pwr-deck>

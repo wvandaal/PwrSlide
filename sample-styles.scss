@@ -1,18 +1,19 @@
 @import 'css/bourbon/bourbon';
-@import 'css/neat/neat';
-
-/*
- * TEMPLATE STYLES
- */
 
 /* Mixins */
 @mixin blank-slide() {
-	@include fill-parent;
 	@include box-sizing(border-box);
 	width: 100%;
-	max-width: 100%;
 	margin: 0;
 	padding: 0;
+	&[current] {
+		display: block;
+	}
+	* {
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
 }
 
 @mixin flexbox() {
@@ -23,11 +24,15 @@
 
 /* Colors */
 $gold: #FFBA52;	
-$green1: #00B964; /* rgb(0, 185, 100); */
-$green2: #008042; /* rgb(0, 130, 70); */
+$grey1: #9C9C9C; /* rgb(156, 156, 156) */
+$grey2: #3B3B3B; /* rgb(59, 59, 59) */
+$grey3: #1C1C1C; /* rgb(28, 28, 28) */
+$green1: #00B964; /* rgb(0, 185, 100) */
+$green2: #008A7E; 
 $blue1: #216EB0; /* rgb(33, 110, 176) */
-$blue2: #2150B0; /* rgb(33, 80, 176) */
-$blue3: #2132B0; /* rgb(33, 50, 176) */
+$blue2: rgb(57, 63, 176);
+$blue3: #2150B0; /* rgb(33, 80, 176) */
+$blue4: #07304B; 
 $dark-blue: #0C0C32;
 $red1: #DE1B42;
 $red2: #BA2C41;
@@ -36,26 +41,51 @@ $red2: #BA2C41;
 $title-font: 'Pacifico', cursive;
 $subheading-font: 'Raleway', sans-serif;
 $general-font: 'Average Sans', sans-serif;
+$number-font: 'Questrial', sans-serif;
 
-$title-color: $red2;
-$subheading-color: grey;
+/* Default slide styles*/
+$deckBG: 														url('light_linen.png') repeat center center;
+$heading-color: 										$red2;
+$subheading-color: 									grey;
+$text-color: 												black;
+$link-color:												$blue3;
+$visited-link-color:								$grey3;
+
+$preBG:															white;
+$pre-label-color:										$red2;
+$section-header-color:							$text-color;
+$section-header-border:							1px solid lightgrey;
+
+$segue-icon-color:									$gold;
+$title-icon-color:									$blue3;
+$title-tip-color:										$subheading-color;
+
+/* Default Inner-Deck styles */
+$inner-deckBG: 											$grey2;
+$inner-deck-border:									0px solid black;
+$inner-deck-heading-color: 					rgba(255,255,255,0.9);
+$inner-deck-subheading-color: 			rgba(255,255,255,0.9);
+$inner-deck-text-color:							rgba(255,255,255,0.9);
+
+$inner-deck-preBG:									url('light_linen.png');
+$inner-deck-pre-label-color:				$green1;
+$inner-deck-section-header-color:		$inner-deck-text-color;
+$inner-deck-section-header-border:	1px solid lightgrey;
 
 html, body {
 	width: 100%;
 	height: 100%;
 }
 
-em {
-	font-style: italic;
-}
+em { font-style: italic; }
 
 /* Deck Styles */
 pwr-deck {
 	width: 100%;
 	height: 100%;
-	background: url('light_linen.png') repeat center center;
+	background: $deckBG;
 	&:not([slidenumbers='false']):after {
-		font-family: 'Questrial', sans-serif;
+		font-family: $number-font;
 		padding:5px;
 		font-size: 20px;
 		width: 4%;
@@ -71,31 +101,58 @@ pwr-deck {
 /* Themed Deck Styles*/
 pwr-deck.inner-deck {
 	@include box-sizing(border-box);
-	background: rgba(255,255,255,0.5);
+	background: $inner-deckBG;
 	font-size: .9em;
-	border: 1px solid lightgrey;
+	border: $inner-deck-border;
 	border-radius: 10px;
 	margin: auto;
 	> pwr-slide {
+		color: $inner-deck-text-color;
 		flex-direction: column;
 		padding: 20px;
 		> hgroup {
 			margin-bottom: 10px;
 			text-align: center;
+			h1 {
+				font-size: 1.85em;
+				color: $inner-deck-heading-color;
+			}
+			h2, h3, h4, h5, h6 {
+				color: $inner-deck-subheading-color;
+			}
+		}
+		> section {
+			> header {
+				color: $inner-deck-section-header-color;
+				border-bottom: $inner-deck-section-header-border;	
+			}
+		}
+		pre {
+			background: $inner-deck-preBG;
+			&[data-lang]:after {
+				background-color: $inner-deck-pre-label-color;
+			}
 		}
 	}
 }
 
 /* General slide styles */
 pwr-slide {
-	padding: 2% 2%;
+	padding: 2%;
+	color: $text-color;
+	flex-direction: column;
+	a {
+		&:link {color: $link-color;}
+		&:visited, &:hover {color: $visited-link-color;}
+	}
 	> hgroup {
-		margin-bottom: 30px;
+		width: 90%;
+		margin: 0 auto 30px;
 		text-align: left;
 		font-family: $subheading-font;
 		> h1 {
 			font-size: 3.5em;
-			color: $title-color;
+			color: $heading-color;
 			font-family: $title-font;
 			margin: .6em 0;
 		}
@@ -108,11 +165,14 @@ pwr-slide {
 		}
 	}
 	> section {
+		width: 90%;
+		margin: 0 auto auto;
 		font-family: $general-font;
 		font-size: 1.1em;
 		> header {
 			display: inline-block;
-			border-bottom: 1px solid lightgrey;
+			color: $section-header-color;
+			border-bottom: $section-header-border;		
 			margin-top: 10px;
 			padding-right: 30px;
 			font-weight: bold;
@@ -122,18 +182,31 @@ pwr-slide {
 			padding: .5em 0;
 		}
 	}
+	pre {
+		background: $preBG;
+		&[data-lang]:after {
+			background-color: $pre-label-color;
+		}
+	}
 
 	/* Slide types */
-	&.container {
-		padding: 0;
-		@include outer-container;
-	}
 	&.blank {
-		@include blank-slide;
+		@include box-sizing(border-box);
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		&[current] {
+			display: block;
+		}
+		* {
+			width: 100%;
+			margin: 0;
+			padding: 0;
+		}
 	}
 
 	/* Column layouts */
-	&.one-column-centered {
+	&.centered-column {
 		flex-direction: column;
 		> hgroup, {
 			width: 60%;
@@ -145,23 +218,16 @@ pwr-slide {
 		}
 	}
 	&.two-column {
+		@include box-sizing(border-box);
 		flex-flow: row wrap;
 		> hgroup {
 			width: 100%;
 			margin: auto;
 		}
 		> section {
+			height: 100%;
 			width: 50%;
-			margin: 0 auto auto;
 			@include transition(all 1s ease-in-out);
-		}
-	}
-	&.three-column {
-		padding: 0;
-		@include outer-container;
-		> section {
-			@include span-columns(4);
-			@include omega();
 		}
 	}
 	&[current] {
@@ -192,6 +258,7 @@ pwr-slide.title-slide {
 		margin: auto;
 		text-align: center;
 		font-family: $subheading-font;
+		color: $title-tip-color;
 	}
 	> hgroup {
 		order: 1;
@@ -212,9 +279,12 @@ pwr-slide.title-slide {
 	&:after {
 		order: 2;
 		position: relative;
+		bottom: 5%;
 		border-radius: 100px;
 		padding: 20px;
 		content: url(images/title-icon.png);
+		border: 10px solid $title-icon-color;
+		background-color: $title-icon-color;
 	}
 	&[current] {
 		&.animated {
@@ -231,7 +301,6 @@ pwr-slide.title-slide {
 }
 
 pwr-slide.segue-slide {
-	@include blank-slide;
 	flex-direction: column;
 	> hgroup {
 		max-width: 80%;
@@ -254,6 +323,8 @@ pwr-slide.segue-slide {
 		border-radius: 100px;
 		padding: 20px;
 		content: url(images/segue-icon.png);
+		border: 10px solid $segue-icon-color;
+		background-color: $segue-icon-color;
 	}
 	&[current].animated:before {
 		@include animation(fadeInDownBig 1s both 0.5s, spin 2s linear 2s infinite);
@@ -264,26 +335,34 @@ pwr-slide.segue-slide {
  * Slide Color Themes
  */
 
-
 /* Red Theme Styles */
-$redBG: 														rgba(160,0,0,0.7);
-$redBG-link-color:									$blue2;
-$redBG-visited-link-color:					black;
-$redBG-text-color: 									white;
-$redBG-heading-color: 							black;
-$redBG-subheading-color:						white;
+$redBG: 																	$red2;
+$redBG-link-color:												$blue3;
+$redBG-visited-link-color:								black;
+$redBG-text-color: 												white;
+$redBG-heading-color: 										black;
+$redBG-subheading-color:									white;
 
-$redBG-segue-icon-color:						$gold;
-$redBG-title-icon-color:						$blue2;
-$redBG-title-tip-color:							$gold;
+$redBG-preBG:															url('light_linen.png');
+$redBG-pre-label-color:										grey;
+$redBG-section-header-color:							$redBG-text-color;
+$redBG-section-header-border:							$redBG-text-color;
 
-$redBG-inner-deckBG: 								$blue2;
-$redBG-inner-deck-border-color:			black;
-$redBG-inner-deck-heading-color: 		rgba(255,255,255,0.8);
-$redBG-inner-deck-text-color:				rgba(255,255,255,0.8);
-$redBG-inner-deck-preBG:						url('light_linen.png');
-$redBG-inner-deck-pre-label-color:	$green1;
+$redBG-title-icon-color:									$blue3;
+$redBG-segue-icon-color:									$gold;
+$redBG-title-tip-color:										$gold;
 
+/* Red Theme Inner-Deck Styles*/
+$redBG-inner-deckBG: 											$blue2;
+$redBG-inner-deck-border:									0px solid black;
+$redBG-inner-deck-heading-color:					black;
+$redBG-inner-deck-subheading-color: 			rgba(255,255,255,0.9);
+$redBG-inner-deck-text-color:							rgba(255,255,255,0.9);
+
+$redBG-inner-deck-preBG:									url('light_linen.png');
+$redBG-inner-deck-pre-label-color:				$green1;
+$redBG-inner-deck-section-header-color:		$redBG-inner-deck-text-color;
+$redBG-inner-deck-section-header-border:	1px solid lightgrey;
 
 .red {
 	color: $redBG-text-color;
@@ -298,15 +377,29 @@ $redBG-inner-deck-pre-label-color:	$green1;
 			color: $redBG-subheading-color;
 		}
 	}
+	pre {
+		background: $redBG-preBG;
+		&[data-lang]:after {
+			background-color: $redBG-pre-label-color;
+		}
+	}
 	pwr-deck.inner-deck {
-		color: $redBG-inner-deck-text-color;
 		background: $redBG-inner-deckBG;
-		border-width: 0px;
-		border-color: $redBG-inner-deck-border-color;
+		border: $redBG-inner-deck-border;
 		> pwr-slide {
+			color: $redBG-inner-deck-text-color;
 			> hgroup {
-				h1, h2, h3, h4, h5, h6 {
+				h1 {
 					color: $redBG-inner-deck-heading-color;
+				}
+				h2, h3, h4, h5, h6 {
+					color: $redBG-inner-deck-subheading-color;
+				}
+			}
+			> section {
+				> header {
+					color: $redBG-inner-deck-section-header-color;
+					border-bottom: $redBG-inner-deck-section-header-border;
 				}
 			}
 			pre {
@@ -333,22 +426,33 @@ $redBG-inner-deck-pre-label-color:	$green1;
 }
 
 /* Blue Theme Styles */
-$blueBG: 														rgba(33, 50, 176, 0.8);
-$blueBG-link-color:									lightsalmon;
-$blueBG-visited-link-color:					$gold;
-$blueBG-text-color:									white;
-$blueBG-heading-color: 							white;
+$blueBG: 																			$blue1; 
+$blueBG-link-color:														lightsalmon;
+$blueBG-visited-link-color:										$gold;
+$blueBG-text-color:														white;
+$blueBG-heading-color: 												$gold;
+$blueBG-subheading-color:											white;
 
-$blueBG-segue-icon-color:						$red1;
-$blueBG-title-tip-color:						$gold;
-$blueBG-title-icon-color:						$red1;
+$blueBG-preBG:																url('light_linen.png');
+$blueBG-pre-label-color:											$red2;
+$blueBG-section-header-color:									$blueBG-text-color;
+$blueBG-section-header-border:								$blueBG-text-color;
 
-$blueBG-inner-deckBG: 							$red1;
-$blueBG-inner-deck-border-color:		transparent;
-$blueBG-inner-deck-heading-color: 	white;
-$blueBG-inner-deck-preBG: 					url('light_linen.png');
-$blueBG-inner-deck-text-color:		 	white;
-$blueBG-inner-deck-pre-label-color:	$green1;
+$blueBG-title-icon-color:											$red1;
+$blueBG-segue-icon-color:											$red1;
+$blueBG-title-tip-color:											$gold;
+
+/* Blue Theme Inner-Deck Styles */
+$blueBG-inner-deckBG: 												$red1;
+$blueBG-inner-deck-border:										0px solid black;
+$blueBG-inner-deck-heading-color: 						white;
+$blueBG-inner-deck-subheading-color:					white;
+$blueBG-inner-deck-text-color:		 						white;
+
+$blueBG-inner-deck-preBG: 										url('light_linen.png');
+$blueBG-inner-deck-pre-label-color:						$green1;
+$blueBG-inner-deck-section-header-color:			$blueBG-inner-deck-text-color;
+$blueBG-inner-deck-section-header-border:			$blueBG-inner-deck-text-color;
 
 .blue {
 	color: $blueBG-text-color;
@@ -356,19 +460,36 @@ $blueBG-inner-deck-pre-label-color:	$green1;
 	a:link {color: $blueBG-link-color;}
 	a:visited, a:hover {color: $blueBG-visited-link-color;}
 	> hgroup {
-		> h1, h2, h3, h4, h5, h6 {
+		h1 {
 			color: $blueBG-heading-color;
+		}
+		h2, h3, h4, h5, h6 {
+			color: $blueBG-subheading-color;
+		}
+	}
+	pre {
+		background: $blueBG-preBG;
+		&[data-lang]:after {
+			background-color: $blueBG-pre-label-color;
 		}
 	}
 	pwr-deck.inner-deck {
-		color: $blueBG-inner-deck-text-color;
 		background: $blueBG-inner-deckBG;
-		border-width: 0px;
-		border-color: $blueBG-inner-deck-border-color;
+		border: $blueBG-inner-deck-border;
 		> pwr-slide {
+			color: $blueBG-inner-deck-text-color;
 			> hgroup {
-				h1, h2, h3, h4, h5, h6 {
+				h1 {
 					color: $blueBG-inner-deck-heading-color;
+				}
+				h2, h3, h4, h5, h6 {
+					color: $blueBG-inner-deck-subheading-color;
+				}
+			}
+			> section {
+				> header {
+					color: $blueBG-inner-deck-section-header-color;
+					border-bottom: $blueBG-inner-deck-section-header-border;
 				}
 			}
 			pre {
@@ -393,19 +514,369 @@ $blueBG-inner-deck-pre-label-color:	$green1;
 		background-color: $blueBG-segue-icon-color;
 	}
 }
+/* Green Theme Styles */
+$greenBG: 																		$green2;
+$greenBG-link-color:													$blue3;
+$greenBG-visited-link-color:									$dark-blue;
+$greenBG-text-color:													white;
+$greenBG-heading-color: 											$gold;
+$greenBG-subheading-color:										$grey2;
 
+$greenBG-preBG:																url('light_linen.png');
+$greenBG-pre-label-color:											$red2;
+$greenBG-section-header-color:								$greenBG-text-color;
+$greenBG-section-header-border:								$greenBG-text-color;
 
-/* Slide-specific styles */
-#slide2, #slide4 {
+$greenBG-title-icon-color:										$blue1;
+$greenBG-segue-icon-color:										#006C70;
+$greenBG-title-tip-color:											$grey3;
+
+/* Green Theme Inner-Deck Styles */
+$greenBG-inner-deckBG: 												$grey2;   
+$greenBG-inner-deck-border:										0px solid black;    
+$greenBG-inner-deck-heading-color: 						rgba(255,255,255,0.9);   
+$greenBG-inner-deck-subheading-color:					rgba(255,255,255,0.9);   
+$greenBG-inner-deck-text-color:		 						rgba(255,255,255,0.9);   
+
+$greenBG-inner-deck-preBG: 										url('light_linen.png');    
+$greenBG-inner-deck-pre-label-color:					$red1;    
+$greenBG-inner-deck-section-header-color:			$greenBG-inner-deck-text-color;    
+$greenBG-inner-deck-section-header-border:		1px solid lightgrey;    
+
+.green {
+	color: $greenBG-text-color;
+	background: $greenBG;
+	a:link {color: $greenBG-link-color;}
+	a:visited, a:hover {color: $greenBG-visited-link-color;}
 	> hgroup {
-		text-align: center;
+		h1 {
+			color: $greenBG-heading-color;
+		}
+		h2, h3, h4, h5, h6 {
+			color: $greenBG-subheading-color;
+		}
+	}
+	pre {
+		background: $greenBG-preBG;
+		&[data-lang]:after {
+			background-color: $greenBG-pre-label-color;
+		}
+	}
+	pwr-deck.inner-deck {
+		background: $greenBG-inner-deckBG;
+		border: $greenBG-inner-deck-border;
+		> pwr-slide {
+			color: $greenBG-inner-deck-text-color;
+			> hgroup {
+				h1 {
+					color: $greenBG-inner-deck-heading-color;
+				}
+				h2, h3, h4, h5, h6 {
+					color: $greenBG-inner-deck-subheading-color;
+				}
+			}
+			> section {
+				> header {
+					color: $greenBG-inner-deck-section-header-color;
+					border-bottom: $greenBG-inner-deck-section-header-border;
+				}
+			}
+			pre {
+				background: $greenBG-inner-deck-preBG;
+				&[data-lang]:after {
+					background-color: $greenBG-inner-deck-pre-label-color;
+				}
+			}
+		}
+	}
+	&.title-slide {
+		> aside.tip {
+			color: $greenBG-title-tip-color;
+		}
+		&:after {
+			border: 10px solid $greenBG-title-icon-color;
+			background-color: $greenBG-title-icon-color;
+		}
+	}
+	&.segue-slide:before {
+		border: 10px solid $greenBG-segue-icon-color;
+		background-color: $greenBG-segue-icon-color;
 	}
 }
 
-.blue-background {
-	background-color: rgba(0,0,150,.8);
+/* Black Theme Styles */
+$blackBG: 																		$grey2;
+$blackBG-link-color:													$gold;
+$blackBG-visited-link-color:									$red2;
+$blackBG-text-color:													white;
+$blackBG-heading-color: 											$red2;
+$blackBG-subheading-color:										white;
+
+$blackBG-preBG:																url('light_linen.png');
+$blackBG-pre-label-color:											$gold;
+$blackBG-section-header-color:								$blackBG-text-color;
+$blackBG-section-header-border:								$blackBG-text-color;
+
+$blackBG-title-icon-color:										$blue1;
+$blackBG-segue-icon-color:										$gold;
+$blackBG-title-tip-color:											$green1;
+
+/* Black Theme Inner-Deck Styles */
+$blackBG-inner-deckBG: 												$grey3;   
+$blackBG-inner-deck-border:										0px solid black;    
+$blackBG-inner-deck-heading-color: 						rgba(255,255,255,0.9);   
+$blackBG-inner-deck-subheading-color:					rgba(255,255,255,0.9);   
+$blackBG-inner-deck-text-color:		 						rgba(255,255,255,0.9);   
+
+$blackBG-inner-deck-preBG: 										url('light_linen.png');    
+$blackBG-inner-deck-pre-label-color:					$blue1;    
+$blackBG-inner-deck-section-header-color:			$blackBG-inner-deck-text-color;    
+$blackBG-inner-deck-section-header-border:		1px solid lightgrey;    
+
+.black {
+	color: $blackBG-text-color;
+	background: $blackBG;
+	a:link {color: $blackBG-link-color;}
+	a:visited, a:hover {color: $blackBG-visited-link-color;}
+	> hgroup {
+		h1 {
+			color: $blackBG-heading-color;
+		}
+		h2, h3, h4, h5, h6 {
+			color: $blackBG-subheading-color;
+		}
+	}
+	pre {
+		background: $blackBG-preBG;
+		&[data-lang]:after {
+			background-color: $blackBG-pre-label-color;
+		}
+	}
+	pwr-deck.inner-deck {
+		background: $blackBG-inner-deckBG;
+		border: $blackBG-inner-deck-border;
+		> pwr-slide {
+			color: $blackBG-inner-deck-text-color;
+			> hgroup {
+				h1 {
+					color: $blackBG-inner-deck-heading-color;
+				}
+				h2, h3, h4, h5, h6 {
+					color: $blackBG-inner-deck-subheading-color;
+				}
+			}
+			> section {
+				> header {
+					color: $blackBG-inner-deck-section-header-color;
+					border-bottom: $blackBG-inner-deck-section-header-border;
+				}
+			}
+			pre {
+				background: $blackBG-inner-deck-preBG;
+				&[data-lang]:after {
+					background-color: $blackBG-inner-deck-pre-label-color;
+				}
+			}
+		}
+	}
+	&.title-slide {
+		> aside.tip {
+			color: $blackBG-title-tip-color;
+		}
+		&:after {
+			border: 10px solid $blackBG-title-icon-color;
+			background-color: $blackBG-title-icon-color;
+		}
+	}
+	&.segue-slide:before {
+		border: 10px solid $blackBG-segue-icon-color;
+		background-color: $blackBG-segue-icon-color;
+	}
 }
 
-.green {
-	background-color: #0da861;
+/* Salmon Theme Styles */
+$salmonBG: 																		salmon;
+$salmonBG-link-color:													$gold;
+$salmonBG-visited-link-color:									$red2;
+$salmonBG-text-color:													white;
+$salmonBG-heading-color: 											$grey2;
+$salmonBG-subheading-color:										$grey2;
+
+$salmonBG-preBG:															url('light_linen.png');
+$salmonBG-pre-label-color:										$gold;
+$salmonBG-section-header-color:								$salmonBG-text-color;
+$salmonBG-section-header-border:							$salmonBG-text-color;
+
+$salmonBG-title-icon-color:										$red1;
+$salmonBG-segue-icon-color:										$blue1;
+$salmonBG-title-tip-color:										$grey2;
+
+/* Salmon Theme Inner-Deck Styles */
+$salmonBG-inner-deckBG: 											url('light_linen.png');   
+$salmonBG-inner-deck-border:									0px solid salmon;    
+$salmonBG-inner-deck-heading-color: 					$grey3;   
+$salmonBG-inner-deck-subheading-color:				$grey3;   
+$salmonBG-inner-deck-text-color:		 					$grey3;   
+
+$salmonBG-inner-deck-preBG: 									white;    
+$salmonBG-inner-deck-pre-label-color:					$gold;    
+$salmonBG-inner-deck-section-header-color:		$salmonBG-inner-deck-text-color;    
+$salmonBG-inner-deck-section-header-border:		1px solid lightgrey;    
+
+.salmon {
+	color: $salmonBG-text-color;
+	background: $salmonBG;
+	a:link {color: $salmonBG-link-color;}
+	a:visited, a:hover {color: $salmonBG-visited-link-color;}
+	> hgroup {
+		h1 {
+			color: $salmonBG-heading-color;
+		}
+		h2, h3, h4, h5, h6 {
+			color: $salmonBG-subheading-color;
+		}
+	}
+	pre {
+		background: $salmonBG-preBG;
+		&[data-lang]:after {
+			background-color: $salmonBG-pre-label-color;
+		}
+	}
+	pwr-deck.inner-deck {
+		background: $salmonBG-inner-deckBG;
+		border: $salmonBG-inner-deck-border;
+		> pwr-slide {
+			color: $salmonBG-inner-deck-text-color;
+			> hgroup {
+				h1 {
+					color: $salmonBG-inner-deck-heading-color;
+				}
+				h2, h3, h4, h5, h6 {
+					color: $salmonBG-inner-deck-subheading-color;
+				}
+			}
+			> section {
+				> header {
+					color: $salmonBG-inner-deck-section-header-color;
+					border-bottom: $salmonBG-inner-deck-section-header-border;
+				}
+			}
+			pre {
+				background: $salmonBG-inner-deck-preBG;
+				&[data-lang]:after {
+					background-color: $salmonBG-inner-deck-pre-label-color;
+				}
+			}
+		}
+	}
+	&.title-slide {
+		> aside.tip {
+			color: $salmonBG-title-tip-color;
+		}
+		&:after {
+			border: 10px solid $salmonBG-title-icon-color;
+			background-color: $salmonBG-title-icon-color;
+		}
+	}
+	&.segue-slide:before {
+		border: 10px solid $salmonBG-segue-icon-color;
+		background-color: $salmonBG-segue-icon-color;
+	}
+}
+
+/* Gold Theme Styles */
+$goldBG: 																			$gold;
+$goldBG-link-color:														$blue2;
+$goldBG-visited-link-color:										$dark-blue;
+$goldBG-text-color:														$grey3;
+$goldBG-heading-color: 												$blue1;
+$goldBG-subheading-color:											white;
+
+$goldBG-preBG:																url('light_linen.png');
+$goldBG-pre-label-color:											$red2;
+$goldBG-section-header-color:									$goldBG-text-color;
+$goldBG-section-header-border:								$goldBG-text-color;
+
+$goldBG-title-icon-color:											$red1;
+$goldBG-segue-icon-color:											$green1;
+$goldBG-title-tip-color:											$grey2;
+
+/* gold Theme Inner-Deck Styles */
+$goldBG-inner-deckBG: 												url('light_linen.png');   
+$goldBG-inner-deck-border:										0px solid gold;    
+$goldBG-inner-deck-heading-color: 						$grey3;   
+$goldBG-inner-deck-subheading-color:					$grey3;   
+$goldBG-inner-deck-text-color:		 						$grey3;   
+
+$goldBG-inner-deck-preBG: 										white;    
+$goldBG-inner-deck-pre-label-color:						$red1;    
+$goldBG-inner-deck-section-header-color:			$goldBG-inner-deck-text-color;    
+$goldBG-inner-deck-section-header-border:			1px solid lightgrey;    
+
+.gold {
+	color: $goldBG-text-color;
+	background: $goldBG;
+	a:link {color: $goldBG-link-color;}
+	a:visited, a:hover {color: $goldBG-visited-link-color;}
+	> hgroup {
+		h1 {
+			color: $goldBG-heading-color;
+		}
+		h2, h3, h4, h5, h6 {
+			color: $goldBG-subheading-color;
+		}
+	}
+	pre {
+		background: $goldBG-preBG;
+		&[data-lang]:after {
+			background-color: $goldBG-pre-label-color;
+		}
+	}
+	pwr-deck.inner-deck {
+		background: $goldBG-inner-deckBG;
+		border: $goldBG-inner-deck-border;
+		> pwr-slide {
+			color: $goldBG-inner-deck-text-color;
+			> hgroup {
+				h1 {
+					color: $goldBG-inner-deck-heading-color;
+				}
+				h2, h3, h4, h5, h6 {
+					color: $goldBG-inner-deck-subheading-color;
+				}
+			}
+			> section {
+				> header {
+					color: $goldBG-inner-deck-section-header-color;
+					border-bottom: $goldBG-inner-deck-section-header-border;
+				}
+			}
+			pre {
+				background: $goldBG-inner-deck-preBG;
+				&[data-lang]:after {
+					background-color: $goldBG-inner-deck-pre-label-color;
+				}
+			}
+		}
+	}
+	&.title-slide {
+		> aside.tip {
+			color: $goldBG-title-tip-color;
+		}
+		&:after {
+			border: 10px solid $goldBG-title-icon-color;
+			background-color: $goldBG-title-icon-color;
+		}
+	}
+	&.segue-slide:before {
+		border: 10px solid $goldBG-segue-icon-color;
+		background-color: $goldBG-segue-icon-color;
+	}
+}
+
+/* Slide-specific styles */
+#slide2, #slide4, #slide5 {
+	> hgroup {
+		text-align: center;
+	}
 }
