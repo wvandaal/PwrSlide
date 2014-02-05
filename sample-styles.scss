@@ -1,5 +1,47 @@
 @import 'css/bourbon/bourbon';
 
+@media all and (max-width: 1100px), (max-height: 580px) {
+	pwr-deck {
+		font-size: 14px;
+	}
+}
+
+@media all and (max-width: 1000px), (max-height: 540px) {
+	pwr-deck {
+		font-size: 13px;
+	}
+}
+
+@media all and (max-width: 900px), (max-height: 500px) {
+	pwr-deck {
+		font-size: 12px;
+	}
+}
+
+@media all and (max-width: 800px), (max-height: 460px) {
+	pwr-deck {
+		font-size: 11px;
+	}
+}
+
+@media all and (max-width: 700px), (max-height: 420px) {
+	pwr-deck {
+		font-size: 10px;
+	}
+}
+
+@media all and (max-width: 600px), (max-height: 380px) {
+	pwr-deck {
+		font-size: 9px;
+	}
+}
+
+@media all and (max-width: 500px), (max-height: 340px) {
+	pwr-deck {
+		font-size: 8px;
+	}
+}
+
 /* Mixins */
 @mixin blank-slide() {
 	@include box-sizing(border-box);
@@ -17,9 +59,33 @@
 }
 
 @mixin flexbox() {
+	display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
-  align-items: center;
-  justify-content: center;
+}
+
+@mixin flex-direction($direction) {
+	flex-direction: $direction;
+	-webkit-flex-direction: $direction;
+	-ms-flex-direction: $direction;
+}
+
+@mixin order($ord) {
+	order: $ord;
+	-ms-flex-order: $ord;
+	-webkit-order: $ord;
+}
+
+@mixin justify-content($just) {
+	justify-content: $just;
+	-webkit-justify-content: $just;
+	-ms-flex-pack: $just;
+}
+
+@mixin align-items($align) {
+	align-items: $align;
+	-ms-flex-align: $align;
+	-webkit-align-items: $align;
 }
 
 /* Colors */
@@ -81,18 +147,19 @@ em { font-style: italic; }
 
 /* Deck Styles */
 pwr-deck {
+	@include transition(font 0.25s ease);
 	width: 100%;
 	height: 100%;
 	background: $deckBG;
 	&:not([slidenumbers='false']):after {
+		display: block;
+		position: relative;
+		bottom: 1.5em;
+		text-align: center;
 		font-family: $number-font;
-		padding:5px;
-		font-size: 20px;
-		width: 4%;
-		height: 30px;
-		position: absolute;
-		bottom: 0;
-		right: 48%;
+		font-size: 1.25em;
+		height: 1.25em;
+		margin: 0 auto;
 		opacity: .4;
 		content: attr(current) " / " attr(totalslides);
 	}
@@ -104,14 +171,14 @@ pwr-deck.inner-deck {
 	background: $inner-deckBG;
 	font-size: .9em;
 	border: $inner-deck-border;
-	border-radius: 10px;
+	border-radius: .625em;
 	margin: auto;
 	> pwr-slide {
 		color: $inner-deck-text-color;
-		flex-direction: column;
-		padding: 20px;
+		@include flex-direction(column);
+		padding: 1.25em;
 		> hgroup {
-			margin-bottom: 10px;
+			margin-bottom: .625em;
 			text-align: center;
 			h1 {
 				font-size: 1.85em;
@@ -138,7 +205,7 @@ pwr-deck.inner-deck {
 
 /* General slide styles */
 pwr-slide {
-	padding: 2%;
+	padding: 1.5em;
 	color: $text-color;
 	flex-direction: column;
 	a {
@@ -147,7 +214,7 @@ pwr-slide {
 	}
 	> hgroup {
 		width: 90%;
-		margin: 0 auto 30px;
+		margin: 0 auto 2em;
 		text-align: left;
 		font-family: $subheading-font;
 		> h1 {
@@ -173,8 +240,8 @@ pwr-slide {
 			display: inline-block;
 			color: $section-header-color;
 			border-bottom: $section-header-border;		
-			margin-top: 10px;
-			padding-right: 30px;
+			margin-top: .625em;
+			padding-right: 2em;
 			font-weight: bold;
 			font-size: 1.1em;
 		}
@@ -207,31 +274,33 @@ pwr-slide {
 
 	/* Column layouts */
 	&.centered-column {
-		flex-direction: column;
+		@include flex-direction(column);
 		> hgroup, {
 			width: 60%;
-			margin: 0 auto 10px;
+			margin: 0 auto .625em;
 		}
 		> section {
 			width: 60%;
-			margin: 10px auto 40px;
+			margin: .625em auto 2.5em;
 		}
 	}
 	&.two-column {
 		@include box-sizing(border-box);
-		flex-flow: row wrap;
 		> hgroup {
 			width: 100%;
 			margin: auto;
 		}
 		> section {
+			float: left;
 			height: 100%;
 			width: 50%;
 			@include transition(all 1s ease-in-out);
 		}
 	}
-	&[current] {
+	&:not(.two-column)[current] {
 		@include flexbox;
+		@include align-items(center);
+		@include justify-content(center);
 		&.animated {
 			> aside.tip {
 				@include animation(fadeIn 1s both 5s, flash 5s infinite 6s);
@@ -251,23 +320,22 @@ pwr-slide {
 
 /* Themed slide styles*/
 pwr-slide.title-slide {
-	flex-direction: column;
+	@include flex-direction(column);
 	> aside.tip {
-		order: 3;
-		max-width: 60%;
+		@include order(3);
+		width: 60%;
 		margin: auto;
 		text-align: center;
 		font-family: $subheading-font;
 		color: $title-tip-color;
 	}
 	> hgroup {
-		order: 1;
-		max-width: 80%;
+		@include order(1);
+		width: 80%;
 		margin: auto;
 		text-align: center;
 		> h1 {
 			font-size: 6em;
-/*			margin: .7em 0;*/
 		}
 		> h2 {
 			font-size: 2em;
@@ -277,13 +345,14 @@ pwr-slide.title-slide {
 		}
 	}
 	&:after {
-		order: 2;
-		position: relative;
-		bottom: 5%;
-		border-radius: 100px;
-		padding: 20px;
-		content: url(images/title-icon.png);
-		border: 10px solid $title-icon-color;
+		@include order(2);
+		width: 3.75em;
+		height: 3.75em;
+		border-radius: 10em;
+		padding: 2.5em;
+		content: '';
+		background: url(images/title-icon.png) center center no-repeat;
+		background-size: 5em;
 		background-color: $title-icon-color;
 	}
 	&[current] {
@@ -294,16 +363,16 @@ pwr-slide.title-slide {
 				}
 			}
 			&:after {
-				@include animation(fadeInDownBig 1s both 0.5s, spin 2s linear 5s infinite);
+				@include animation(fadeInDownBig 1s both 0.5s, spin 2s 5s infinite);
 			}
 		}
 	}
 }
 
 pwr-slide.segue-slide {
-	flex-direction: column;
+	@include flex-direction(column);
 	> hgroup {
-		max-width: 80%;
+		width: 80%;
 		margin: auto;
 		text-align: center;
 		h1 {
@@ -319,11 +388,10 @@ pwr-slide.segue-slide {
 	}
 	&:before {
 		position: relative;
-		top: 20%;
-		border-radius: 100px;
-		padding: 20px;
+		top: 3.5em;	
+		border-radius: 10em;
+		padding: 2em;
 		content: url(images/segue-icon.png);
-		border: 10px solid $segue-icon-color;
 		background-color: $segue-icon-color;
 	}
 	&[current].animated:before {
@@ -415,12 +483,10 @@ $redBG-inner-deck-section-header-border:	1px solid lightgrey;
 			color: $redBG-title-tip-color;
 		}
 		&:after {
-			border: 10px solid $redBG-title-icon-color;
 			background-color: $redBG-title-icon-color;
 		}
 	}
 	&.segue-slide:before {
-		border: 10px solid $redBG-segue-icon-color;
 		background-color: $redBG-segue-icon-color;
 	}
 }
@@ -505,12 +571,10 @@ $blueBG-inner-deck-section-header-border:			$blueBG-inner-deck-text-color;
 			color: $blueBG-title-tip-color;
 		}
 		&:after {
-			border: 10px solid $blueBG-title-icon-color;
 			background-color: $blueBG-title-icon-color;
 		}
 	}
 	&.segue-slide:before {
-		border: 10px solid $blueBG-segue-icon-color;
 		background-color: $blueBG-segue-icon-color;
 	}
 }
@@ -594,12 +658,10 @@ $greenBG-inner-deck-section-header-border:		1px solid lightgrey;
 			color: $greenBG-title-tip-color;
 		}
 		&:after {
-			border: 10px solid $greenBG-title-icon-color;
 			background-color: $greenBG-title-icon-color;
 		}
 	}
 	&.segue-slide:before {
-		border: 10px solid $greenBG-segue-icon-color;
 		background-color: $greenBG-segue-icon-color;
 	}
 }
@@ -684,12 +746,10 @@ $blackBG-inner-deck-section-header-border:		1px solid lightgrey;
 			color: $blackBG-title-tip-color;
 		}
 		&:after {
-			border: 10px solid $blackBG-title-icon-color;
 			background-color: $blackBG-title-icon-color;
 		}
 	}
 	&.segue-slide:before {
-		border: 10px solid $blackBG-segue-icon-color;
 		background-color: $blackBG-segue-icon-color;
 	}
 }
@@ -774,12 +834,10 @@ $salmonBG-inner-deck-section-header-border:		1px solid lightgrey;
 			color: $salmonBG-title-tip-color;
 		}
 		&:after {
-			border: 10px solid $salmonBG-title-icon-color;
 			background-color: $salmonBG-title-icon-color;
 		}
 	}
 	&.segue-slide:before {
-		border: 10px solid $salmonBG-segue-icon-color;
 		background-color: $salmonBG-segue-icon-color;
 	}
 }
@@ -864,12 +922,10 @@ $goldBG-inner-deck-section-header-border:			1px solid lightgrey;
 			color: $goldBG-title-tip-color;
 		}
 		&:after {
-			border: 10px solid $goldBG-title-icon-color;
 			background-color: $goldBG-title-icon-color;
 		}
 	}
 	&.segue-slide:before {
-		border: 10px solid $goldBG-segue-icon-color;
 		background-color: $goldBG-segue-icon-color;
 	}
 }
