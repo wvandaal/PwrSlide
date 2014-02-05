@@ -23,9 +23,9 @@ pre[data-lang]:after {
   right: -1px;
   top: 0;
   position: absolute;
-  font-size: 16pt;
+  font-size: 1.2em;
   color: white;
-  padding: 2px 25px;
+  padding: 2px 1.5em;
   text-transform: uppercase;
 }
 

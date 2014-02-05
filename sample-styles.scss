@@ -1,63 +1,126 @@
 @import 'css/bourbon/bourbon';
 
+@media all and (max-width: 1200px), (max-height: 620px) {
+	pwr-deck {
+		font-size: 15px;
+		> pwr-slide {
+			&.centered-column, &.title-slide, &.segue-slide {
+				hgroup, section {
+					width: 65%;
+				}
+			}
+			&.title-slide > aside.tip { width: 65%; }
+			&.segue-slide:before { top: 3.75em; }
+		}
+	}
+}
+
 @media all and (max-width: 1100px), (max-height: 580px) {
 	pwr-deck {
 		font-size: 14px;
+		> pwr-slide {
+			&.centered-column, &.title-slide, &.segue-slide {
+				hgroup, section {
+					width: 70%;
+				}
+			}
+			&.title-slide > aside.tip { width: 70%; }
+			&.segue-slide:before { top: 4em; }
+		}
 	}
 }
 
 @media all and (max-width: 1000px), (max-height: 540px) {
 	pwr-deck {
 		font-size: 13px;
+		> pwr-slide {
+			&.centered-column, &.title-slide, &.segue-slide {
+				hgroup, section {
+					width: 75%;
+				}
+			}
+			&.title-slide > aside.tip { width: 75%; }
+			&.segue-slide:before { top: 4.25em; }
+		}
 	}
 }
 
 @media all and (max-width: 900px), (max-height: 500px) {
 	pwr-deck {
 		font-size: 12px;
+		> pwr-slide {
+			&.centered-column, &.title-slide, &.segue-slide {
+				hgroup, section {
+					width: 80%;
+				}
+			}
+			&.title-slide > aside.tip { width: 80%; }
+			&.segue-slide:before { top: 4.5em; }
+		}
 	}
 }
 
 @media all and (max-width: 800px), (max-height: 460px) {
 	pwr-deck {
 		font-size: 11px;
+		> pwr-slide {
+			&.centered-column, &.title-slide, &.segue-slide {
+				hgroup, section {
+					width: 85%;
+				}
+			}
+			&.title-slide > aside.tip { width: 85%; }
+			&.segue-slide:before { top: 4.75em; }
+		}
 	}
 }
 
 @media all and (max-width: 700px), (max-height: 420px) {
 	pwr-deck {
 		font-size: 10px;
+		> pwr-slide {
+			&.centered-column, &.title-slide, &.segue-slide {
+				hgroup, section {
+					width: 90%;
+				}
+			}
+			&.title-slide > aside.tip { width: 90%; }
+			&.segue-slide:before { top: 5em; }
+		}
 	}
 }
 
 @media all and (max-width: 600px), (max-height: 380px) {
 	pwr-deck {
 		font-size: 9px;
+		> pwr-slide {
+			&.centered-column, &.title-slide, &.segue-slide {
+				hgroup, section {
+					width: 95%;
+				}
+			}
+			&.title-slide > aside.tip { width: 95%; }
+			&.segue-slide:before { top: 5.25em; }
+		}
 	}
 }
 
 @media all and (max-width: 500px), (max-height: 340px) {
 	pwr-deck {
 		font-size: 8px;
+		> pwr-slide {
+			&.centered-column, &.title-slide, &.segue-slide {
+				hgroup, section {
+					width: 100%;
+				}
+			}
+			&.title-slide > aside.tip { width: 100%; }
+			&.segue-slide:before { top: 5.5em; }
+		}
 	}
 }
 
 /* Mixins */
-@mixin blank-slide() {
-	@include box-sizing(border-box);
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	&[current] {
-		display: block;
-	}
-	* {
-		width: 100%;
-		margin: 0;
-		padding: 0;
-	}
-}
-
 @mixin flexbox() {
 	display: -ms-flexbox;
   display: -webkit-flex;
@@ -98,8 +161,7 @@ $green2: #008A7E;
 $blue1: #216EB0; /* rgb(33, 110, 176) */
 $blue2: rgb(57, 63, 176);
 $blue3: #2150B0; /* rgb(33, 80, 176) */
-$blue4: #07304B; 
-$dark-blue: #0C0C32;
+$blue4: #0C0C32;
 $red1: #DE1B42;
 $red2: #BA2C41;
 
@@ -142,8 +204,6 @@ html, body {
 	width: 100%;
 	height: 100%;
 }
-
-em { font-style: italic; }
 
 /* Deck Styles */
 pwr-deck {
@@ -388,10 +448,14 @@ pwr-slide.segue-slide {
 	}
 	&:before {
 		position: relative;
-		top: 3.5em;	
+		top: 3.5em;
+		width: 3.75em;
+		height: 3.75em;
 		border-radius: 10em;
-		padding: 2em;
-		content: url(images/segue-icon.png);
+		padding: 2.5em;
+		content: '';
+		background: url(images/segue-icon.png) center center no-repeat;
+		background-size: 5em;
 		background-color: $segue-icon-color;
 	}
 	&[current].animated:before {
@@ -581,7 +645,7 @@ $blueBG-inner-deck-section-header-border:			$blueBG-inner-deck-text-color;
 /* Green Theme Styles */
 $greenBG: 																		$green2;
 $greenBG-link-color:													$blue3;
-$greenBG-visited-link-color:									$dark-blue;
+$greenBG-visited-link-color:									$blue4;
 $greenBG-text-color:													white;
 $greenBG-heading-color: 											$gold;
 $greenBG-subheading-color:										$grey2;
@@ -845,7 +909,7 @@ $salmonBG-inner-deck-section-header-border:		1px solid lightgrey;
 /* Gold Theme Styles */
 $goldBG: 																			$gold;
 $goldBG-link-color:														$blue2;
-$goldBG-visited-link-color:										$dark-blue;
+$goldBG-visited-link-color:										$blue4;
 $goldBG-text-color:														$grey3;
 $goldBG-heading-color: 												$blue1;
 $goldBG-subheading-color:											white;
