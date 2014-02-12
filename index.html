@@ -8,46 +8,39 @@
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.3/platform.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.3/polymer.js"></script>
 
-	<!-- Importing Custom Elements -->
+	<!-- Importing PwrSlide Suite -->
  	<link rel="import" href="src/PwrSlide.html">
 
- 	<!-- Custom fonts -->
- 	<link href='http://fonts.googleapis.com/css?family=Average+Sans' rel='stylesheet' type='text/css'>
- 	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
- 	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
- 	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
- 	<link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
-
  	<!-- Document styles / custom animations -->
-	<link rel="stylesheet" type="text/css" href="css/reset.css">
-	<link rel="stylesheet" type="text/css" href="sample-styles.css">
-	<link rel="stylesheet" type="text/css" href="src/animate-custom.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="sample-styles.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="src/animate-custom.css"> -->
 
 </head>
 <body>
 	<script type="text/javascript">
-		document.addEventListener('slidechange', function(e) {console.log(e);}, false);
+		// document.addEventListener('slidechange', function(e) {console.log(e);}, false);
 	</script>
 
-	<!-- Using Custom Elements -->
-	<pwr-deck unresolved current="3" slidenumbers="true">
+	<pwr-deck id="pwr" unresolved current="1" slidenumbers="true">
 
 		<!-- Slide 1 -->
 		<pwr-slide id="slide1" class="title-slide red animated" entrance="bounceInDown" exit="fadeOutRightBig" onexit="prettyPrint();">
-			<hgroup>
+			<header>
 				<h1>PwrSlide!</h1>
 				<h2>Full-Featured Presentation Web-Components</h2>
 				<h3>Built in Exquisite HTML with Polymer</h3>
 				<br>
-			</hgroup>
+			</header>
 			<aside class="tip">(use the arrow keys or spacebar to navigate)</aside>
 		</pwr-slide>
 
-		<pwr-slide id="slide2" class="centered-column salmon animated" exit="bounceOutUp">
-			<hgroup>
+		<!-- Slide 2 -->
+		<pwr-slide id="slide2" class="centered-column blue animated" exit="bounceOutUp">
+			<header>
 				<h1>Oh the possibilities!</h1>
 				<h2>Easily harness the power of HTML, CSS, and JavaScript</h2>
-			</hgroup>
+			</header>
 			<section>
 				<ul>
 					<pwr-piece><li>Build complex and full-featured presentation decks using web technologies you know and love</li></pwr-piece>
@@ -61,18 +54,20 @@
 			</section>
 		</pwr-slide>
 
-		<pwr-slide id="slide3" class="segue-slide blue animated" exit="rotateOutUpRight">
-			<hgroup>
+		<!-- Slide 3 -->
+		<pwr-slide id="slide3" class="segue-slide salmon animated" exit="rotateOutUpRight">
+			<header>
 				<h1>Built with Web-Components</h1>
 				<h2>Style and Functionality Encapsulation for Free</h2>
-			</hgroup>
+			</header>
 		</pwr-slide>
 
+		<!-- Slide 4 -->
 		<pwr-slide id="slide4" class="centered-column green animated" exit="bounceOutUp">
-			<hgroup>
+			<header>
 				<h1>Show the World Your Code</h1>
 				<h2>Ideal for Technical Applications</h2>
-			</hgroup>
+			</header>
     	<pre class="prettyprint" data-lang="javascript">
 &lt;script type='text/javascript'&gt;
   // Say hello world until the user starts questioning
@@ -95,11 +90,12 @@
 			</section>
 		</pwr-slide>
 
-		<pwr-slide id="slide5" class="two-column gold animated">
-			<hgroup>
+		<!-- Slide 5 -->
+		<pwr-slide id="slide5" class="two-column black animated">
+			<header>
 				<h1>Animate It!</h1>
 				<h2>Built with a Powerful Animation Framework</h2>
-			</hgroup>
+			</header>
 			<section>
 				<ul>
 					<pwr-piece>
@@ -132,11 +128,13 @@
 			</section>
 			<section>
 				<pwr-piece id="minideck-piece">
+
+					<!-- Inner Deck -->
 					<pwr-deck id="animations-minideck" class="inner-deck" slidenumbers="false">
 						<pwr-slide>
-							<hgroup>
+							<header>
 								<h2>PwrAnimated</h2>
-							</hgroup>
+							</header>
 							<pre class="prettyprint" data-lang="html">
 &lt;pwr-animated entrance exit onentry onexit>
 							</pre>
@@ -157,9 +155,9 @@
 							</section>
 						</pwr-slide>
 						<pwr-slide>
-							<hgroup>
+							<header>
 								<h2>PwrAnimated</h2>
-							</hgroup>
+							</header>
 							<pre class="prettyprint" data-lang="javascript">
 PwrAnimated = {
   animateIn: function() { ... },
@@ -185,11 +183,12 @@ PwrAnimated = {
 			</section>
 		</pwr-slide>
 
-		<pwr-slide id="slide6" class="two-column black animated" exit="bounceOutUp">
-			<hgroup>
+		<!-- Slide 6 -->
+		<pwr-slide id="slide6" class="two-column gold animated" exit="bounceOutUp">
+			<header>
 				<h1>Show the World Your Code</h1>
 				<h2>Ideal for Technical Applications</h2>
-			</hgroup>
+			</header>
     	<pre class="prettyprint" data-lang="javascript">
 &lt;script type='text/javascript'&gt;
   // Say hello world until the user starts questioning

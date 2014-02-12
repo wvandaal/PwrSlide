@@ -1,0 +1,86 @@
+/* Fonts */
+$title-font: 				'Pacifico', cursive;
+$subheading-font: 	'Raleway', sans-serif;
+$general-font: 			'Average Sans', sans-serif;
+$number-font: 			'Questrial', sans-serif;
+
+/* Colors */
+$gold: 		#FFBA52;	
+$grey1: 	#9C9C9C; 
+$grey2: 	#3B3B3B; 
+$grey3: 	#1C1C1C; 
+$green1: 	#00B964; 
+$green2: 	#008A7E; 
+$blue1: 	#216EB0; 
+$blue2: 	#393FB0; 
+$blue3: 	#2150B0; 
+$blue4: 	#0C0C32;
+$red1: 		#DE1B42;
+$red2: 		#BA2C41;
+
+/* Default slide styles*/
+$deckBG: 														url(../images/light_linen.png) repeat center center;
+$heading-color: 										$red2;
+$subheading-color: 									grey;
+$text-color: 												black;
+$link-color:												$blue3;
+$visited-link-color:								$grey3;
+
+$preBG:															white;
+$pre-label-color:										$red2;
+$section-header-color:							$text-color;
+$section-header-border:							1px solid lightgrey;
+
+$segue-icon-color:									$gold;
+$title-icon-color:									$blue3;
+$title-tip-color:										$subheading-color;
+
+/* Default Inner-Deck styles */
+$inner-deckBG: 											$grey2;
+$inner-deck-border:									0px solid black;
+$inner-deck-heading-color: 					rgba(255,255,255,0.9);
+$inner-deck-subheading-color: 			rgba(255,255,255,0.9);
+$inner-deck-text-color:							rgba(255,255,255,0.9);
+
+$inner-deck-preBG:									url(../images/light_linen.png);
+$inner-deck-pre-label-color:				$green1;
+$inner-deck-section-header-color:		$inner-deck-text-color;
+$inner-deck-section-header-border:	1px solid lightgrey;
+
+/* Mixins */
+@mixin flexbox() {
+	display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex-direction($dir) {
+	flex-direction: $dir;
+	-webkit-flex-direction: $dir;
+	-ms-flex-direction: $dir;
+}
+
+@mixin order($ord) {
+	order: $ord;
+	-ms-flex-order: $ord;
+	-webkit-order: $ord;
+}
+
+@mixin justify-content($just) {
+	justify-content: $just;
+	-webkit-justify-content: $just;
+	-ms-flex-pack: $just;
+}
+
+@mixin align-items($align) {
+	align-items: $align;
+	-ms-flex-align: $align;
+	-webkit-align-items: $align;
+}
+
+@mixin font-smoothing($smooth) {
+  -webkit-font-smoothing: $smooth;
+  -moz-font-smoothing: $smooth;
+  -ms-font-smoothing: $smooth;
+  -o-font-smoothing: $smooth;
+}

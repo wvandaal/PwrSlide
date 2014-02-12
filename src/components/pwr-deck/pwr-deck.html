@@ -1,0 +1,203 @@
+<link rel="import" href="../pwr-base/pwr-base.html">
+<polymer-element name="pwr-deck" attributes="current" extends="pwr-base" constructor="PwrDeck" on-mouseover="{{keyControlsOn}}" on-mouseout="{{keyControlsOff}}">
+	<template>
+		<link rel="stylesheet" type="text/css" href="pwr-deck.css">
+		<content id="slides" select="pwr-slide"></content>
+	</template>
+	<script>
+		(function() {
+			var SLIDE_ATTRS_ 	= ['past', 'current', 'next'],
+					PREFIXES_ 			= ["webkit", "moz", "MS", "o", ""],
+					prevSlide_ 			= 0,
+
+					// TODO:
+					// Fix fullscreen mode
+					onKeyDown_			= function(e) {
+					  if (/^(input|textarea)$/i.test(e.target.nodeName) ||
+					      e.target.isContentEditable || !this.controlsActive) {
+					    return;
+					  }
+
+						switch (e.keyCode) {
+					    case 39: // right arrow
+					    case 32: // space
+					    case 34: // PgDn
+					    case 40: // down arrow
+					      this.nextSlide();
+					      e.preventDefault();
+					      break;
+
+					    case 37: // left arrow
+					    case 33: // PgUp
+					    case 38: // up arrow
+					      this.prevSlide();
+					      e.preventDefault();
+					      break;
+
+						  case 70: // F: Toggle fullscreen
+					      if (!(e.shiftKey && e.metaKey)) {
+					        if (this.mozRequestFullScreen) {
+					        	this.mozRequestFullScreen();
+					        } else if (this.webkitRequestFullScreen) {
+					          this.webkitRequestFullScreen();
+					        }
+					      }
+					      break;
+					  }
+				},
+
+				addPrefixedListeners_ = function(elem, type, callback) {
+					for (var i = PREFIXES_.length - 1; i >= 0; i--) {
+						elem.addEventListener(PREFIXES_[i]+type, callback, false);					
+					}
+				},
+
+				addEventListeners_ = function() {
+					document.addEventListener('keydown', onKeyDown_.bind(this), false);
+					this.addEventListener('animationend', handleAnimated_.bind(this), false); // moz workaround
+					addPrefixedListeners_(this, 'AnimationEnd', handleAnimated_.bind(this));
+				},
+
+				handleAnimated_ = function(e) {
+					if (e.target instanceof PwrAnimated) {
+						var el = e.target;
+						e.stopPropagation();
+						// Exit animation actions
+						if (e.animationName === el.exit) {
+							if (el.nodeName === "PWR-SLIDE") {
+								this.getSlide(this.curslide).animateIn();
+								updateSlides_.call(this);
+							}
+
+						// Entrance animation actions
+						} else if (e.animationName === el.entrance) {
+
+							// onentry callback called after animation ends
+							// NOTE: onexit callback called before exit animation begins
+							// (see PwrAnimated)
+							if (el.onentry) {
+								new Function(el.onentry).call(el);	
+							}
+						}
+					}
+				},
+
+				loadSlide_ 				= function(slideNum) {
+					if ((slideNum < 0) || (slideNum >= this.totalSlides)) {
+						return null;
+					} else {
+						prevSlide_ = this.curslide;
+						this.curslide = slideNum;
+						this.fire('slidechange', {curslide: this.curslide});
+						this.getSlide(prevSlide_).animateOut();
+					}
+				},
+
+				// TODO:
+				// trigger slide events
+				// enable iframe preloading
+				// add support for overview mode
+				updateSlides_ 		= function() {
+					var curslide 					= this.curslide,
+							updateSlideAttr		= updateSlideAttr_.bind(this);
+					for (var i = 0; i < this.totalSlides; ++i) {
+						switch(i) {
+							case curslide - 1:
+								updateSlideAttr(i, 'past');
+								break;
+				      case curslide:
+				        updateSlideAttr(i, 'current');
+				        break;
+				      case curslide + 1:
+				        updateSlideAttr(i, 'next');
+				        break;
+				      default:
+				        updateSlideAttr(i);
+				        break;							
+						}
+					}
+				},
+
+				updateSlideAttr_ = function(slideNum, attrName) {
+					var slide = this.getSlide(slideNum);
+
+					if (!slide) {
+						return;
+					}
+
+					if (attrName) {
+						slide.setAttribute(attrName, "");
+					}
+
+					for (var i = 0, slideAttr; slideAttr = SLIDE_ATTRS_[i]; ++i) {
+						if (attrName != slideAttr) {
+							slide.removeAttribute(slideAttr);
+						}
+					}
+				};
+
+			Polymer('pwr-deck', {
+				current: 1,
+				curslide: 0,
+				controlsActive: false,
+				publish: {
+					totalSlides: 0
+				},
+
+				currentChanged: function(oldVal, newVal) {
+					// Prevents the initial slide transition on load (since this is the
+					// only time prevSlide_ and curslide are both falsey 0)
+					if (newVal > 0 && newVal <= this.totalSlides) {
+						loadSlide_.call(this, newVal - 1);
+					} 
+				},
+
+				ready: function() {
+					this.slides = this.$.slides.getDistributedNodes();
+					this.totalSlides = this.slides.length;
+
+					addEventListeners_.call(this);
+					updateSlides_.call(this);
+				},
+
+				keyControlsOff: function(e) {
+					e.stopPropagation();
+					this.controlsActive = false;
+				},
+
+				keyControlsOn: function(e) {
+					e.stopPropagation();
+					this.controlsActive = true;
+				},
+
+				// TODO:
+				// Add overview support
+				nextSlide: function() {
+					var slide = this.getSlide(this.curslide);
+
+					if (slide.animateNextPiece()) {
+						return;
+					}
+
+					if (this.current < this.totalSlides) {
+						this.current++;
+					}
+				},
+
+				prevSlide: function() {
+					if (this.current > 1) {
+						this.current--;
+					}
+				},
+
+				getSlide: function(slideNum) {
+					if ((slideNum < 0) || (slideNum >= this.totalSlides)) {
+						return null;
+					} else {
+						return this.slides[slideNum];
+					}
+				}
+			});
+		})()
+	</script>
+</polymer-element>

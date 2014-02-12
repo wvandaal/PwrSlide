@@ -1,8 +1,8 @@
 # PwrSlide
 
-Adios Powerpoint! Impress is a simple and compact presentation interface built to help users emprace the future of interactive presentation software using the power of HTML5 and Web Components. A small set of intiutive custom tags allow you to build your presentations from the ground up and gives you the flexibility to embed complex web applications within your slideshow.
+Adios Powerpoint! PwrSlide is a simple and compact presentation interface built to help users emprace the future of interactive presentation software using the power of HTML5 and Web Components. A small set of intiutive custom tags allow you to build your presentations from the ground up and gives you the flexibility to embed complex web applications within your slideshow.
 
-Impress is an open source project implemented using the upcoming HTML5 standard of Web Components and the [Polymer.js library](http://polymer-project.org) by Google. 
+PwrSlide is an open source project implemented using the upcoming HTML5 standard of Web Components and the [Polymer.js library](http://polymer-project.org) by Google. 
 
 > Maintained by Willem van Daalen (https://github.com/wvandaal).
 
@@ -12,9 +12,15 @@ Impress is an open source project implemented using the upcoming HTML5 standard 
 
 ## Usage
 
-Each PwrSlide presentation is build using three main components, each denoted by a custom tag:
+PwrSlide was designed to be modular - you pick what you want and leave the rest behind. The core of the framework resides in the custom Web Components, which encapsulate the basic logic and styling of the presentation. 
 
-`<pwr-deck>` is the container for you presentation. The majority of the application logic resides within 
+**Components:**  
+
+1) [PwrDeck](#pwrdeck)
+
+
+
+## PwrDeck
 
 
 ## Options

@@ -1,0 +1,87 @@
+/* Blue Theme Styles */
+$blueBG: 																			$blue1; 
+$blueBG-link-color:														lightsalmon;
+$blueBG-visited-link-color:										$gold;
+$blueBG-text-color:														white;
+$blueBG-heading-color: 												$gold;
+$blueBG-subheading-color:											white;
+
+$blueBG-preBG:																url('../images/light_linen.png');
+$blueBG-pre-label-color:											$red2;
+$blueBG-section-header-color:									$blueBG-text-color;
+$blueBG-section-header-border:								$blueBG-text-color;
+
+$blueBG-title-icon-color:											$red1;
+$blueBG-segue-icon-color:											$red1;
+$blueBG-title-tip-color:											$gold;
+
+/* Blue Theme Inner-Deck Styles */
+$blueBG-inner-deckBG: 												$red1;
+$blueBG-inner-deck-border:										0px solid black;
+$blueBG-inner-deck-heading-color: 						white;
+$blueBG-inner-deck-subheading-color:					white;
+$blueBG-inner-deck-text-color:		 						white;
+
+$blueBG-inner-deck-preBG: 										url('../images/light_linen.png');
+$blueBG-inner-deck-pre-label-color:						$green1;
+$blueBG-inner-deck-section-header-color:			$blueBG-inner-deck-text-color;
+$blueBG-inner-deck-section-header-border:			$blueBG-inner-deck-text-color;
+
+.blue {
+	color: $blueBG-text-color;
+	background: $blueBG;
+	a:link {color: $blueBG-link-color;}
+	a:visited, a:hover {color: $blueBG-visited-link-color;}
+	> header {
+		h1 {
+			color: $blueBG-heading-color;
+		}
+		h2, h3, h4, h5, h6 {
+			color: $blueBG-subheading-color;
+		}
+	}
+	pre {
+		background: $blueBG-preBG;
+		&[data-lang]:after {
+			background-color: $blueBG-pre-label-color;
+		}
+	}
+	pwr-deck.inner-deck {
+		background: $blueBG-inner-deckBG;
+		border: $blueBG-inner-deck-border;
+		> pwr-slide {
+			color: $blueBG-inner-deck-text-color;
+			> header {
+				h1 {
+					color: $blueBG-inner-deck-heading-color;
+				}
+				h2, h3, h4, h5, h6 {
+					color: $blueBG-inner-deck-subheading-color;
+				}
+			}
+			> section {
+				> header {
+					color: $blueBG-inner-deck-section-header-color;
+					border-bottom: $blueBG-inner-deck-section-header-border;
+				}
+			}
+			pre {
+				background: $blueBG-inner-deck-preBG;
+				&[data-lang]:after {
+					background-color: $blueBG-inner-deck-pre-label-color;
+				}
+			}
+		}
+	}
+	&.title-slide {
+		> aside.tip {
+			color: $blueBG-title-tip-color;
+		}
+		&:after {
+			background-color: $blueBG-title-icon-color;
+		}
+	}
+	&.segue-slide:before {
+		background-color: $blueBG-segue-icon-color;
+	}
+}

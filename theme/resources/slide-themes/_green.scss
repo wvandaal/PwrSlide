@@ -1,0 +1,87 @@
+/* Green Theme Styles */
+$greenBG: 																		$green2;
+$greenBG-link-color:													$blue3;
+$greenBG-visited-link-color:									$blue4;
+$greenBG-text-color:													white;
+$greenBG-heading-color: 											$gold;
+$greenBG-subheading-color:										$grey2;
+
+$greenBG-preBG:																url('../images/light_linen.png');
+$greenBG-pre-label-color:											$red2;
+$greenBG-section-header-color:								$greenBG-text-color;
+$greenBG-section-header-border:								$greenBG-text-color;
+
+$greenBG-title-icon-color:										$blue1;
+$greenBG-segue-icon-color:										#006C70;
+$greenBG-title-tip-color:											$grey3;
+
+/* Green Theme Inner-Deck Styles */
+$greenBG-inner-deckBG: 												$grey2;   
+$greenBG-inner-deck-border:										0px solid black;    
+$greenBG-inner-deck-heading-color: 						rgba(255,255,255,0.9);   
+$greenBG-inner-deck-subheading-color:					rgba(255,255,255,0.9);   
+$greenBG-inner-deck-text-color:		 						rgba(255,255,255,0.9);   
+
+$greenBG-inner-deck-preBG: 										url('../images/light_linen.png');
+$greenBG-inner-deck-pre-label-color:					$red1;    
+$greenBG-inner-deck-section-header-color:			$greenBG-inner-deck-text-color;    
+$greenBG-inner-deck-section-header-border:		1px solid lightgrey;    
+
+.green {
+	color: $greenBG-text-color;
+	background: $greenBG;
+	a:link {color: $greenBG-link-color;}
+	a:visited, a:hover {color: $greenBG-visited-link-color;}
+	> header {
+		h1 {
+			color: $greenBG-heading-color;
+		}
+		h2, h3, h4, h5, h6 {
+			color: $greenBG-subheading-color;
+		}
+	}
+	pre {
+		background: $greenBG-preBG;
+		&[data-lang]:after {
+			background-color: $greenBG-pre-label-color;
+		}
+	}
+	pwr-deck.inner-deck {
+		background: $greenBG-inner-deckBG;
+		border: $greenBG-inner-deck-border;
+		> pwr-slide {
+			color: $greenBG-inner-deck-text-color;
+			> header {
+				h1 {
+					color: $greenBG-inner-deck-heading-color;
+				}
+				h2, h3, h4, h5, h6 {
+					color: $greenBG-inner-deck-subheading-color;
+				}
+			}
+			> section {
+				> header {
+					color: $greenBG-inner-deck-section-header-color;
+					border-bottom: $greenBG-inner-deck-section-header-border;
+				}
+			}
+			pre {
+				background: $greenBG-inner-deck-preBG;
+				&[data-lang]:after {
+					background-color: $greenBG-inner-deck-pre-label-color;
+				}
+			}
+		}
+	}
+	&.title-slide {
+		> aside.tip {
+			color: $greenBG-title-tip-color;
+		}
+		&:after {
+			background-color: $greenBG-title-icon-color;
+		}
+	}
+	&.segue-slide:before {
+		background-color: $greenBG-segue-icon-color;
+	}
+}

@@ -1,0 +1,87 @@
+/* Gold Theme Styles */
+$goldBG: 																			$gold;
+$goldBG-link-color:														$blue2;
+$goldBG-visited-link-color:										$blue4;
+$goldBG-text-color:														$grey3;
+$goldBG-heading-color: 												$blue1;
+$goldBG-subheading-color:											white;
+
+$goldBG-preBG:																url('../images/light_linen.png');
+$goldBG-pre-label-color:											$red2;
+$goldBG-section-header-color:									$goldBG-text-color;
+$goldBG-section-header-border:								$goldBG-text-color;
+
+$goldBG-title-icon-color:											$red1;
+$goldBG-segue-icon-color:											$green1;
+$goldBG-title-tip-color:											$grey2;
+
+/* gold Theme Inner-Deck Styles */
+$goldBG-inner-deckBG: 												url('../images/light_linen.png');
+$goldBG-inner-deck-border:										0px solid gold;    
+$goldBG-inner-deck-heading-color: 						$grey3;   
+$goldBG-inner-deck-subheading-color:					$grey3;   
+$goldBG-inner-deck-text-color:		 						$grey3;   
+
+$goldBG-inner-deck-preBG: 										white;    
+$goldBG-inner-deck-pre-label-color:						$red1;    
+$goldBG-inner-deck-section-header-color:			$goldBG-inner-deck-text-color;    
+$goldBG-inner-deck-section-header-border:			1px solid lightgrey;    
+
+.gold {
+	color: $goldBG-text-color;
+	background: $goldBG;
+	a:link {color: $goldBG-link-color;}
+	a:visited, a:hover {color: $goldBG-visited-link-color;}
+	> header {
+		h1 {
+			color: $goldBG-heading-color;
+		}
+		h2, h3, h4, h5, h6 {
+			color: $goldBG-subheading-color;
+		}
+	}
+	pre {
+		background: $goldBG-preBG;
+		&[data-lang]:after {
+			background-color: $goldBG-pre-label-color;
+		}
+	}
+	pwr-deck.inner-deck {
+		background: $goldBG-inner-deckBG;
+		border: $goldBG-inner-deck-border;
+		> pwr-slide {
+			color: $goldBG-inner-deck-text-color;
+			> header {
+				h1 {
+					color: $goldBG-inner-deck-heading-color;
+				}
+				h2, h3, h4, h5, h6 {
+					color: $goldBG-inner-deck-subheading-color;
+				}
+			}
+			> section {
+				> header {
+					color: $goldBG-inner-deck-section-header-color;
+					border-bottom: $goldBG-inner-deck-section-header-border;
+				}
+			}
+			pre {
+				background: $goldBG-inner-deck-preBG;
+				&[data-lang]:after {
+					background-color: $goldBG-inner-deck-pre-label-color;
+				}
+			}
+		}
+	}
+	&.title-slide {
+		> aside.tip {
+			color: $goldBG-title-tip-color;
+		}
+		&:after {
+			background-color: $goldBG-title-icon-color;
+		}
+	}
+	&.segue-slide:before {
+		background-color: $goldBG-segue-icon-color;
+	}
+}

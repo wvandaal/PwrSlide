@@ -1,12 +1,11 @@
 pre {
   font-family: 'Source Code Pro', 'Courier New', monospace !important;
   font-weight: bold !important;
-  font-size: 20px;
-  line-height: 28px;
-  padding: 20px 0 10px 60px !important;
+  font-size: 1em;
+  padding: 1.25em 0 .625em 4em !important;
   letter-spacing: -1px;
-  margin-bottom: 20px;
-  width: 106%;
+  margin-bottom: 1em;
+  width: 100%;
   background-color: rgba(200,200,200,0.5);
   left: -35px;
   position: relative;
@@ -15,12 +14,12 @@ pre {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 351, ../scss/default.scss */
+
 pre[data-lang]:after {
-  font-weight: normal !important;
+  font-weight: bold !important;
   content: attr(data-lang);
   background-color: darkgrey;
-  right: -1px;
+  right: 0;
   top: 0;
   position: absolute;
   font-size: 1.2em;
@@ -33,55 +32,44 @@ pre[data-lang="go"] {
   color: #333;
 }
 
-code {
-  font-size: 95%;
-  font-family: 'Source Code Pro', 'Courier New', monospace;
-  color: black;
-}
-
+  /* Attribute value */
 .prettyprint .str,
 .prettyprint .atv {
-  /* a markup attribute value */
+
   color: #009f5d;
 }
 
-/* line 597, ../scss/default.scss */
+/* Tag name */
 .prettyprint .kwd,
 .prettyprint .tag {
-  /* a markup tag name */
   color: #0066cc;
 }
 
-/* line 600, ../scss/default.scss */
+/* Comments */
 .prettyprint .com {
-  /* a comment */
   color: #797979;
   font-style: italic;
 }
 
-/* line 604, ../scss/default.scss */
+/* Literal value */
 .prettyprint .lit {
-  /* a literal value */
   color: #7f0000;
 }
 
-/* line 609, ../scss/default.scss */
 .prettyprint .pun,
 .prettyprint .opn,
 .prettyprint .clo {
   color: #515151;
 }
 
-/* line 615, ../scss/default.scss */
+/* Variable name or declaration */
 .prettyprint .typ,
 .prettyprint .atn,
 .prettyprint .dec,
 .prettyprint .var {
-  /* a declaration; a variable name */
   color: #d94d3a;
 }
 
-/* line 618, ../scss/default.scss */
 .prettyprint .pln {
   color: #515151;
 }

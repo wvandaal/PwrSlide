@@ -1,0 +1,87 @@
+/* CUSTOM Theme Styles */
+$CUSTOMBG: 																		inherit;
+$CUSTOMBG-link-color:													inherit;
+$CUSTOMBG-visited-link-color:									inherit;
+$CUSTOMBG-text-color:													inherit;
+$CUSTOMBG-heading-color: 											inherit;
+$CUSTOMBG-subheading-color:										inherit;
+
+$CUSTOMBG-preBG:															inherit;
+$CUSTOMBG-pre-label-color:										inherit;
+$CUSTOMBG-section-header-color:								inherit;
+$CUSTOMBG-section-header-border:							inherit;
+
+$CUSTOMBG-title-icon-color:										inherit;
+$CUSTOMBG-segue-icon-color:										inherit;
+$CUSTOMBG-title-tip-color:										inherit;
+
+/* CUSTOM Theme Inner-Deck Styles */
+$CUSTOMBG-inner-deckBG: 											inherit;
+$CUSTOMBG-inner-deck-border:									inherit;
+$CUSTOMBG-inner-deck-heading-color: 					inherit;
+$CUSTOMBG-inner-deck-subheading-color:				inherit;
+$CUSTOMBG-inner-deck-text-color:		 					inherit;
+
+$CUSTOMBG-inner-deck-preBG: 									inherit;
+$CUSTOMBG-inner-deck-pre-label-color:					inherit;
+$CUSTOMBG-inner-deck-section-header-color:		inherit;
+$CUSTOMBG-inner-deck-section-header-border:		inherit;
+
+.CUSTOM {
+	color: $CUSTOMBG-text-color;
+	background: $CUSTOMBG;
+	a:link {color: $CUSTOMBG-link-color;}
+	a:visited, a:hover {color: $CUSTOMBG-visited-link-color;}
+	> header {
+		h1 {
+			color: $CUSTOMBG-heading-color;
+		}
+		h2, h3, h4, h5, h6 {
+			color: $CUSTOMBG-subheading-color;
+		}
+	}
+	pre {
+		background: $CUSTOMBG-preBG;
+		&[data-lang]:after {
+			background-color: $CUSTOMBG-pre-label-color;
+		}
+	}
+	pwr-deck.inner-deck {
+		background: $CUSTOMBG-inner-deckBG;
+		border: $CUSTOMBG-inner-deck-border;
+		> pwr-slide {
+			color: $CUSTOMBG-inner-deck-text-color;
+			> header {
+				h1 {
+					color: $CUSTOMBG-inner-deck-heading-color;
+				}
+				h2, h3, h4, h5, h6 {
+					color: $CUSTOMBG-inner-deck-subheading-color;
+				}
+			}
+			> section {
+				> header {
+					color: $CUSTOMBG-inner-deck-section-header-color;
+					border-bottom: $CUSTOMBG-inner-deck-section-header-border;
+				}
+			}
+			pre {
+				background: $CUSTOMBG-inner-deck-preBG;
+				&[data-lang]:after {
+					background-color: $CUSTOMBG-inner-deck-pre-label-color;
+				}
+			}
+		}
+	}
+	&.title-slide {
+		> aside.tip {
+			color: $CUSTOMBG-title-tip-color;
+		}
+		&:after {
+			background-color: $CUSTOMBG-title-icon-color;
+		}
+	}
+	&.segue-slide:before {
+		background-color: $CUSTOMBG-segue-icon-color;
+	}
+}

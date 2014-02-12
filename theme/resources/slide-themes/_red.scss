@@ -1,0 +1,87 @@
+/* Red Theme Styles */
+$redBG: 																	$red2;
+$redBG-link-color:												$blue3;
+$redBG-visited-link-color:								black;
+$redBG-text-color: 												white;
+$redBG-heading-color: 										black;
+$redBG-subheading-color:									white;
+
+$redBG-preBG:															url('../images/light_linen.png');
+$redBG-pre-label-color:										$gold;
+$redBG-section-header-color:							$redBG-text-color;
+$redBG-section-header-border:							$redBG-text-color;
+
+$redBG-title-icon-color:									$blue3;
+$redBG-segue-icon-color:									$gold;
+$redBG-title-tip-color:										$gold;
+
+/* Red Theme Inner-Deck Styles*/
+$redBG-inner-deckBG: 											$blue1;
+$redBG-inner-deck-border:									0px solid black;
+$redBG-inner-deck-heading-color:					black;
+$redBG-inner-deck-subheading-color: 			rgba(255,255,255,0.9);
+$redBG-inner-deck-text-color:							rgba(255,255,255,0.9);
+
+$redBG-inner-deck-preBG:									url('../images/light_linen.png');
+$redBG-inner-deck-pre-label-color:				$green1;
+$redBG-inner-deck-section-header-color:		$redBG-inner-deck-text-color;
+$redBG-inner-deck-section-header-border:	1px solid lightgrey;
+
+.red {
+	color: $redBG-text-color;
+	background: $redBG;
+	a:link {color: $redBG-link-color;}
+	a:visited, a:hover {color: $redBG-visited-link-color;}
+	> header {
+		h1 {
+			color: $redBG-heading-color;
+		}
+		h2, h3, h4, h5, h6 {
+			color: $redBG-subheading-color;
+		}
+	}
+	pre {
+		background: $redBG-preBG;
+		&[data-lang]:after {
+			background-color: $redBG-pre-label-color;
+		}
+	}
+	pwr-deck.inner-deck {
+		background: $redBG-inner-deckBG;
+		border: $redBG-inner-deck-border;
+		> pwr-slide {
+			color: $redBG-inner-deck-text-color;
+			> header {
+				h1 {
+					color: $redBG-inner-deck-heading-color;
+				}
+				h2, h3, h4, h5, h6 {
+					color: $redBG-inner-deck-subheading-color;
+				}
+			}
+			> section {
+				> header {
+					color: $redBG-inner-deck-section-header-color;
+					border-bottom: $redBG-inner-deck-section-header-border;
+				}
+			}
+			pre {
+				background: $redBG-inner-deck-preBG;
+				&[data-lang]:after {
+					background-color: $redBG-inner-deck-pre-label-color;
+				}
+			}
+		}
+	}
+	&.title-slide {
+		> aside.tip {
+			color: $redBG-title-tip-color;
+		}
+		&:after {
+			background-color: $redBG-title-icon-color;
+		}
+	}
+	&.segue-slide:before {
+		background-color: $redBG-segue-icon-color;
+	}
+}

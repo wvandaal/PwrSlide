@@ -1,0 +1,79 @@
+<link rel="import" href="../pwr-animated/pwr-animated.html">
+<polymer-element extends="pwr-animated" name="pwr-slide" constructor="PwrSlide" attributes="nextpiece">
+	<template>
+		<link rel="stylesheet" type="text/css" href="pwr-slide.css">
+		<content></content>
+	</template>
+	<script type="text/javascript">
+		(function() {
+			var collectAnimationPieces_ = function() {
+					this.animateInPieces = [].filter.call(
+						this.pieces, function(el) {
+							return (typeof el.entrance === "string" && el.entrance.length);
+						});
+					this.animateOutPieces = [].filter.call(
+						this.pieces, function(el) {
+							return (typeof el.exit === "string" && el.exit.length);
+						});
+				};
+
+			Polymer('pwr-slide', {
+				entrance: "fadeIn", 
+				exit: "fadeOut",
+
+				animatePiece: function(p) {
+					var piece, i;
+					
+					// Collect animateIn/animateOut pieces on the first call
+					if (!this.animateInPieces || !this.animateOutPieces) {
+						collectAnimationPieces_.call(this);
+					}
+
+					if (typeof p === "number") {
+						piece = this.pieces[p];
+					} else if (!![].indexOf.call(this.pieces, p)) {
+						piece = p;
+					} else {
+						return null;
+					}
+
+					if ((typeof arguments[1] === "string" && arguments[1].toLowerCase() === "out") || 
+							!!!this.animateInPieces.indexOf(piece)) {
+						i = this.animateOutPieces.indexOf(piece);
+						piece = this.animateOutPieces.splice(i, 1)[0];
+						piece.animateOut();
+					} else {
+						i = this.animateInPieces.indexOf(piece);
+						piece = this.animateInPieces.splice(i, 1)[0];
+						piece.animateIn();
+					}
+					return piece;
+				},
+
+				animateNextPiece: function() {
+					// Collect animateIn/animateOut pieces on the first call
+					if (!this.animateInPieces || !this.animateOutPieces) {
+						collectAnimationPieces_.call(this);
+					}
+
+					if (this.curPiece = this.animateInPieces.shift()) {
+						this.curPiece.animateIn();
+						return true;
+					} else if (this.curPiece = this.animateOutPieces.shift()) {
+						this.curPiece.animateOut();
+						return true;
+					} else {
+						[].map.call(this.pieces, function(el) {
+							el.removeAnimations();
+						});
+						return false;
+					}
+				},
+
+				ready: function() {
+					this.pieces = this.querySelectorAll('[is="pwr-piece"], pwr-piece');
+				},
+			});
+		})();
+	</script>
+</polymer-element>

@@ -1,0 +1,87 @@
+/* Salmon Theme Styles */
+$salmonBG: 																		salmon;
+$salmonBG-link-color:													$gold;
+$salmonBG-visited-link-color:									$red2;
+$salmonBG-text-color:													white;
+$salmonBG-heading-color: 											$grey2;
+$salmonBG-subheading-color:										$grey2;
+
+$salmonBG-preBG:															url('../images/light_linen.png');
+$salmonBG-pre-label-color:										$gold;
+$salmonBG-section-header-color:								$salmonBG-text-color;
+$salmonBG-section-header-border:							$salmonBG-text-color;
+
+$salmonBG-title-icon-color:										$red1;
+$salmonBG-segue-icon-color:										$blue1;
+$salmonBG-title-tip-color:										$grey2;
+
+/* Salmon Theme Inner-Deck Styles */
+$salmonBG-inner-deckBG: 											url('../images/light_linen.png');
+$salmonBG-inner-deck-border:									0px solid salmon;    
+$salmonBG-inner-deck-heading-color: 					$grey3;   
+$salmonBG-inner-deck-subheading-color:				$grey3;   
+$salmonBG-inner-deck-text-color:		 					$grey3;   
+
+$salmonBG-inner-deck-preBG: 									white;    
+$salmonBG-inner-deck-pre-label-color:					$gold;    
+$salmonBG-inner-deck-section-header-color:		$salmonBG-inner-deck-text-color;    
+$salmonBG-inner-deck-section-header-border:		1px solid lightgrey;    
+
+.salmon {
+	color: $salmonBG-text-color;
+	background: $salmonBG;
+	a:link {color: $salmonBG-link-color;}
+	a:visited, a:hover {color: $salmonBG-visited-link-color;}
+	> header {
+		h1 {
+			color: $salmonBG-heading-color;
+		}
+		h2, h3, h4, h5, h6 {
+			color: $salmonBG-subheading-color;
+		}
+	}
+	pre {
+		background: $salmonBG-preBG;
+		&[data-lang]:after {
+			background-color: $salmonBG-pre-label-color;
+		}
+	}
+	pwr-deck.inner-deck {
+		background: $salmonBG-inner-deckBG;
+		border: $salmonBG-inner-deck-border;
+		> pwr-slide {
+			color: $salmonBG-inner-deck-text-color;
+			> header {
+				h1 {
+					color: $salmonBG-inner-deck-heading-color;
+				}
+				h2, h3, h4, h5, h6 {
+					color: $salmonBG-inner-deck-subheading-color;
+				}
+			}
+			> section {
+				> header {
+					color: $salmonBG-inner-deck-section-header-color;
+					border-bottom: $salmonBG-inner-deck-section-header-border;
+				}
+			}
+			pre {
+				background: $salmonBG-inner-deck-preBG;
+				&[data-lang]:after {
+					background-color: $salmonBG-inner-deck-pre-label-color;
+				}
+			}
+		}
+	}
+	&.title-slide {
+		> aside.tip {
+			color: $salmonBG-title-tip-color;
+		}
+		&:after {
+			background-color: $salmonBG-title-icon-color;
+		}
+	}
+	&.segue-slide:before {
+		background-color: $salmonBG-segue-icon-color;
+	}
+}

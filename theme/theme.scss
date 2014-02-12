@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+// Base Template Styles
+@import 'resources/base';
+
+// Slide Themes
+@import 'resources/slide-themes/red';
+@import 'resources/slide-themes/blue';
+@import 'resources/slide-themes/green';
+@import 'resources/slide-themes/gold';
+@import 'resources/slide-themes/salmon';
+@import 'resources/slide-themes/black';
+// @import 'resources/slide-themes/custom-theme'			// Edit this file and import it for your own custom theme
+
+@import 'resources/animations';
