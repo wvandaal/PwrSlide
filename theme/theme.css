@@ -139,7 +139,7 @@ pwr-deck {
   -webkit-transition: font 0.25s ease;
   -moz-transition: font 0.25s ease;
   transition: font 0.25s ease; }
-  pwr-deck:not([slidenumbers='false']):after {
+  pwr-deck[current]:not([slidenumbers='false']):after {
     display: block;
     position: relative;
     bottom: 1.5em;

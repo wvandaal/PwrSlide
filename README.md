@@ -55,7 +55,7 @@ PwrSlide was designed to be modular - you pick what you want and leave the rest 
 #### Basic Structure
 The fundamental structure of a PwrSlide presentation consists of a `<pwr-deck>` containing any number of `<pwr-slide>` tags, each with their own content. To animate content within a slide, simply wrap it in `<pwr-piece>` tags. 
 ```
-<pwr-deck>
+<pwr-deck unresolved>
     <pwr-slide>        
         <!-- Your slide content goes here -->
         <ul>
@@ -80,7 +80,7 @@ In addition to the core components, PwrSlide includes an optional responsive the
 Add some style to your deck with ease:
 
 ```
-<pwr-deck>
+<pwr-deck unresolved>
     <pwr-slide class="gold title-slide animated"> ... </pwr-slide>
     <pwr-slide class="red animated">        
         <header>
@@ -105,23 +105,45 @@ Add some style to your deck with ease:
 ```
 
 ## PwrDeck
-The PwrDeck object serves as the main container for your presentation deck, keeping track of all your slides and providing you with a number of methods to access them. 
+> PwrDeck extends [PwrBase](#pwrbase)
+
+The PwrDeck object serves as the main container for your presentation deck, keeping track of all your slides and providing you with a number of methods to access them.
 
 ### Attributes
 Attribute  | Options                   | Default             | Description
 ---        | ---                       | ---                 | ---
+`unresolved`      | N/A                 | `""`               | This a polyfill attribute from the Polymer Library. It is **highly** recommended that you label your deck with the `unresolved` attribute to prevent a FOUC while the Web Components are loaded and registed in the DOM. The Polymer library will remove this attribute from the DOM at load time.
 `current`      | *integer*                  | `1`               | Sets the value of the current slide being displayed by the deck. This attribute can be changed via JavaScript, causing the currently displayed slide to animate out and the new corresponding slide to be animated into the view. Setting this value in you HTML will dictate the starting slide in your presentation (useful for debugging specific slides).
-`curSlide`      | *integer* 	   | `0`              | Returns the current PwrSlide object being displayed by the deck.
+`curSlide`      | *integer* 	   | `null`              | Returns the current `PwrSlide` object being displayed by the deck.
 `controlsActive`   | *boolean*                     | `false`               | Toggles the keyboard controls for the deck. Actived by hovering over the deck you wish to control. **Note:** For nested decks within slides, hovering over the inner deck will deactivate the keyboard controls for the outer deck, allowing the user to switch through inner slides while remaining on the current outer slide.
 `totalslides`   | *integer*                     | `0`               | Returns the total number of slides in the deck. Used for slide numbering in the base theme.
-`slides`   | *NodeList*                     | `[]`               | Returns a NodeList (or an Array in polyfilled browsers) containing all of the slides within the given deck. Each slide inherits all the attributes and methods of the PwrSlide object.
+`slides`   | *NodeList*                     | `[]`               | Returns a NodeList (or an Array in polyfilled browsers) containing all of the PwrSlides objects within the given deck. **Note:** Changing the contents of the this attribute will alter the order of your presentation, do so with caution.
+
+By default, the deck will load the slides in order of their declaration in the deck, however this can be changed by by setting the `current` attribute to a different value and/or changing the order of the `slides` NodeList:
+
+```
+// Begin on the third slide
+<pwr-deck current="3">
+
+// Transition to the sixth slide
+document.querySelector('pwr-deck').current = 6;
+
+// Reverse the slide order
+<script type="text/javascript">
+    var slides = document.querySelector('pwr-deck').slides;
+    slides = [].reverse.call(slides);
+</script>
+
+```
 
 ### Methods
 Method  | Arguments                   | Return             | Description
 ---        | ---                       | ---                 | ---
-`nextSlide()`   | N/A                     | N/A               | Animates the next PwrPiece or transitions to the next slide in order. This method is called on when `controlsActive=true` and the user presses right, down, space, or PgDwn.
-`prevSlide()`   | N/A                     | N/A               | Transitions to the previous slide in order. This method is called on when `controlsActive=true` and the user presses left, up, or PgUp.
+`nextSlide()`   | N/A                     | N/A               | Animates the next `PwrPiece` or transitions to the next slide in order. This method is called on when `controlsActive=true` and the user presses right, down, space, or PgDwn. Fires a `slidechange` event.
+`prevSlide()`   | N/A                     | N/A               | Transitions to the previous slide in order. This method is called on when `controlsActive=true` and the user presses left, up, or PgUp. Fires a `slidechange` event.
 `getSlide(slideNum)`   | `slideNum:int`     | `PwrSlide`            | Returns the slide in the current deck corresponding to its index in the `slides` NodeList.
+
+#### The `slidechange` Event
 
 ## Contributing
 
@@ -130,9 +152,6 @@ Method  | Arguments                   | Return             | Description
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
-
-## History
-
 
 ## License
 

@@ -19,10 +19,10 @@
 </head>
 <body>
 	<script type="text/javascript">
-		// document.addEventListener('slidechange', function(e) {console.log(e);}, false);
+		document.addEventListener('slidechange', function(e) {console.log(e.detail);}, false);
 	</script>
 
-	<pwr-deck id="pwr" unresolved current="1" slidenumbers="true">
+	<pwr-deck id="pwr" unresolved>
 
 		<!-- Slide 1 -->
 		<pwr-slide id="slide1" class="title-slide red animated" entrance="bounceInDown" exit="fadeOutRightBig" onexit="prettyPrint();">

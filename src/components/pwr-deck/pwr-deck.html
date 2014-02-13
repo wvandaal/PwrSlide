@@ -88,7 +88,7 @@
 					} else {
 						prevSlide_ = this.curSlide;
 						this.curSlide = this.getSlide(slideNum);
-						this.fire('slidechange', {curSlide: slideNum});
+						this.fire('slidechange', {slideIndex: slideNum, curSlide: this.curSlide});
 						prevSlide_.animateOut();
 					}
 				},
@@ -100,6 +100,8 @@
 				updateSlides_ 		= function() {
 					var current 					= this.current,
 							updateSlideAttr		= updateSlideAttr_.bind(this);
+
+					this.curSlide = this.slides[this.current - 1];
 					for (var i = 1; i <= this.totalSlides; ++i) {
 						switch(i) {
 							case current - 1:
@@ -138,7 +140,7 @@
 
 			Polymer('pwr-deck', {
 				current: 1,
-				curSlide: 0,
+				curSlide: null,
 				controlsActive: false,
 				publish: {
 					totalSlides: 0
@@ -150,10 +152,13 @@
 					} 
 				},
 
+				slidesChanged: function(oldVal, newVal) {
+					updateSlides_.call(this);
+				},
+
 				ready: function() {
 					this.slides = this.$.slides.getDistributedNodes();
 					this.totalSlides = this.slides.length;
-					this.curSlide = this.slides[this.current - 1];
 
 					addEventListeners_.call(this);
 					updateSlides_.call(this);

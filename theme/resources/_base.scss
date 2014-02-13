@@ -16,7 +16,7 @@ pwr-deck {
 	height: 100%;
 	background: $deckBG;
 	@include transition(font 0.25s ease);
-	&:not([slidenumbers='false']):after {
+	&[current]:not([slidenumbers='false']):after {
 		display: block;
 		position: relative;
 		bottom: 1.5em;
