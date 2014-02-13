@@ -1,5 +1,5 @@
 <link rel="import" href="../pwr-animated/pwr-animated.html">
-<polymer-element extends="pwr-animated" name="pwr-slide" constructor="PwrSlide" attributes="nextpiece">
+<polymer-element extends="pwr-animated" name="pwr-slide" constructor="PwrSlide">
 	<template>
 		<link rel="stylesheet" type="text/css" href="pwr-slide.css">
 		<content></content>
@@ -29,23 +29,25 @@
 						collectAnimationPieces_.call(this);
 					}
 
-					if (typeof p === "number") {
+					if (p >= 0 && p < this.pieces.length) {
 						piece = this.pieces[p];
-					} else if (!![].indexOf.call(this.pieces, p)) {
+					} else if ([].indexOf.call(this.pieces, p) >= 0) {
 						piece = p;
 					} else {
 						return null;
 					}
 
-					if ((typeof arguments[1] === "string" && arguments[1].toLowerCase() === "out") || 
-							!!!this.animateInPieces.indexOf(piece)) {
-						i = this.animateOutPieces.indexOf(piece);
-						piece = this.animateOutPieces.splice(i, 1)[0];
-						piece.animateOut();
-					} else {
-						i = this.animateInPieces.indexOf(piece);
-						piece = this.animateInPieces.splice(i, 1)[0];
-						piece.animateIn();
+					if (piece) {
+						if ((typeof arguments[1] === "string" && arguments[1].toLowerCase() === "out") || 
+								!!!this.animateInPieces.indexOf(piece)) {
+							i = this.animateOutPieces.indexOf(piece);
+							piece = this.animateOutPieces.splice(i, 1)[0];
+							piece.animateOut();
+						} else {
+							i = this.animateInPieces.indexOf(piece);
+							piece = this.animateInPieces.splice(i, 1)[0];
+							piece.animateIn();
+						}
 					}
 					return piece;
 				},

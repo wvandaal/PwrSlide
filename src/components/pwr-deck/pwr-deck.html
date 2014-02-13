@@ -21,7 +21,7 @@
 						switch (e.keyCode) {
 					    case 39: // right arrow
 					    case 32: // space
-					    case 34: // PgDn
+					    case 34: // PgDwn
 					    case 40: // down arrow
 					      this.nextSlide();
 					      e.preventDefault();
@@ -65,7 +65,7 @@
 						// Exit animation actions
 						if (e.animationName === el.exit) {
 							if (el.nodeName === "PWR-SLIDE") {
-								this.getSlide(this.curslide).animateIn();
+								this.curSlide.animateIn();
 								updateSlides_.call(this);
 							}
 
@@ -86,10 +86,10 @@
 					if ((slideNum < 0) || (slideNum >= this.totalSlides)) {
 						return null;
 					} else {
-						prevSlide_ = this.curslide;
-						this.curslide = slideNum;
-						this.fire('slidechange', {curslide: this.curslide});
-						this.getSlide(prevSlide_).animateOut();
+						prevSlide_ = this.curSlide;
+						this.curSlide = this.getSlide(slideNum);
+						this.fire('slidechange', {curSlide: slideNum});
+						prevSlide_.animateOut();
 					}
 				},
 
@@ -98,17 +98,17 @@
 				// enable iframe preloading
 				// add support for overview mode
 				updateSlides_ 		= function() {
-					var curslide 					= this.curslide,
+					var current 					= this.current,
 							updateSlideAttr		= updateSlideAttr_.bind(this);
-					for (var i = 0; i < this.totalSlides; ++i) {
+					for (var i = 1; i <= this.totalSlides; ++i) {
 						switch(i) {
-							case curslide - 1:
+							case current - 1:
 								updateSlideAttr(i, 'past');
 								break;
-				      case curslide:
+				      case current:
 				        updateSlideAttr(i, 'current');
 				        break;
-				      case curslide + 1:
+				      case current + 1:
 				        updateSlideAttr(i, 'next');
 				        break;
 				      default:
@@ -119,7 +119,7 @@
 				},
 
 				updateSlideAttr_ = function(slideNum, attrName) {
-					var slide = this.getSlide(slideNum);
+					var slide = this.getSlide(slideNum - 1);
 
 					if (!slide) {
 						return;
@@ -138,15 +138,13 @@
 
 			Polymer('pwr-deck', {
 				current: 1,
-				curslide: 0,
+				curSlide: 0,
 				controlsActive: false,
 				publish: {
 					totalSlides: 0
 				},
 
 				currentChanged: function(oldVal, newVal) {
-					// Prevents the initial slide transition on load (since this is the
-					// only time prevSlide_ and curslide are both falsey 0)
 					if (newVal > 0 && newVal <= this.totalSlides) {
 						loadSlide_.call(this, newVal - 1);
 					} 
@@ -155,6 +153,7 @@
 				ready: function() {
 					this.slides = this.$.slides.getDistributedNodes();
 					this.totalSlides = this.slides.length;
+					this.curSlide = this.slides[this.current - 1];
 
 					addEventListeners_.call(this);
 					updateSlides_.call(this);
@@ -173,7 +172,7 @@
 				// TODO:
 				// Add overview support
 				nextSlide: function() {
-					var slide = this.getSlide(this.curslide);
+					var slide = this.getSlide(this.current - 1);
 
 					if (slide.animateNextPiece()) {
 						return;

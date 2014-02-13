@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="basic-animations.css">
 <link rel="import" href="../pwr-base/pwr-base.html">
 
-<polymer-element name="pwr-animated" attributes="entrance exit onentry onexit timeout" extends="pwr-base" constructor="PwrAnimated">
+<polymer-element name="pwr-animated" attributes="entrance exit onentry onexit" extends="pwr-base" constructor="PwrAnimated">
 	<template></template>
 	<script type="text/javascript">
 		(function() {
@@ -20,7 +20,6 @@
 			Polymer('pwr-animated', {
 				// bound to the <style> tags in subclasses
 				animationName: "",
-				timeout: 0,
 
 				// Animates the object into the deck and calls the 
 				// ontransition callback
