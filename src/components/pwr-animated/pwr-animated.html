@@ -4,9 +4,12 @@
 <polymer-element name="pwr-animated" attributes="entrance exit onentry onexit" extends="pwr-base" constructor="PwrAnimated">
 	<template></template>
 	<script type="text/javascript">
+		// IIFE encapsulates private static methods and variables 
+		// (see http://www.polymer-project.org/polymer.html#static for more info)
 		(function() {
-			// Fallback procedure to animate functions in the 
-			// event of unsupported browsers/polyfills
+
+			// Fallback procedure to animate elements in the event of unsupported 
+			// browsers/polyfills
 			var animateFallback_ = function(animationName) {
 				if (window.getComputedStyle(this).display === "inline") {
 					this.style.display = "inline-block";
@@ -21,37 +24,43 @@
 				// bound to the <style> tags in subclasses
 				animationName: "",
 
-				// Animates the object into the deck and calls the 
-				// ontransition callback
-				// TODO: Validate animations
+				// Animates the object into the deck. Returns the animated component.
+				//
+				// Note: the onentry callback is not instantiated here, but rather in 
+				// the PwrDeck.handleAnimation_ private method to ensure that the
+				// callback is only executed after the entrance animation has finished.
 				animateIn: function() {
-					this.animateEl(this.entrance);	
-					return this;
+					return this.applyAnimation(this.entrance);	
 				},
 
-				// Animate the object out
-				// TODO: Validate animations
+				// Animate the object out and calls the onexit callback if it exists.
+				// Returns the animated component.
 				animateOut: function() {
 					if (this.onexit) {
-						new Function(this.onexit).call(this);
+
+						// Note: callback is bound to the element
+						new Function(this.onexit).call(this);  
 					}		
-					this.animateEl(this.exit);
-					return this;
+					return this.applyAnimation(this.exit);
 				},
 
-				// Animates an element
-				// Can be used as utility method through prototype
-				// e.g. PwrAnimated.prototype.animateEl.call($('#someEl'), "fadeIn")
-				animateEl: function(animationName) {
+				// Animates an element. Returns the animated element. Can be used as 
+				// utility method through prototype
+				// e.g. PwrAnimated.prototype.applyAnimation.call($('#someEl'), "fadeIn");
+				applyAnimation: function(animationName) {
 					if (!!window.ShadowDOMPolyfill || !(this instanceof PwrAnimated)) {
 						animateFallback_.call(this, animationName);
 					} else {
 						this.animationName = animationName;
 					}
+					return this;
 				}, 
 
+				// Removes any animations from the given element. Returns the element 
+				// on which it is called. Can be used as utility method through prototype
+				// e.g. PwrAnimated.prototype.removeAnimations.call($('#someEl'));
 				removeAnimations: function() {
-					this.animateEl('');
+					return this.applyAnimation('');
 				},
 
 				ready: function() {

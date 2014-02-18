@@ -2,9 +2,11 @@
 	<template></template>
 	<script type="text/javascript">
 		Polymer('pwr-base', {
-			// Returns all parent decks for a given element in the order of nearest
-			// to farthest ancestor deck
-			getParentDecks: function() {
+
+			// Returns parent decks for a given element in the order of nearest to
+			// farthest ancestor deck. If parameter is specified, returns parent deck
+			// at that index
+			getParentDecks: function(i) {
 				var parent 			= this.parentNode,
 						parentDecks = [];
 
@@ -14,7 +16,12 @@
 					}
 					parent = parent.parentNode;
 				}
-				return parentDecks;
+
+				if (!!parentDecks[i]) {
+					return parentDecks[i];
+				} else {
+					return parentDecks;
+				}
 			}
 		});
 	</script>

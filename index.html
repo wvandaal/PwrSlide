@@ -19,7 +19,7 @@
 </head>
 <body>
 	<script type="text/javascript">
-		document.addEventListener('slidechange', function(e) {console.log(e.detail);}, false);
+		// document.addEventListener('slidechange', function(e) {console.log(e.detail);}, false);
 	</script>
 
 	<pwr-deck id="pwr" unresolved>
@@ -36,14 +36,14 @@
 		</pwr-slide>
 
 		<!-- Slide 2 -->
-		<pwr-slide id="slide2" class="centered-column blue animated" exit="bounceOutUp">
+		<pwr-slide id="slide2" class="centered-column blue animated" exit="bounceOutUp" onentry="alert('hi');" onexit="alert('bye');">
 			<header>
 				<h1>Oh the possibilities!</h1>
 				<h2>Easily harness the power of HTML, CSS, and JavaScript</h2>
 			</header>
 			<section>
 				<ul>
-					<pwr-piece><li>Build complex and full-featured presentation decks using web technologies you know and love</li></pwr-piece>
+					<pwr-piece onentry="alert('hi');" onexit="alert('bye');" exit="fadeOut"><li>Build complex and full-featured presentation decks using web technologies you know and love</li></pwr-piece>
 					<pwr-piece><li>Harness the power of CSS to create your own custom animations</li></pwr-piece>
 					<pwr-piece>
 						<li>Fill your presentations with working HTML elements!</li>
@@ -162,7 +162,7 @@
 PwrAnimated = {
   animateIn: function() { ... },
   animateOut: function() { ... },
-  animateEl: function(animationName) { ... },
+  applyAnimation: function(animationName) { ... },
   removeAnimations: function() { ... }
 };
 							</pre>
@@ -173,7 +173,7 @@ PwrAnimated = {
 								<ul>
 									<li>animateIn( ): queue the target component's <em>entrance</em> animation</li>
 									<li>animateOut( ): queue the target component's <em>exit</em> animation</li>
-									<li>animateEl(<em>animationName</em>): applies the given <em>animationName</em> to the component</li>
+									<li>applyAnimation(<em>animationName</em>): applies the given <em>animationName</em> to the component</li>
 									<li>removeAnimations( ): removes any animations from the component</li>
 								</ul>
 							</section>
