@@ -1,7 +1,7 @@
 
 #PwrSlide
 
-Adios Powerpoint! PwrSlide is a compact yet powerful presentation interface built to help users emprace the future of interactive presentation software using the power of HTML5 and Web Components. A small set of intiutive custom tags allow you to build your presentations from the ground up and gives you the flexibility to embed complex web applications within your slideshow.
+Adios Powerpoint! PwrSlide is a compact yet powerful presentation interface built to help users embrace the future of interactive presentation software using the power of HTML5 and Web Components. A small set of intuitive custom tags allow you to build your presentations from the ground up and gives you the flexibility to embed complex web applications within your slide show.
 
 PwrSlide is an open source project implemented using the upcoming HTML5 standard of Web Components and the [Polymer.js library](http://polymer-project.org) by Google. 
 
@@ -25,7 +25,7 @@ document.querySelector('pwr-deck').curSlide.animateOut();
 document.querySelector('pwr-deck').current = 4;
 ```
 
-**Web Components** are an exciting new phase in web design and I would encourage those who are interested to watch [Eric Bidelman's presentation from Google I/O 2013](http://www.youtube.com/watch?v=fqULJBBEVQE) or to visit the [Polymer Project](http://polymer-project.org) website for futher information.
+**Web Components** are an exciting new phase in web design and I would encourage those who are interested to watch [Eric Bidelman's presentation from Google I/O 2013](http://www.youtube.com/watch?v=fqULJBBEVQE) or to visit the [Polymer Project](http://polymer-project.org) website for further information.
 
 ## Demo
 
@@ -124,11 +124,11 @@ In addition to the core components, PwrSlide includes an optional responsive the
 </pwr-deck>
 ```
 
-Check out the [Themeing Guide](./theme/README.md) for a detailed walkthrough.
+Check out the [Theming Guide](./theme/README.md) for a detailed walkthrough.
 
 ## Components
 ### PwrBase
-The PwrBase constructor is one of two super-classes implemented to provide utility methods to the PwrSlide core components (i.e. [PwrDeck](#pwrdeck), [PwrSlide](#pwrslide), and [PwrPiece](#pwrpiece)). All other elements extend the PwrBase constructor, so any methods or attributes added to this element will be usuable in all other PwrSlide components.
+The PwrBase constructor is one of two super-classes implemented to provide utility methods to the PwrSlide core components (i.e. [PwrDeck](#pwrdeck), [PwrSlide](#pwrslide), and [PwrPiece](#pwrpiece)). All other elements extend the PwrBase constructor, so any methods or attributes added to this element will be usable in all other PwrSlide components.
 
 #### Attributes
 *None*
@@ -202,7 +202,7 @@ The PwrDeck object serves as the main container for your presentation deck, keep
 #### Attributes
 Attribute  | Options                   | Default             | Description
 ---        | ---                       | ---                 | ---
-`unresolved`      | N/A                 | `""`               | This a polyfill attribute from the Polymer Library. It is **highly** recommended that you label your deck with the `unresolved` attribute to prevent a FOUC while the Web Components are loaded and registed in the DOM. The Polymer library will remove this attribute from the DOM at load time.
+`unresolved`      | N/A                 | `""`               | This a polyfill attribute from the Polymer Library. It is **highly** recommended that you label your deck with the `unresolved` attribute to prevent a FOUC while the Web Components are loaded and registered in the DOM. The Polymer library will remove this attribute from the DOM at load time.
 `current`      | *integer*                  | `1`               | Sets the value of the current slide being displayed by the deck. This attribute can be changed via JavaScript, causing the currently displayed slide to animate out and the new corresponding slide to be animated into the view. Setting this value in you HTML will dictate the starting slide in your presentation (useful for debugging specific slides).
 `enablecontrols`      | *boolean*        | `true`              | This attribute allows the user to manually enable/disable the keyboard controls for a given deck. **Note:** Disabling keyboard controls will also prevent PwrPieces from being animated on a keypress, it is recommended that the user add the [PwrPiece](#pwrpiece) `show` attribute to all pieces they wish to be displayed while key controls are disabled. 
 `slidenumbers`      | *boolean*        | `true`              | Used by the [Base Template](#basetemplate) to insert slide numbers into the presentation deck. By default, no slide numbers are displayed on the first slide of the presentation, however this can be changed by explicitly setting the `current` attribute to 1.
@@ -242,7 +242,7 @@ Method  | Arguments                   | Return             | Description
 `getSlide(slideNum)`   | *integer*     | `PwrSlide`            | Returns the slide in the current deck corresponding to its index in the `slides` NodeList.
 
 ##### The `slidechange` Event
-The `slidechange` event is fired when the currently displayed slide leaves the view and is replaced by another slide. The `event.details` contains an object representing the current state of the PwrDeck, namely the `slideIndex` and the `curSlide`. This event can be used to synchonize different decks, allowing you to queue presenter notes, trigger slide changes in other presentations, etc. 
+The `slidechange` event is fired when the currently displayed slide leaves the view and is replaced by another slide. The `event.details` contains an object representing the current state of the PwrDeck, namely the `slideIndex` and the `curSlide`. This event can be used to synchronize different decks, allowing you to queue presenter notes, trigger slide changes in other presentations, etc. 
 
 <br>
 ### PwrSlide
@@ -268,7 +268,7 @@ Attribute  | Options                   | Default             | Description
 Method  | Arguments                   | Return             | Description
 ---        | ---                       | ---                 | ---
 `animateNextPiece()`   | N/A            | `PwrPiece`               | Animates the next piece in or out when the `nextSlide()` keypress is triggered. Pieces with entrance animations are animated in in descending order (see [PwrPiece](#pwrpiece) for an example). Once all pieces have been animated in, each piece with a exit animation defined is animated out in descending order. This method returns the animated `PwrPiece`.
-`animatePiece(p, dir)`   | *integer* or *PwrPiece*, *string*   | `PwrPiece`          | This auxilary method can be used to animate a `PwrPiece` out of order. It takes an argument `p` which can be either the index of the piece in the `pieces` attribute or the `PwrPiece` itself, and an optional directional argument `dir` which specifies if you want the `PwrPiece` animated in or out (e.g. `animatePiece(2, "out")`). By default `dir="in"` unless the specified piece has already been animated in. This method returns the piece being animated. **Note:** if a piece is animated out of order, that animation will be skipped by the `animateNextPiece()` method.
+`animatePiece(p, dir)`   | *integer* or *PwrPiece*, *string*   | `PwrPiece`          | This auxiliary method can be used to animate a `PwrPiece` out of order. It takes an argument `p` which can be either the index of the piece in the `pieces` attribute or the `PwrPiece` itself, and an optional directional argument `dir` which specifies if you want the `PwrPiece` animated in or out (e.g. `animatePiece(2, "out")`). By default `dir="in"` unless the specified piece has already been animated in. This method returns the piece being animated. **Note:** if a piece is animated out of order, that animation will be skipped by the `animateNextPiece()` method.
 
 <br>
 ### PwrPiece
@@ -301,7 +301,7 @@ By default, PwrPieces are initially hidden from view when a new slide is visited
 
 Attribute  | Options                   | Default             | Description
 ---        | ---                       | ---                 | ---
-`show`      | N/A                      | `null`              | Since PwrPieces are hidden by default, add this attribute to a PwrPiece to prevent the default hidding action. This is useful for elements you wish to animate "out" but not "in". The `animateIn()` method of this class will add the `show` attribute to the given PwrPiece node and the `animateOut()` method will likewise remove it.
+`show`      | N/A                      | `null`              | Since PwrPieces are hidden by default, add this attribute to a PwrPiece to prevent the default hiding action. This is useful for elements you wish to animate "out" but not "in". The `animateIn()` method of this class will add the `show` attribute to the given PwrPiece node and the `animateOut()` method will likewise remove it.
 `entrance` | *string*                  | `"fadeIn"`          | **Inherited from [PwrAnimated](#pwranimated).** Specifies keyframe animation name for the slide entrance.
 `exit` | *string*                  | `""`          | **Inherited from [PwrAnimated](#pwranimated).** Specifies keyframe animation name for the slide exit.
 `onentry` | *string*                  | `""`          | **Inherited from [PwrAnimated](#pwranimated).** Entrance animation callback, this code is executed once the entrance animation is completed.
@@ -318,7 +318,7 @@ Method  | Arguments                   | Return             | Description
 
 ## Contributing
 
-This is my first forray into Web Components and I would gladly welcome your help! To contribute to this project simply,
+This is my first foray into Web Components and I would gladly welcome your help! To contribute to this project simply,
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`.

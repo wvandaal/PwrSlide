@@ -181,7 +181,7 @@ To include a snippet of custom code in your presentation, simply wrap the code i
 > **Note:** Notice that raw HTML must be properly escaped to ensure that it renders properly within the code block. Additionally, `prettyPrint()` parses all whitespace literally, so your code must begin at the leftmost column of your code to ensure proper indentation. As a final note, the user must also call `prettyPrint()` manually in order for the code to render in the highlighted format. This can be easily accomplished via an animation callback or immediately when the document loads.
 
 ### Custom Animations
-The `_animations.scss` file contains a number of additional animation keyframes from the Animate.css library. If you wish to add your own custom animations, you can define the corresponding keyframes here. Any animation defined here can be used by any instance of the PwrAnimated class or its descendents. 
+The `_animations.scss` file contains a number of additional animation keyframes from the Animate.css library. If you wish to add your own custom animations, you can define the corresponding keyframes here. Any animation defined here can be used by any instance of the PwrAnimated class or its descendants. 
 
 > **Note:** Unlike Animate.css, the `_animations.scss` file does not include any corresponding classes to apply these animations to a given element. The animation names must be specified in the `exit` and `entrance` attributes of the PwrAnimated class.
 
