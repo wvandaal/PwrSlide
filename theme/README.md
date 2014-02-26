@@ -136,6 +136,25 @@ The `.inner-deck` utility class is designed to allow the user to utilize one of 
 ### Blank Slide
 The `.blank` utility class has been added to allow the user to remove all default styles from the PwrSlide element, allowing you to create your own custom slide layouts if you so choose. Additionally, a `@blank-slide()` Sass mixin has also been provided in `_variables.scss` in the event that you choose to add a custom slide layout to the base theme and wish to remove the default PwrSlide styles.
 
+### A Couple Thoughts on Workflow
+For those looking to increase their productivity using PwrSlide, I would highly recommend using the [Emmet toolkit](http://emmet.io) to streamline your coding. For those unfamiliar with Emmet, it allows web developers to use CSS selectors in lieu of fully typing out HTML tags, you can check out their website for more details. 
+
+Once you have installed Emmet, you can add a couple of custom snippets to handle formatting the basic structure of various slide layouts, ensuring that you have the proper syntax for each layout. As an example, this addition to the `Emmet.sublime-settings` will give the following abbreviations:
+
+```
+"snippets": {
+  "html": {
+    "abbreviations": {
+      "ps:2col": "pwr-slide.two-column>(header>h1+h2)+(section)*2",
+      "ps.1col": "pwr-slide.centered-column>(header>h1+h2)+section",
+      "ps.title": "pwr-slide.title-slide>(header>h1+h2+h3)+aside.tip",
+      "ps.segue": "pwr-slide.segue-slide>header>h1+h2"
+    }
+  }
+},
+
+```
+
 ## Theme Extensions
 In addition to the [base theme](#basetheme), PwrSlide also includes a number of theme extensions to add color and style to your presentations. These extensions include:
 
