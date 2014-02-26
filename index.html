@@ -11,18 +11,9 @@
 	<!-- Importing PwrSlide Suite -->
  	<link rel="import" href="src/PwrSlide.html">
 
- 	<!-- Document styles / custom animations -->
-	<!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="sample-styles.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="src/animate-custom.css"> -->
-
 </head>
 <body>
-	<script type="text/javascript">
-		// document.addEventListener('slidechange', function(e) {console.log(e.detail);}, false);
-	</script>
-
-	<pwr-deck id="pwr" unresolved>
+	<pwr-deck unresolved>
 
 		<!-- Slide 1 -->
 		<pwr-slide id="slide1" class="title-slide red animated" entrance="bounceInDown" exit="fadeOutRightBig" onexit="prettyPrint();">
@@ -36,14 +27,14 @@
 		</pwr-slide>
 
 		<!-- Slide 2 -->
-		<pwr-slide id="slide2" class="centered-column blue animated" exit="bounceOutUp" onentry="alert('hi');" onexit="alert('bye');">
+		<pwr-slide id="slide2" class="centered-column blue animated" exit="bounceOutUp">
 			<header>
 				<h1>Oh the possibilities!</h1>
 				<h2>Easily harness the power of HTML, CSS, and JavaScript</h2>
 			</header>
 			<section>
 				<ul>
-					<pwr-piece onentry="alert('hi');" onexit="alert('bye');" exit="fadeOut"><li>Build complex and full-featured presentation decks using web technologies you know and love</li></pwr-piece>
+					<pwr-piece><li>Build complex and full-featured presentation decks using web technologies you know and love</li></pwr-piece>
 					<pwr-piece><li>Harness the power of CSS to create your own custom animations</li></pwr-piece>
 					<pwr-piece>
 						<li>Fill your presentations with working HTML elements!</li>
@@ -70,8 +61,6 @@
 			</header>
     	<pre class="prettyprint" data-lang="javascript">
 &lt;script type='text/javascript'&gt;
-  // Say hello world until the user starts questioning
-  // the meaningfulness of their existence.
   function helloWorld(world) {
     <b>for (var i = 42; --i &gt;= 0;) {
       alert('Hello ' + String(world));

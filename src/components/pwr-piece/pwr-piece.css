@@ -1,3 +1,9 @@
+/*
+ * PwrSlide - PwrPiece Styles
+ * Licensed under the MIT license
+ * Copyright (c) 2013 Willem van Daalen
+ */
+
 :host {
 	display: inherit;
 	opacity: 0;

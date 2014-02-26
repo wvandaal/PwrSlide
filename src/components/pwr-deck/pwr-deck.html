@@ -1,5 +1,11 @@
+<!--
+ * PwrSlide - PwrDeck.html
+ * Licensed under the MIT license
+ * Copyright (c) 2013 Willem van Daalen
+ -->
+
 <link rel="import" href="../pwr-base/pwr-base.html">
-<polymer-element name="pwr-deck" attributes="current" extends="pwr-base" constructor="PwrDeck" on-mouseover="{{keyControlsOn}}" on-mouseout="{{keyControlsOff}}">
+<polymer-element name="pwr-deck" attributes="current enablecontrols" extends="pwr-base" constructor="PwrDeck" on-mouseover="{{keyControlsOn}}" on-mouseout="{{keyControlsOff}}">
 	<template>
 		<link rel="stylesheet" type="text/css" href="pwr-deck.css">
 		<content id="slides" select="pwr-slide"></content>
@@ -158,9 +164,12 @@
 				// Holds the current PwrSlide object
 				curSlide: null,
 
-				// Enables/disables keyboard controls. By default this is toggled when
+				// Toggles keyboard controls. By default this is toggled when
 				// the mouse enters and leaves this PwrDeck
 				controlsActive: false,
+
+				// Manually enables/disables keyboard controls
+				enablecontrols: true,
 
 				publish: {
 
@@ -196,13 +205,17 @@
 				},
 
 				keyControlsOff: function(e) {
-					e.stopPropagation();
-					this.controlsActive = false;
+					if (this.enablecontrols) {
+						e.stopPropagation();
+						this.controlsActive = false;
+					}
 				},
 
 				keyControlsOn: function(e) {
-					e.stopPropagation();
-					this.controlsActive = true;
+					if (this.enablecontrols) {
+						e.stopPropagation();
+						this.controlsActive = true;
+					}
 				},
 
 				// Animates the next piece or increments this.current, causing a 

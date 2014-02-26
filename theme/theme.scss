@@ -1,3 +1,9 @@
+/*
+ * PwrSlide - Theme
+ * Licensed under the MIT license
+ * Copyright (c) 2013 Willem van Daalen
+ */
+
 @charset "UTF-8";
 
 // Base Template Styles
@@ -12,4 +18,5 @@
 @import 'resources/slide-themes/black';
 // @import 'resources/slide-themes/custom-theme'			// Edit this file and import it for your own custom theme
 
+// Custom Animation Keyframes
 @import 'resources/animations';

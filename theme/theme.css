@@ -1,3 +1,13 @@
+/*
+ * PwrSlide - Theme
+ * Licensed under the MIT license
+ * Copyright (c) 2013 Willem van Daalen
+ */
+/*
+ * PwrSlide - Base Theme
+ * Licensed under the MIT license
+ * Copyright (c) 2013 Willem van Daalen
+ */
 @media all and (max-width: 1200px), (max-height: 610px) {
   pwr-deck {
     font-size: .9375em; }
