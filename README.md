@@ -44,8 +44,8 @@ To begin using PwrSlide in your website, you must first clone this repository to
     <title>Your Project Title</title>
 
     <!-- Importing Polymer Polyfills -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.3/platform.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.3/polymer.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.4/platform.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.4/polymer.js"></script>
 
     <!-- Importing PwrSlide Suite -->
     <link rel="import" href="vendor/PwrSlide/src/PwrSlide.html">

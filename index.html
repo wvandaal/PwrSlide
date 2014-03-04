@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+<<<<<<< HEAD
 	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -33,6 +34,28 @@
   <!-- Opens links in new tabs -->
   <base target="_blank"></base>
 
+=======
+  <title>PwrSlide</title>
+
+  <!-- Template Fonts -->
+  <!-- Note: Template fonts have been moved outside of PwrSlide.html import file 
+       to improve load times and prevent FOUC -->
+  <link href='http://fonts.googleapis.com/css?family=Average+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+
+  <!-- Importing Web Component's Polyfill -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.4/platform.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.4/polymer.js"></script>
+
+  <!-- Importing PwrSlide Suite -->
+   <link rel="import" href="src/PwrSlide.html">
+
+  <!-- Opens links in new tabs -->
+  <base target="_blank"></base>
+
+>>>>>>> gh-pages
   <style type="text/css">
     pwr-slide > header {
       text-align: center;
@@ -43,7 +66,11 @@
   <pwr-deck unresolved onready="prettyPrint();">
 
     <!-- Slide 1 -->
+<<<<<<< HEAD
     <pwr-slide id="slide1" class="title-slide red animated" entrance="bounceInDown" exit="fadeOutRightBig" onexit="prettyPrint();">
+=======
+    <pwr-slide id="slide1" class="title-slide red animated" entrance="bounceInDown" exit="fadeOutRightBig">
+>>>>>>> gh-pages
       <header>
         <h1>PwrSlide!</h1>
         <h2>Full-Featured Presentation Web Components</h2>
@@ -368,7 +395,11 @@ PwrAnimated = {
       <section>
         <ul>
           <li><a href="http://github.com/wvandaal/PwrSlide">PwrSlide Github</a></li>
+<<<<<<< HEAD
           <li><a href="http://github.com/wvandaal/PwrSlide/tree/master/theme">PwrSlide Theming Guide</a></li>
+=======
+          <li><a href="http://github.com/wvandaal/PwrSlide">PwrSlide Theming Guide</a></li>
+>>>>>>> gh-pages
         </ul>
         <br>
         <p>PwrSlide is designed and maintained by Willem van Daalen</p>
