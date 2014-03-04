@@ -29,14 +29,14 @@ document.querySelector('pwr-deck').current = 4;
 
 ## Demo
 
-> [Check it live](http://customelements.github.io/boilerplate-element).
+> [Check it live](http://wcvd.me/PwrSlide).
 
 ## Usage
 
 ### Setup
 To begin using PwrSlide in your website, you must first clone this repository to your `/vendor/` directory and then include the following in your document head:
 
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,11 +62,11 @@ Exploring the `PwrSlide.html` file will reveal that the various components, styl
 ### PwrSlide Components
 PwrSlide was designed to be modular - you pick what you want and leave the rest behind. The core of the framework resides in the custom Web Components, which encapsulate the basic logic and styling of the presentation: 
 
-<u>**Super Classes:**</u>   
+**Super Classes:**
 - [PwrBase](#pwrbase)  
 - [PwrAnimated](#pwranimated)  
-<br>
-<u>**Core Components:**</u>  
+  
+**Core Components:**  
 - [PwrDeck](#pwrdeck)  
 - [PwrSlide](#pwrslide)  
 - [PwrPiece](#pwrpiece)  
@@ -75,7 +75,7 @@ PwrSlide was designed to be modular - you pick what you want and leave the rest 
 
 ### Basic Structure
 The fundamental structure of a PwrSlide presentation consists of a `<pwr-deck>` containing any number of `<pwr-slide>` tags, each with their own content. To animate content within a slide, simply wrap it in `<pwr-piece>` tags. 
-```
+```html
 <body>
     ...
     <pwr-deck unresolved>
@@ -99,7 +99,7 @@ The fundamental structure of a PwrSlide presentation consists of a `<pwr-deck>` 
 
 In addition to the core components, PwrSlide includes an optional responsive theme complete with several slide color themes. Add some style to your deck with ease:
 
-```
+```html
 <pwr-deck unresolved>
     <pwr-slide class="gold title-slide animated"> ... </pwr-slide>
     <pwr-slide class="red animated">        
@@ -159,7 +159,7 @@ Animation callbacks are one of the most powerful and useful features in PwrSlide
 
 Additionally, many of the utility methods provided by the PwrSlide super-classes have been designed with animation callbacks in mind. Because animation callbacks are bound, by default, to the object on which they are called, these utility methods can be used to manipulate several elements of your presentation at once:
 
-```
+```html
 <pwr-slide>
     <ul>
         <!-- Animates in the #inner-deck and sets the current slide to 3 -->
@@ -221,7 +221,7 @@ Attribute  | Options                   | Default             | Description
 
 By default, the deck will load the slides in order of their declaration in the deck, however this can be changed by by setting the `current` attribute to a different value and/or changing the order of the `slides` NodeList:
 
-```
+```html
 <!-- Begin on the third slide -->
 <pwr-deck unresolved current="3">
     <pwr-slide> ... </pwr-slide>
@@ -286,7 +286,7 @@ Method  | Arguments                   | Return             | Description
 
 The `<pwr-piece>` tag allows the user to easily denote elements they wish to be animated incrementally within the slide on a `nextSlide()` keypress (see [PwrSlide](#pwrslide)). PwrPieces are animated in descending order 'in' then 'out' (if specified). For example:
 
-```
+```html
 <pwr-slide>
     <pwr-piece id="piece1"> ... </pwr-piece>
     <pwr-piece id="piece2" exit="fadeOut"> ... </pwr-piece>
@@ -295,13 +295,13 @@ The `<pwr-piece>` tag allows the user to easily denote elements they wish to be 
 ```
 
 In the above slide, the PwrPieces will be animated in the following order:
-<ol>
-    <li>`#piece1` animated in</li>
-    <li>`#piece2` animated in</li>
-    <li>`#piece3` animated in</li>
-    <li>`#piece2` animated out</li>
-    <li>`#piece3` animated out</li>
-</ol>
+
+1) `#piece1` animated in
+2) `#piece2` animated in
+3) `#piece3` animated in
+4) `#piece2` animated out
+5) `#piece3` animated out
+
 
 By default, PwrPieces are initially hidden from view when a new slide is visited, however once they are animated in, they will remain visible unless the `show` attribute is explicitly removed (see below). 
 

@@ -29,7 +29,7 @@ In addition, the base theme also includes the following utility layouts to aid t
 
 
 ### Title Slide
-```
+```html
 <!-- Basic .title-slide Layout -->
 <pwr-slide class="title-slide">
   <header>
@@ -48,7 +48,7 @@ In addition to the standard in-slide animations included in the [Animated class]
 
 
 ### Centered Column
-```
+```html
 <!-- Basic .centered-column Layout -->
 <pwr-slide class="centered-column">
   <header>
@@ -64,7 +64,7 @@ In addition to the standard in-slide animations included in the [Animated class]
 The `.centered-column` layout is a standard single column layout which is centered horizontally and vertically using the (new) flexbox spec. It supports a two-level header and a single section of content with an optional header.
 
 ### Two Column
-```
+```html
 <!-- Basic .two-column Layout -->
 <pwr-slide class="two-column">
   <header>
@@ -86,7 +86,7 @@ The `.centered-column` layout is a standard single column layout which is center
 The `.two-column` layout is a standard two-column layout implemented using floats rather than flexbox for positioning due to cross-browser inconsistencies. It supports a two-level slide header and a two sections of content, each with an optional header.
 
 ### Segue Slide
-```
+```html
 <!-- Basic .segue-slide Layout -->
 <pwr-slide class="segue-slide">
   <header>
@@ -108,7 +108,7 @@ The `.inner-deck` utility class is designed to allow the user to utilize one of 
 
 **Example:**  
 
-```
+```html
 <pwr-slide class="two-column">
   ...
   <!-- Some bullets in the left column -->
@@ -141,7 +141,7 @@ For those looking to increase their productivity using PwrSlide, I would highly 
 
 Once you have installed Emmet, you can add a couple of custom snippets to handle formatting the basic structure of various slide layouts, ensuring that you have the proper syntax for each layout. As an example, this addition to the `Emmet.sublime-settings` will give the following abbreviations:
 
-```
+```html
 "snippets": {
   "html": {
     "abbreviations": {
@@ -152,7 +152,6 @@ Once you have installed Emmet, you can add a couple of custom snippets to handle
     }
   }
 },
-
 ```
 
 ## Theme Extensions
@@ -167,7 +166,7 @@ The [PrettyPrint library](http://google-code-prettify.googlecode.com/svn/trunk/R
 
 To include a snippet of custom code in your presentation, simply wrap the code in `<pre>` tags and specify the language in the `data-lang` attribute as shown:
 
-```
+```html
 <pre class="prettyprint" data-lang="javascript">
 &lt;script type='text/javascript'&gt;
   function helloWorld(world) {
