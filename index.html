@@ -1,73 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>PwrSlide</title>
+  <meta charset="UTF-8">
+  <title>PwrSlide</title>
 
-	<!-- Template Fonts -->
-	<!-- Note: Template fonts have been moved outside of PwrSlide.html import file 
-			 to improve load times and prevent FOUC -->
-	<link href='http://fonts.googleapis.com/css?family=Average+Sans' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+  <!-- Template Fonts -->
+  <!-- Note: Template fonts have been moved outside of PwrSlide.html import file 
+       to improve load times and prevent FOUC -->
+  <link href='http://fonts.googleapis.com/css?family=Average+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
 
-	<!-- Importing Web Component's Polyfill -->
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.3/platform.js"></script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.3/polymer.js"></script>
+  <!-- Importing Web Component's Polyfill -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.3/platform.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.3/polymer.js"></script>
 
-	<!-- Importing PwrSlide Suite -->
- 	<link rel="import" href="src/PwrSlide.html">
+  <!-- Importing PwrSlide Suite -->
+   <link rel="import" href="src/PwrSlide.html">
 
-	<!-- Opens links in new tabs -->
-	<base target="_blank"></base>
+  <!-- Opens links in new tabs -->
+  <base target="_blank"></base>
 
-	<style type="text/css">
-		pwr-slide > header {
-			text-align: center;
-		}
-	</style>
+  <style type="text/css">
+    pwr-slide > header {
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-	<pwr-deck unresolved onready="prettyPrint();">
+  <pwr-deck unresolved onready="prettyPrint();">
 
-		<!-- Slide 1 -->
-		<pwr-slide id="slide1" class="title-slide red animated" entrance="bounceInDown" exit="fadeOutRightBig" onexit="prettyPrint();">
-			<header>
-				<h1>PwrSlide!</h1>
-				<h2>Full-Featured Presentation Web Components</h2>
-				<h3>Built in Exquisite HTML with Polymer</h3>
-				<br>
-			</header>
-			<aside class="tip">(use the arrow keys or spacebar to navigate)</aside>
-		</pwr-slide>
+    <!-- Slide 1 -->
+    <pwr-slide id="slide1" class="title-slide red animated" entrance="bounceInDown" exit="fadeOutRightBig" onexit="prettyPrint();">
+      <header>
+        <h1>PwrSlide!</h1>
+        <h2>Full-Featured Presentation Web Components</h2>
+        <h3>Built in Exquisite HTML with Polymer</h3>
+        <br>
+      </header>
+      <aside class="tip">(use the arrow keys or spacebar to navigate)</aside>
+    </pwr-slide>
 
-		<!-- Slide 2 -->
-		<pwr-slide id="slide2" class="centered-column blue animated" exit="bounceOutUp">
-			<header>
-				<h1>Oh the possibilities!</h1>
-				<h2>Easily harness the power of HTML, CSS, and JavaScript</h2>
-			</header>
-			<section>
-				<ul>
-					<pwr-piece><li>PwrSlide allows you to build complex and full-featured presentation decks using web technologies you know and love</li></pwr-piece>
-					<pwr-piece><li>Harness the power of CSS to create your own custom animations</li></pwr-piece>
-					<pwr-piece>
-						<li>Fill your presentations with working HTML elements!</li>
-						<br>
-						<iframe width="100%" height="150" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/129682092&amp;auto_play=false&amp;hide_related=false&amp;visual=true"></iframe>
-					</pwr-piece>
-				</ul>
-			</section>
-		</pwr-slide>
+    <!-- Slide 2 -->
+    <pwr-slide id="slide2" class="centered-column blue animated" exit="bounceOutUp">
+      <header>
+        <h1>Oh the possibilities!</h1>
+        <h2>Easily harness the power of HTML, CSS, and JavaScript</h2>
+      </header>
+      <section>
+        <ul>
+          <pwr-piece><li>PwrSlide allows you to build complex and full-featured presentation decks using web technologies you know and love</li></pwr-piece>
+          <pwr-piece><li>Harness the power of CSS to create your own custom animations</li></pwr-piece>
+          <pwr-piece>
+            <li>Fill your presentations with working HTML elements!</li>
+            <br>
+            <iframe width="100%" height="150" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/129682092&amp;auto_play=false&amp;hide_related=false&amp;visual=true"></iframe>
+          </pwr-piece>
+        </ul>
+      </section>
+    </pwr-slide>
 
-		<!-- Slide 3 -->
-		<pwr-slide class="centered-column green animated" exit="bounceOutUp">
-			<header>
-				<h1>Show the World Your Code</h1>
-				<h2>Ideal for Technical Applications</h2>
-			</header>
-    	<pre class="prettyprint" data-lang="javascript">
+    <!-- Slide 3 -->
+    <pwr-slide class="centered-column green animated" exit="bounceOutUp">
+      <header>
+        <h1>Show the World Your Code</h1>
+        <h2>Ideal for Technical Applications</h2>
+      </header>
+      <pre class="prettyprint" data-lang="javascript">
 &lt;script type='text/javascript'&gt;
   function helloWorld(world) {
     <b>for (var i = 42; --i &gt;= 0;) {
@@ -75,37 +75,37 @@
     }</b>
   }
 &lt;/script&gt;
-    	</pre>
-			<section>
-				<ul>
-					<pwr-piece>
-						<li>PwrSlide was built with developers in mind and ships with a number of tools aimed at technical presentations</li>
-					</pwr-piece>
-					<pwr-piece>
-						<li>The PwrSlide theme ships with Google prettyPrint for easy code highlighting</li>
-					</pwr-piece>
-					<pwr-piece>
-						<li>Best of all, because PwrSlide was designed to be modular, it's easy to include/exclude features as needed</li>
-					</pwr-piece>
-				</ul>
-			</section>
-		</pwr-slide>
+      </pre>
+      <section>
+        <ul>
+          <pwr-piece>
+            <li>PwrSlide was built with developers in mind and ships with a number of tools aimed at technical presentations</li>
+          </pwr-piece>
+          <pwr-piece>
+            <li>The PwrSlide theme ships with Google prettyPrint for easy code highlighting</li>
+          </pwr-piece>
+          <pwr-piece>
+            <li>Best of all, because PwrSlide was designed to be modular, it's easy to include/exclude features as needed</li>
+          </pwr-piece>
+        </ul>
+      </section>
+    </pwr-slide>
 
-		<!-- Slide 4 -->
-		<pwr-slide class="segue-slide salmon animated" exit="rotateOutUpRight">
-			<header>
-				<h1>Built with Web Components</h1>
-				<h2>Style and Functionality Encapsulation for Free</h2>
-			</header>
-		</pwr-slide>
+    <!-- Slide 4 -->
+    <pwr-slide class="segue-slide salmon animated" exit="rotateOutUpRight">
+      <header>
+        <h1>Built with Web Components</h1>
+        <h2>Style and Functionality Encapsulation for Free</h2>
+      </header>
+    </pwr-slide>
 
-		<!-- Slide 5 -->
-		<pwr-slide class="gold animated centered-column">
-			<header>
-				<h1>Why Web Components?</h1>
-				<h2>What, why, and (most importantly) how?</h2>
-			</header>
-			<pre class="prettyprint" data-lang="html">
+    <!-- Slide 5 -->
+    <pwr-slide class="gold animated centered-column">
+      <header>
+        <h1>Why Web Components?</h1>
+        <h2>What, why, and (most importantly) how?</h2>
+      </header>
+      <pre class="prettyprint" data-lang="html">
 &lt;!-- Sample PwrSlide presentation code -->
 &lt;pwr-deck>
   &lt;pwr-slide>
@@ -115,182 +115,182 @@
     &lt;/ul>
   &lt;/pwr-slide>
 &lt;/pwr-deck>
-			</pre>
-			<section>
-				<ul>
-					<pwr-piece>
-						<li>Web Components allow for the creation of custom HTML tags with unique styles and functionality (imagine the ability to create complex tags like the &lt;video> tag!)</li>
-					</pwr-piece>
-					<pwr-piece>
-						<li>Using web components allows PwrSlide to embrace the declarative power of HTML, making your presentations easier to read and create</li>
-					</pwr-piece>
-					<pwr-piece>
-						<li>Instead of ugly &lt;div> soup, you get clean, declarative code</li>
-					</pwr-piece>
-					<pwr-piece>
-						<li>Check out the <a href="polymer-project.org">Polymer Project</a> for more information about this exciting new spec</li>
-					</pwr-piece>
-				</ul>
-			</section>
-		</pwr-slide>
+      </pre>
+      <section>
+        <ul>
+          <pwr-piece>
+            <li>Web Components allow for the creation of custom HTML tags with unique styles and functionality (imagine the ability to create complex tags like the &lt;video> tag!)</li>
+          </pwr-piece>
+          <pwr-piece>
+            <li>Using web components allows PwrSlide to embrace the declarative power of HTML, making your presentations easier to read and create</li>
+          </pwr-piece>
+          <pwr-piece>
+            <li>Instead of ugly &lt;div> soup, you get clean, declarative code</li>
+          </pwr-piece>
+          <pwr-piece>
+            <li>Check out the <a href="polymer-project.org">Polymer Project</a> for more information about this exciting new spec</li>
+          </pwr-piece>
+        </ul>
+      </section>
+    </pwr-slide>
 
-		<!-- Slide 6 -->
-		<pwr-slide class="red two-column">
-			<header>
-				<h1>So What Does This Mean for You?</h1>
-				<h2>The Pros and Cons of Using Web Components and PwrSlides</h2>
-			</header>
-			<section>
-				<header>Pros</header>
-				<ul>
-					<pwr-piece>
-						<li>It's declarative: no more confusing code that's impossible to read and maintain</li>
-					</pwr-piece>
-					<pwr-piece>
-						<li>Style and function encapsulation make previously difficult or impossible tasks easy (imagine embedding a presentation inside a presentation - see slide 8)</li>
-					</pwr-piece>
-					<pwr-piece>
-						<li>It's modular: another benefit of encapsulation, now you can start building presentations within existing apps without worrying about cross-contamination of JS</li>
-					</pwr-piece>
-					<pwr-piece>
-						<li>Most importantly, it's Pwrful
-							<ul>
-								<li>
-									Using Polymer and JS encapsulation allows for nearly limitless extensibility and customization by enabling custom callbacks, animations, and nesting that previously would have been incredibly difficult and/or convoluted
-								</li>
-							</ul>
-						</li>
-					</pwr-piece>
-				</ul>
-			</section>
-			<section>
-				<header>Cons</header>
-				<ul>
-					<pwr-piece>
-						<li>PwrSlide is built using the developing web components spec and the Polymer polyfill library, both of which are currently in development
-							<ul>
-								<li>Ergo, as with anything under active development, this project may have its fair share of bugs (I welcome your input to make PwrSlide better!)</li>
-							</ul>
-						</li>
-					</pwr-piece>
-					<pwr-piece>
-						<li>Because PwrSlide uses Shadow DOM, HTML Imports, and other developing specs, only the evergreen browsers are supported (and even then, I would recommend that you stay away from IE, for your own sake)</li>
-					</pwr-piece>
-					<pwr-piece>
-						<li>Due to the fact that many features required by web components must be polyfilled, even in modern browsers, some of PwrSlide's features may detriment page load times</li>
-					</pwr-piece>
-				</ul>
-			</section>
-		</pwr-slide>
+    <!-- Slide 6 -->
+    <pwr-slide class="red two-column">
+      <header>
+        <h1>So What Does This Mean for You?</h1>
+        <h2>The Pros and Cons of Using Web Components and PwrSlides</h2>
+      </header>
+      <section>
+        <header>Pros</header>
+        <ul>
+          <pwr-piece>
+            <li>It's declarative: no more confusing code that's impossible to read and maintain</li>
+          </pwr-piece>
+          <pwr-piece>
+            <li>Style and function encapsulation make previously difficult or impossible tasks easy (imagine embedding a presentation inside a presentation - see slide 8)</li>
+          </pwr-piece>
+          <pwr-piece>
+            <li>It's modular: another benefit of encapsulation, now you can start building presentations within existing apps without worrying about cross-contamination of JS</li>
+          </pwr-piece>
+          <pwr-piece>
+            <li>Most importantly, it's Pwrful
+              <ul>
+                <li>
+                  Using Polymer and JS encapsulation allows for nearly limitless extensibility and customization by enabling custom callbacks, animations, and nesting that previously would have been incredibly difficult and/or convoluted
+                </li>
+              </ul>
+            </li>
+          </pwr-piece>
+        </ul>
+      </section>
+      <section>
+        <header>Cons</header>
+        <ul>
+          <pwr-piece>
+            <li>PwrSlide is built using the developing web components spec and the Polymer polyfill library, both of which are currently in development
+              <ul>
+                <li>Ergo, as with anything under active development, this project may have its fair share of bugs (I welcome your input to make PwrSlide better!)</li>
+              </ul>
+            </li>
+          </pwr-piece>
+          <pwr-piece>
+            <li>Because PwrSlide uses Shadow DOM, HTML Imports, and other developing specs, only the evergreen browsers are supported (and even then, I would recommend that you stay away from IE, for your own sake)</li>
+          </pwr-piece>
+          <pwr-piece>
+            <li>Due to the fact that many features required by web components must be polyfilled, even in modern browsers, some of PwrSlide's features may detriment page load times</li>
+          </pwr-piece>
+        </ul>
+      </section>
+    </pwr-slide>
 
-		<!-- Slide 7 -->
-		<pwr-slide class="animated segue-slide">
-			<header>
-				<h1>PwrSlide Features!</h1>
-				<h2>And Now for Some Good Stuff</h2>
-			</header>
-		</pwr-slide>
+    <!-- Slide 7 -->
+    <pwr-slide class="animated segue-slide">
+      <header>
+        <h1>PwrSlide Features!</h1>
+        <h2>And Now for Some Good Stuff</h2>
+      </header>
+    </pwr-slide>
 
-		<!-- Slide 8 -->
-		<pwr-slide class="two-column black animated">
-			<header>
-				<h1>Tons of Animations!</h1>
-				<h2>Built with a Powerful Animation Framework</h2>
-			</header>
-			<section>
-				<ul>
-					<pwr-piece entrance="bounceIn">
-						<li>
-							PwrSlide.html ships with over 50 animations from <a href="https://daneden.me/animate/" target="_blank">Animate.css</a>
-						</li>
-					</pwr-piece>
-					<pwr-piece entrance="fadeInLeftBig" onentry="this.parentSlide().animatePiece(document.querySelector('#minideck-piece'))">
-						<li>PwrSlides and PwrPieces descend from the PwrAnimated Object
-							<ul>
-								<pwr-piece entrance="bounceInDown" onentry="document.querySelector('#animations-minideck').current=1;">
-									<li>Custom attributes give fine-grain control over each animated component of your presentation</li>
-								</pwr-piece>
-								<pwr-piece entrance="rotateIn"onentry="document.querySelector('#animations-minideck').current=2;">
-									<li>Animated components have access to several powerful animation methods</li>
-								</pwr-piece>
-							</ul>
-						</li>
-					</pwr-piece>
+    <!-- Slide 8 -->
+    <pwr-slide class="two-column black animated">
+      <header>
+        <h1>Tons of Animations!</h1>
+        <h2>Built with a Powerful Animation Framework</h2>
+      </header>
+      <section>
+        <ul>
+          <pwr-piece entrance="bounceIn">
+            <li>
+              PwrSlide.html ships with over 50 animations from <a href="https://daneden.me/animate/" target="_blank">Animate.css</a>
+            </li>
+          </pwr-piece>
+          <pwr-piece entrance="fadeInLeftBig" onentry="this.parentSlide().animatePiece(document.querySelector('#minideck-piece'))">
+            <li>PwrSlides and PwrPieces descend from the PwrAnimated Object
+              <ul>
+                <pwr-piece entrance="bounceInDown" onentry="document.querySelector('#animations-minideck').current=1;">
+                  <li>Custom attributes give fine-grain control over each animated component of your presentation</li>
+                </pwr-piece>
+                <pwr-piece entrance="rotateIn"onentry="document.querySelector('#animations-minideck').current=2;">
+                  <li>Animated components have access to several powerful animation methods</li>
+                </pwr-piece>
+              </ul>
+            </li>
+          </pwr-piece>
 
-					<pwr-piece entrance="rotateInUpLeft" onentry="document.querySelector('#animations-minideck').current=2;">
-						<li>Wrap any regular HTML element in &lt;pwr-piece> tags for them to become animated
-							<ul>
-								<pwr-piece entrance="slideInRight"><li>Tags are animated by the slide in descending order</li></pwr-piece>
-								<pwr-piece><li>Add the 'show' attribute to the component to show its contents initially</li></pwr-piece>
-							</ul>
-						</li>
-					</pwr-piece>
-				</ul>
-			</section>
-			<section>
-				<pwr-piece id="minideck-piece">
+          <pwr-piece entrance="rotateInUpLeft" onentry="document.querySelector('#animations-minideck').current=2;">
+            <li>Wrap any regular HTML element in &lt;pwr-piece> tags for them to become animated
+              <ul>
+                <pwr-piece entrance="slideInRight"><li>Tags are animated by the slide in descending order</li></pwr-piece>
+                <pwr-piece><li>Add the 'show' attribute to the component to show its contents initially</li></pwr-piece>
+              </ul>
+            </li>
+          </pwr-piece>
+        </ul>
+      </section>
+      <section>
+        <pwr-piece id="minideck-piece">
 
-					<!-- Inner Deck -->
-					<pwr-deck entrance="rollIn" id="animations-minideck" class="inner-deck" slidenumbers="false">
-						<pwr-slide>
-							<header>
-								<h2>PwrAnimated</h2>
-							</header>
-							<pre class="prettyprint" data-lang="html">
+          <!-- Inner Deck -->
+          <pwr-deck entrance="rollIn" id="animations-minideck" class="inner-deck" slidenumbers="false">
+            <pwr-slide>
+              <header>
+                <h2>PwrAnimated</h2>
+              </header>
+              <pre class="prettyprint" data-lang="html">
 &lt;pwr-animated entrance exit onentry onexit>
-							</pre>
-							<section>
-								<header>
-									Attributes
-								</header>
-								<ul>
-									<li>entrance: specify the entrance animation name</li>
-									<li>exit: specify the exit animation name</li>
-									<li>onentry: optional callback executed after entrance animation</li>
-									<li>onexit: optional callback executed before exit animation
-										<ul>
-											<li>NOTE: callbacks are bound by default to the tag on which they are called</li>
-										</ul>
-									</li>
-								</ul>
-							</section>
-						</pwr-slide>
-						<pwr-slide>
-							<header>
-								<h2>PwrAnimated</h2>
-							</header>
-							<pre class="prettyprint" data-lang="javascript">
+              </pre>
+              <section>
+                <header>
+                  Attributes
+                </header>
+                <ul>
+                  <li>entrance: specify the entrance animation name</li>
+                  <li>exit: specify the exit animation name</li>
+                  <li>onentry: optional callback executed after entrance animation</li>
+                  <li>onexit: optional callback executed before exit animation
+                    <ul>
+                      <li>NOTE: callbacks are bound by default to the tag on which they are called</li>
+                    </ul>
+                  </li>
+                </ul>
+              </section>
+            </pwr-slide>
+            <pwr-slide>
+              <header>
+                <h2>PwrAnimated</h2>
+              </header>
+              <pre class="prettyprint" data-lang="javascript">
 PwrAnimated = {
   animateIn: function() { ... },
   animateOut: function() { ... },
   applyAnimation: function(animationName) { ... },
   removeAnimations: function() { ... }
 };
-							</pre>
-							<section>
-								<header>
-									Methods
-								</header>
-								<ul>
-									<li>animateIn( ): queue the target component's <em>entrance</em> animation</li>
-									<li>animateOut( ): queue the target component's <em>exit</em> animation</li>
-									<li>applyAnimation(<em>animationName</em>): applies the given <em>animationName</em> to the component</li>
-									<li>removeAnimations( ): removes any animations from the component</li>
-								</ul>
-							</section>
-						</pwr-slide>					
-					</pwr-deck>
-				</pwr-piece>
-			</section>
-		</pwr-slide>
+              </pre>
+              <section>
+                <header>
+                  Methods
+                </header>
+                <ul>
+                  <li>animateIn( ): queue the target component's <em>entrance</em> animation</li>
+                  <li>animateOut( ): queue the target component's <em>exit</em> animation</li>
+                  <li>applyAnimation(<em>animationName</em>): applies the given <em>animationName</em> to the component</li>
+                  <li>removeAnimations( ): removes any animations from the component</li>
+                </ul>
+              </section>
+            </pwr-slide>          
+          </pwr-deck>
+        </pwr-piece>
+      </section>
+    </pwr-slide>
 
-		<!-- Slide 9 -->
-		<pwr-slide class="green animated centered-column">
-			<header>
-				<h1>Animation Callbacks</h1>
-				<h2>Every Transition, Do Something Cool</h2>
-			</header>
-			<pre class="prettyprint" data-lang="html">
+    <!-- Slide 9 -->
+    <pwr-slide class="green animated centered-column">
+      <header>
+        <h1>Animation Callbacks</h1>
+        <h2>Every Transition, Do Something Cool</h2>
+      </header>
+      <pre class="prettyprint" data-lang="html">
 &lt;!-- All kinds of callbacks! -->
 &lt;pwr-slide onentry="alert('Hi! I am an entrance callback on this slide');">
   &lt;ul>
@@ -299,33 +299,33 @@ PwrAnimated = {
     &lt;/pwr-piece>
   &lt;/ul>
 &lt;/pwr-slide>
-			</pre>
-			<section>
-				<ul>
-					<pwr-piece>
-						<li>Animation callbacks allow you to perform complex manipulations of your presentation as elements enter and leave the view</li>
-					</pwr-piece>
-					<pwr-piece>
-						<li>Callbacks are handled similarly to the familiar "onclick" HTML attribute; just specify your code in quotes and let PwrSlide handle the rest</li>
-					</pwr-piece>
-					<pwr-piece>
-						<li>Allow for the presentation of time-sensitive code, giving you real-time interactivity within your presentation</li>
-					</pwr-piece>
-					<pwr-piece>
-						<li>For an example of animation callbacks, check out the color-changing function on the next slide</li>
-					</pwr-piece>
-				</ul>
-			</section>
-		</pwr-slide>
+      </pre>
+      <section>
+        <ul>
+          <pwr-piece>
+            <li>Animation callbacks allow you to perform complex manipulations of your presentation as elements enter and leave the view</li>
+          </pwr-piece>
+          <pwr-piece>
+            <li>Callbacks are handled similarly to the familiar "onclick" HTML attribute; just specify your code in quotes and let PwrSlide handle the rest</li>
+          </pwr-piece>
+          <pwr-piece>
+            <li>Allow for the presentation of time-sensitive code, giving you real-time interactivity within your presentation</li>
+          </pwr-piece>
+          <pwr-piece>
+            <li>For an example of animation callbacks, check out the color-changing function on the next slide</li>
+          </pwr-piece>
+        </ul>
+      </section>
+    </pwr-slide>
 
-		<!-- Slide 10 -->
-		<pwr-slide onentry="this.style.transition='all 1s'; this.style.webkitTransition='all 1s'; timeout=window.setInterval(function(){rotateSlideColors();}, 3000);" onexit="window.clearInterval(timeout);" class="centered-column">
-			<header>
-				<h1>Custom Color Themes</h1>
-				<h2>Add A Splash of Color to Your Presentations</h2>
-			</header>
-			<br>
-			<pre class="prettyprint" data-lang="javascript">
+    <!-- Slide 10 -->
+    <pwr-slide onentry="this.style.transition='all 1s'; this.style.webkitTransition='all 1s'; timeout=window.setInterval(function(){rotateSlideColors();}, 3000);" onexit="window.clearInterval(timeout);" class="centered-column">
+      <header>
+        <h1>Custom Color Themes</h1>
+        <h2>Add A Splash of Color to Your Presentations</h2>
+      </header>
+      <br>
+      <pre class="prettyprint" data-lang="javascript">
 &lt;script type='text/javascript'&gt;
   function helloWorld(world) {
     <b>for (var i = 42; --i &gt;= 0;) {
@@ -333,59 +333,59 @@ PwrAnimated = {
     }</b>
   }
 &lt;/script&gt;
-    	</pre>
-			<section>
-				<ul>
-					<li>PwrSlide also ships with six custom color themes to allow you to add some color to your slides
-						<ul>
-							<li>Currently supports "red", "blue", "green", "gold", "salmon", and "black" themes</li>
-						</ul>
-					</li>
-					<li>Simply add the corresponsing color class to a given slide to apply the color theme</li>
-					<li>Color themes have all been written in Sass using declarative variables for attributes, allowing for easy customization</li>
-					<li>Also supports prettyPrint code blocks</li>
-				</ul>
-			</section>
-		</pwr-slide>
+      </pre>
+      <section>
+        <ul>
+          <li>PwrSlide also ships with six custom color themes to allow you to add some color to your slides
+            <ul>
+              <li>Currently supports "red", "blue", "green", "gold", "salmon", and "black" themes</li>
+            </ul>
+          </li>
+          <li>Simply add the corresponsing color class to a given slide to apply the color theme</li>
+          <li>Color themes have all been written in Sass using declarative variables for attributes, allowing for easy customization</li>
+          <li>Also supports prettyPrint code blocks</li>
+        </ul>
+      </section>
+    </pwr-slide>
 
-		<!-- Slide 11 -->
-		<pwr-slide class="red animated centered-column">
-			<header>
-				<h1>Thank You!</h1>
-				<h2>For More Information, Check Out the Links Below</h2>
-			</header>
-			<section>
-				<ul>
-					<li><a href="http://github.com/wvandaal/PwrSlide">PwrSlide Github</a></li>
-					<li><a href="http://github.com/wvandaal/PwrSlide">PwrSlide Theming Guide</a></li>
-				</ul>
-				<br>
-				<p>PwrSlide is designed and maintained by Willem van Daalen</p>
-				<p>Check out my <a href="http://wcvd.me">portfolio</a></p>
-				<p>Visit my <a href="http://github.com/wvandaal">Github</a></p>
-				<p>Or contact me at <a href="mailto:willem@wcvd.me">willem@wcvd.me</a></p>
-			</section>
-		</pwr-slide>
-	</pwr-deck>
+    <!-- Slide 11 -->
+    <pwr-slide class="red animated centered-column">
+      <header>
+        <h1>Thank You!</h1>
+        <h2>For More Information, Check Out the Links Below</h2>
+      </header>
+      <section>
+        <ul>
+          <li><a href="http://github.com/wvandaal/PwrSlide">PwrSlide Github</a></li>
+          <li><a href="http://github.com/wvandaal/PwrSlide">PwrSlide Theming Guide</a></li>
+        </ul>
+        <br>
+        <p>PwrSlide is designed and maintained by Willem van Daalen</p>
+        <p>Check out my <a href="http://wcvd.me">portfolio</a></p>
+        <p>Visit my <a href="http://github.com/wvandaal">Github</a></p>
+        <p>Or contact me at <a href="mailto:willem@wcvd.me">willem@wcvd.me</a></p>
+      </section>
+    </pwr-slide>
+  </pwr-deck>
 
-	<!-- Presentation-specific code, not part of PwrSlide -->
-	<script type="text/javascript">
-		// Custom function to rotate colors of the current slide
-		function rotateSlideColors() {
-			var colors 				= ['red', 'green', 'blue', 'gold', 'black', 'salmon'],
-					randIdx 			= Math.floor(Math.random() * 6),
-					slideClasses 	= document.querySelector('pwr-deck').curSlide.classList;
+  <!-- Presentation-specific code, not part of PwrSlide -->
+  <script type="text/javascript">
+    // Custom function to rotate colors of the current slide
+    function rotateSlideColors() {
+      var colors         = ['red', 'green', 'blue', 'gold', 'black', 'salmon'],
+          randIdx       = Math.floor(Math.random() * 6),
+          slideClasses   = document.querySelector('pwr-deck').curSlide.classList;
 
-			while (slideClasses.contains(colors[randIdx])) {
-				randIdx = Math.floor(Math.random() * 6);
-			}
+      while (slideClasses.contains(colors[randIdx])) {
+        randIdx = Math.floor(Math.random() * 6);
+      }
 
-			colors.forEach(function(color) {
-				slideClasses.remove(color);
-			});
+      colors.forEach(function(color) {
+        slideClasses.remove(color);
+      });
 
-			slideClasses.add(colors[randIdx]);
-		}
-	</script>
+      slideClasses.add(colors[randIdx]);
+    }
+  </script>
 </body>
 </html>
