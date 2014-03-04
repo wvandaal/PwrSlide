@@ -193,6 +193,14 @@
 
 			addEventListeners_.call(this);
 			updateSlides_.call(this);
+
+			if (!!this.onready) {
+				try {
+					new Function(this.onready)();
+				} catch(e) {
+					console.log("onready callback error: " + e);
+				}
+			}
 		},
 
 		keyControlsOff: function(e) {

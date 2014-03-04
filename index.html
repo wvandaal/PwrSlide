@@ -29,7 +29,7 @@
 	</style>
 </head>
 <body>
-	<pwr-deck unresolved current="11">
+	<pwr-deck unresolved current="11" onready="prettyPrint();">
 
 		<!-- Slide 1 -->
 		<pwr-slide id="slide1" class="title-slide red animated" entrance="bounceInDown" exit="fadeOutRightBig" onexit="prettyPrint();">
@@ -367,8 +367,6 @@ PwrAnimated = {
 
 	<!-- Presentation-specific code, not part of PwrSlide -->
 	<script type="text/javascript">
-		// var timeout = null;
-
 		// Custom function to rotate colors of the current slide
 		function rotateSlideColors() {
 			var colors 				= ['red', 'green', 'blue', 'gold', 'black', 'salmon'],

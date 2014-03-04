@@ -5,7 +5,7 @@
  -->
  
 <link rel="import" href="../pwr-base/pwr-base.html">
-<polymer-element name="pwr-deck" attributes="current enablecontrols" extends="pwr-base" constructor="PwrDeck" on-mouseover="{{keyControlsOn}}" on-mouseout="{{keyControlsOff}}">
+<polymer-element name="pwr-deck" attributes="current enablecontrols onready" extends="pwr-base" constructor="PwrDeck" on-mouseover="{{keyControlsOn}}" on-mouseout="{{keyControlsOff}}">
 	<template>
 		<link rel="stylesheet" type="text/css" href="pwr-deck.css">
 		<content id="slides" select="pwr-slide"></content>
