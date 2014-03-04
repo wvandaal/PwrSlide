@@ -152,12 +152,9 @@
     };
 
   Polymer('pwr-deck', {
-<<<<<<< HEAD
-=======
     // Indicates the current slide number where 1 is the first slide in the
     // pwr-deck
     current: 1,
->>>>>>> gh-pages
 
     // Holds the current PwrSlide object
     curSlide: null,
@@ -171,13 +168,6 @@
 
     publish: {
 
-<<<<<<< HEAD
-    	// Indicates the current slide number where 1 is the first slide in the
-	    // pwr-deck
-	    current: 1,
-
-=======
->>>>>>> gh-pages
       // The total number of slides in the deck. Used for slide numbers in 
       // the base theme
       totalSlides: 0
