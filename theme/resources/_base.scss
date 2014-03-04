@@ -5,270 +5,270 @@
 
 /* Base styles */
 html, body {
-	width: 100%;
-	height: 100%;
-	@include font-smoothing(antialiased);
+  width: 100%;
+  height: 100%;
+  @include font-smoothing(antialiased);
 }
 
 /* Base Deck Styles */
 pwr-deck {
-	width: 100%;
-	height: 100%;
-	background: $deckBG;
-	@include transition(font 0.25s ease);
-	&[current]:not([slidenumbers='false']):after {
-		display: block;
-		position: relative;
-		bottom: 1.5em;
-		text-align: center;
-		font-family: $number-font;
-		font-size: 1.25em;
-		height: 1.25em;
-		margin: 0 auto;
-		opacity: .4;
-		content: attr(current) " / " attr(totalslides);
-	}
+  width: 100%;
+  height: 100%;
+  background: $deckBG;
+  @include transition(font 0.25s ease);
+  &[current]:not([slidenumbers='false']):after {
+    display: block;
+    position: relative;
+    bottom: 1.5em;
+    text-align: center;
+    font-family: $number-font;
+    font-size: 1.25em;
+    height: 1.25em;
+    margin: 0 auto;
+    opacity: .4;
+    content: attr(current) " / " attr(totalslides);
+  }
 }
 
 /* Inner Deck Styles*/
 pwr-deck.inner-deck {
-	@include box-sizing(border-box);
-	width: 100%;
-	height: 100%;
-	background: $inner-deckBG;
-	font-size: .9em;
-	border: $inner-deck-border;
-	border-radius: .625em;
-	margin: auto;
-	> pwr-slide {
-		color: $inner-deck-text-color;
-		@include flex-direction(column);
-		padding: 1em;
-		> header {
-			margin-bottom: .625em;
-			text-align: center;
-			h1 {
-				font-size: 1.85em;
-				color: $inner-deck-heading-color;
-			}
-			h2, h3, h4, h5, h6 {
-				color: $inner-deck-subheading-color;
-			}
-		}
-		> section {
-			> header {
-				color: $inner-deck-section-header-color;
-				border-bottom: $inner-deck-section-header-border;	
-			}
-		}
-		pre {
-			background: $inner-deck-preBG;
-			&[data-lang]:after {
-				background-color: $inner-deck-pre-label-color;
-			}
-		}
-	}
+  @include box-sizing(border-box);
+  width: 100%;
+  height: 100%;
+  background: $inner-deckBG;
+  font-size: .9em;
+  border: $inner-deck-border;
+  border-radius: .625em;
+  margin: auto;
+  > pwr-slide {
+    color: $inner-deck-text-color;
+    @include flex-direction(column);
+    padding: 1em;
+    > header {
+      margin-bottom: .625em;
+      text-align: center;
+      h1 {
+        font-size: 1.85em;
+        color: $inner-deck-heading-color;
+      }
+      h2, h3, h4, h5, h6 {
+        color: $inner-deck-subheading-color;
+      }
+    }
+    > section {
+      > header {
+        color: $inner-deck-section-header-color;
+        border-bottom: $inner-deck-section-header-border;  
+      }
+    }
+    pre {
+      background: $inner-deck-preBG;
+      &[data-lang]:after {
+        background-color: $inner-deck-pre-label-color;
+      }
+    }
+  }
 }
 
 /* Base Slide Styles */
 pwr-slide {
-	padding: 1.5em;
-	color: $text-color;
-	flex-direction: column;
-	a {
-		&:link {color: $link-color;}
-		&:visited, &:hover {color: $visited-link-color;}
-	}
-	> header {
-		width: 90%;
-		margin: 0 auto 2em;
-		font-family: $subheading-font;
-		> h1 {
-			font-size: 3.5em;
-			color: $heading-color;
-			font-family: $title-font;
-			margin: .6em 0;
-		}
-		> h2 {
-			font-size: 1.5em;
-		}
-		> h2, h3, h4, h5, h6 {
-			margin: .5em 0;
-			color: $subheading-color;	
-		}
-	}
-	> section {
-		width: 90%;
-		margin: 0 auto auto;
-		font-family: $general-font;
-		font-size: 1.1em;
-		> header {
-			display: inline-block;
-			color: $section-header-color;
-			border-bottom: $section-header-border;		
-			margin-top: .625em;
-			padding-right: 2em;
-			font-weight: bold;
-			font-size: 1.1em;
-		}
-		li {
-			padding: .5em 0;
-		}
-	}
-	pre {
-		background: $preBG;
-		&[data-lang]:after {
-			background-color: $pre-label-color;
-		}
-	}
+  padding: 1.5em;
+  color: $text-color;
+  flex-direction: column;
+  a {
+    &:link {color: $link-color;}
+    &:visited, &:hover {color: $visited-link-color;}
+  }
+  > header {
+    width: 90%;
+    margin: 0 auto 2em;
+    font-family: $subheading-font;
+    > h1 {
+      font-size: 3.5em;
+      color: $heading-color;
+      font-family: $title-font;
+      margin: .6em 0;
+    }
+    > h2 {
+      font-size: 1.5em;
+    }
+    > h2, h3, h4, h5, h6 {
+      margin: .5em 0;
+      color: $subheading-color;  
+    }
+  }
+  > section {
+    width: 90%;
+    margin: 0 auto auto;
+    font-family: $general-font;
+    font-size: 1.1em;
+    > header {
+      display: inline-block;
+      color: $section-header-color;
+      border-bottom: $section-header-border;    
+      margin-top: .625em;
+      padding-right: 2em;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    li {
+      padding: .5em 0;
+    }
+  }
+  pre {
+    background: $preBG;
+    &[data-lang]:after {
+      background-color: $pre-label-color;
+    }
+  }
 }
 
 /* Blank Slide Template */
 pwr-slide.blank {
-	@include box-sizing(border-box);
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	&[current] {
-		display: block;
-	}
-	* {
-		width: 100%;
-		margin: 0;
-		padding: 0;
-	}
+  @include box-sizing(border-box);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  &[current] {
+    display: block;
+  }
+  * {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 /* Column Layout Templates */
 pwr-slide {
-	&.centered-column {
-		@include flex-direction(column);
-		> header, {
-			width: 60%;
-			margin: 0 auto 1em;
-		}
-		> section {
-			width: 60%;
-			margin: .625em auto 2.5em;
-		}
-	}
+  &.centered-column {
+    @include flex-direction(column);
+    > header, {
+      width: 60%;
+      margin: 0 auto 1em;
+    }
+    > section {
+      width: 60%;
+      margin: .625em auto 2.5em;
+    }
+  }
 
-	&.two-column {
-		@include box-sizing(border-box);
-		> header {
-			width: 100%;
-			margin: auto;
-		}
-		> section {
-			float: left;
-			height: 100%;
-			width: 50%;
-			@include transition(all 1s ease-in-out);
-		}
-	}
+  &.two-column {
+    @include box-sizing(border-box);
+    > header {
+      width: 100%;
+      margin: auto;
+    }
+    > section {
+      float: left;
+      height: 100%;
+      width: 50%;
+      @include transition(all 1s ease-in-out);
+    }
+  }
 
-	&:not(.two-column)[current] {
-		@include flexbox;
-		@include align-items(center);
-		@include justify-content(center);
-		&.animated {
-			> aside.tip {
-				@include animation(fadeIn 1s both 5s, flash 5s infinite 6s);
-			}
-			> header {
-				h1 {
-					@include animation(bounce 2s infinite);
-				}
-				h2, h3{
-					@include animation(rollIn 2s both 0.5s);
-				}
-			}
-		}
-	}
+  &:not(.two-column)[current] {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(center);
+    &.animated {
+      > aside.tip {
+        @include animation(fadeIn 1s both 5s, flash 5s infinite 6s);
+      }
+      > header {
+        h1 {
+          @include animation(bounce 2s infinite);
+        }
+        h2, h3{
+          @include animation(rollIn 2s both 0.5s);
+        }
+      }
+    }
+  }
 }
 
 /* Title Slide Styles */
 pwr-slide.title-slide {
-	@include flex-direction(column);
-	> aside.tip {
-		@include order(3);
-		width: 60%;
-		margin: auto;
-		text-align: center;
-		font-family: $subheading-font;
-		color: $title-tip-color;
-	}
-	> header {
-		@include order(1);
-		width: 80%;
-		margin: auto;
-		text-align: center;
-		> h1 {
-			font-size: 6em;
-		}
-		> h2 {
-			font-size: 2em;
-		}
-		h2, h3, h4, h5, h6 {
-			margin: 1em 0;
-		}
-	}
-	&:after {
-		@include order(2);
-		width: 3.75em;
-		height: 3.75em;
-		border-radius: 10em;
-		padding: 2.5em;
-		content: '';
-		background: url(../images/title-icon.png) center center no-repeat;
-		background-size: 5em;
-		background-color: $title-icon-color;
-	}
-	&[current] {
-		&.animated {
-			> header {
-				h2, h3{
-					@include animation(rollIn 2s both 1.5s);
-				}
-			}
-			&:after {
-				@include animation(fadeInDownBig 1s both 0.5s, spin 2s 5s infinite);
-			}
-		}
-	}
+  @include flex-direction(column);
+  > aside.tip {
+    @include order(3);
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    font-family: $subheading-font;
+    color: $title-tip-color;
+  }
+  > header {
+    @include order(1);
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    > h1 {
+      font-size: 6em;
+    }
+    > h2 {
+      font-size: 2em;
+    }
+    h2, h3, h4, h5, h6 {
+      margin: 1em 0;
+    }
+  }
+  &:after {
+    @include order(2);
+    width: 3.75em;
+    height: 3.75em;
+    border-radius: 10em;
+    padding: 2.5em;
+    content: '';
+    background: url(../images/title-icon.png) center center no-repeat;
+    background-size: 5em;
+    background-color: $title-icon-color;
+  }
+  &[current] {
+    &.animated {
+      > header {
+        h2, h3{
+          @include animation(rollIn 2s both 1.5s);
+        }
+      }
+      &:after {
+        @include animation(fadeInDownBig 1s both 0.5s, spin 2s 5s infinite);
+      }
+    }
+  }
 }
 
 /* Segue Slide Styles */
 pwr-slide.segue-slide {
-	@include flex-direction(column);
-	> header {
-		width: 80%;
-		margin: auto;
-		text-align: center;
-		h1 {
-			font-size: 4em;
-			margin: .7em 0;
-		}
-		h2 {
-			font-size: 2em;
-		}
-		h2, h3, h4, h5, h6 {
-			margin: 1em 0;
-		}
-	}
-	&:before {
-		position: relative;
-		top: 3.5em;
-		width: 3.75em;
-		height: 3.75em;
-		border-radius: 10em;
-		padding: 2.5em;
-		content: '';
-		background: url(../images/segue-icon.png) center center no-repeat;
-		background-size: 5em;
-		background-color: $segue-icon-color;
-	}
-	&[current].animated:before {
-		@include animation(fadeInDownBig 1s both 0.5s, spin 2s linear 2s infinite);
-	}
+  @include flex-direction(column);
+  > header {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    h1 {
+      font-size: 4em;
+      margin: .7em 0;
+    }
+    h2 {
+      font-size: 2em;
+    }
+    h2, h3, h4, h5, h6 {
+      margin: 1em 0;
+    }
+  }
+  &:before {
+    position: relative;
+    top: 3.5em;
+    width: 3.75em;
+    height: 3.75em;
+    border-radius: 10em;
+    padding: 2.5em;
+    content: '';
+    background: url(../images/segue-icon.png) center center no-repeat;
+    background-size: 5em;
+    background-color: $segue-icon-color;
+  }
+  &[current].animated:before {
+    @include animation(fadeInDownBig 1s both 0.5s, spin 2s linear 2s infinite);
+  }
 }

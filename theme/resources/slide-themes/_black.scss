@@ -1,93 +1,93 @@
 /* Black Theme Styles */
-$blackBG: 																		$grey2;
-$blackBG-link-color:													$gold;
-$blackBG-visited-link-color:									$red2;
-$blackBG-text-color:													white;
-$blackBG-heading-color: 											$red2;
-$blackBG-subheading-color:										white;
+$blackBG:                                     $grey2;
+$blackBG-link-color:                          $gold;
+$blackBG-visited-link-color:                  $red2;
+$blackBG-text-color:                          white;
+$blackBG-heading-color:                       $red2;
+$blackBG-subheading-color:                    white;
 
-$blackBG-preBG:																url('../images/light_linen.png');
-$blackBG-pre-label-color:											$gold;
-$blackBG-section-header-color:								$blackBG-text-color;
-$blackBG-section-header-border:								$blackBG-text-color;
+$blackBG-preBG:                                url('../images/light_linen.png');
+$blackBG-pre-label-color:                      $gold;
+$blackBG-section-header-color:                $blackBG-text-color;
+$blackBG-section-header-border:                $blackBG-text-color;
 
-$blackBG-title-icon-color:										$blue1;
-$blackBG-segue-icon-color:										$gold;
-$blackBG-title-tip-color:											$green1;
+$blackBG-title-icon-color:                    $blue1;
+$blackBG-segue-icon-color:                    $gold;
+$blackBG-title-tip-color:                      $green1;
 
 /* Black Theme Inner-Deck Styles */
-$blackBG-inner-deckBG: 												$grey3;   
-$blackBG-inner-deck-border:										0px solid black;    
-$blackBG-inner-deck-heading-color: 						rgba(255,255,255,0.9);   
-$blackBG-inner-deck-subheading-color:					rgba(255,255,255,0.9);   
-$blackBG-inner-deck-text-color:		 						rgba(255,255,255,0.9);   
+$blackBG-inner-deckBG:                         $grey3;   
+$blackBG-inner-deck-border:                    0px solid black;    
+$blackBG-inner-deck-heading-color:             rgba(255,255,255,0.9);   
+$blackBG-inner-deck-subheading-color:          rgba(255,255,255,0.9);   
+$blackBG-inner-deck-text-color:                 rgba(255,255,255,0.9);   
 
-$blackBG-inner-deck-preBG: 										url('../images/light_linen.png');    
-$blackBG-inner-deck-pre-label-color:					$blue1;    
-$blackBG-inner-deck-section-header-color:			$blackBG-inner-deck-text-color;    
-$blackBG-inner-deck-section-header-border:		1px solid lightgrey;    
+$blackBG-inner-deck-preBG:                     url('../images/light_linen.png');    
+$blackBG-inner-deck-pre-label-color:          $blue1;    
+$blackBG-inner-deck-section-header-color:      $blackBG-inner-deck-text-color;    
+$blackBG-inner-deck-section-header-border:    1px solid lightgrey;    
 
 .black {
-	color: $blackBG-text-color;
-	background: $blackBG;
-	a:link {color: $blackBG-link-color;}
-	a:visited, a:hover {color: $blackBG-visited-link-color;}
-	> header {
-		h1 {
-			color: $blackBG-heading-color;
-		}
-		h2, h3, h4, h5, h6 {
-			color: $blackBG-subheading-color;
-		}
-	}
-	pre {
-		background: $blackBG-preBG;
-		&[data-lang]:after {
-			background-color: $blackBG-pre-label-color;
-		}
-	}
-	> section {
-		> header {
-			color: $blackBG-section-header-color;
-			border-color: $blackBG-section-header-border;
-		}
-	}
-	pwr-deck.inner-deck {
-		background: $blackBG-inner-deckBG;
-		border: $blackBG-inner-deck-border;
-		> pwr-slide {
-			color: $blackBG-inner-deck-text-color;
-			> header {
-				h1 {
-					color: $blackBG-inner-deck-heading-color;
-				}
-				h2, h3, h4, h5, h6 {
-					color: $blackBG-inner-deck-subheading-color;
-				}
-			}
-			> section {
-				> header {
-					color: $blackBG-inner-deck-section-header-color;
-					border-bottom: $blackBG-inner-deck-section-header-border;
-				}
-			}
-			pre {
-				background: $blackBG-inner-deck-preBG;
-				&[data-lang]:after {
-					background-color: $blackBG-inner-deck-pre-label-color;
-				}
-			}
-		}
-	}
-	&.title-slide {
-		> aside.tip {
-			color: $blackBG-title-tip-color;
-		}
-		&:after {
-			background-color: $blackBG-title-icon-color;
-		}
-	}
-	&.segue-slide:before {
-		background-color: $blackBG-segue-icon-color;
-	}
+  color: $blackBG-text-color;
+  background: $blackBG;
+  a:link {color: $blackBG-link-color;}
+  a:visited, a:hover {color: $blackBG-visited-link-color;}
+  > header {
+    h1 {
+      color: $blackBG-heading-color;
+    }
+    h2, h3, h4, h5, h6 {
+      color: $blackBG-subheading-color;
+    }
+  }
+  pre {
+    background: $blackBG-preBG;
+    &[data-lang]:after {
+      background-color: $blackBG-pre-label-color;
+    }
+  }
+  > section {
+    > header {
+      color: $blackBG-section-header-color;
+      border-color: $blackBG-section-header-border;
+    }
+  }
+  pwr-deck.inner-deck {
+    background: $blackBG-inner-deckBG;
+    border: $blackBG-inner-deck-border;
+    > pwr-slide {
+      color: $blackBG-inner-deck-text-color;
+      > header {
+        h1 {
+          color: $blackBG-inner-deck-heading-color;
+        }
+        h2, h3, h4, h5, h6 {
+          color: $blackBG-inner-deck-subheading-color;
+        }
+      }
+      > section {
+        > header {
+          color: $blackBG-inner-deck-section-header-color;
+          border-bottom: $blackBG-inner-deck-section-header-border;
+        }
+      }
+      pre {
+        background: $blackBG-inner-deck-preBG;
+        &[data-lang]:after {
+          background-color: $blackBG-inner-deck-pre-label-color;
+        }
+      }
+    }
+  }
+  &.title-slide {
+    > aside.tip {
+      color: $blackBG-title-tip-color;
+    }
+    &:after {
+      background-color: $blackBG-title-icon-color;
+    }
+  }
+  &.segue-slide:before {
+    background-color: $blackBG-segue-icon-color;
+  }
 }
