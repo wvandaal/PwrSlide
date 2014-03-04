@@ -198,7 +198,7 @@
 				try {
 					new Function(this.onready)();
 				} catch(e) {
-					console.log("onready callback error: " + e);
+					console.log("onready callback error: " + e); 
 				}
 			}
 		},
