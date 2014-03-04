@@ -19,7 +19,7 @@ $red1:     #DE1B42;
 $red2:     #BA2C41;
 
 /* Default slide styles*/
-$deckBG:                             url(../images/light_linen.png) repeat center center;
+$deckBG:                             url(./images/light_linen.png) repeat center center;
 $heading-color:                     $red2;
 $subheading-color:                   grey;
 $text-color:                         black;
@@ -42,7 +42,7 @@ $inner-deck-heading-color:           rgba(255,255,255,0.9);
 $inner-deck-subheading-color:       rgba(255,255,255,0.9);
 $inner-deck-text-color:              rgba(255,255,255,0.9);
 
-$inner-deck-preBG:                  url(../images/light_linen.png);
+$inner-deck-preBG:                  url(./images/light_linen.png);
 $inner-deck-pre-label-color:        $green1;
 $inner-deck-section-header-color:    $inner-deck-text-color;
 $inner-deck-section-header-border:  1px solid lightgrey;

@@ -6,7 +6,7 @@ $salmonBG-text-color:                          white;
 $salmonBG-heading-color:                       white;
 $salmonBG-subheading-color:                    $grey2;
 
-$salmonBG-preBG:                              url('../images/light_linen.png');
+$salmonBG-preBG:                              url('./images/light_linen.png');
 $salmonBG-pre-label-color:                    $gold;
 $salmonBG-section-header-color:                $salmonBG-text-color;
 $salmonBG-section-header-border:              $salmonBG-text-color;
@@ -16,7 +16,7 @@ $salmonBG-segue-icon-color:                    $blue1;
 $salmonBG-title-tip-color:                    $grey2;
 
 /* Salmon Theme Inner-Deck Styles */
-$salmonBG-inner-deckBG:                       url('../images/light_linen.png');
+$salmonBG-inner-deckBG:                       url('./images/light_linen.png');
 $salmonBG-inner-deck-border:                  0px solid salmon;    
 $salmonBG-inner-deck-heading-color:           $grey3;   
 $salmonBG-inner-deck-subheading-color:        $grey3;   
