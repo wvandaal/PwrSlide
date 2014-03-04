@@ -146,9 +146,9 @@ Once you have installed Emmet, you can add a couple of custom snippets to handle
   "html": {
     "abbreviations": {
       "ps:2col": "pwr-slide.two-column>(header>h1+h2)+(section)*2",
-      "ps.1col": "pwr-slide.centered-column>(header>h1+h2)+section",
-      "ps.title": "pwr-slide.title-slide>(header>h1+h2+h3)+aside.tip",
-      "ps.segue": "pwr-slide.segue-slide>header>h1+h2"
+      "ps:1col": "pwr-slide.centered-column>(header>h1+h2)+section",
+      "ps:title": "pwr-slide.title-slide>(header>h1+h2+h3)+aside.tip",
+      "ps:segue": "pwr-slide.segue-slide>header>h1+h2"
     }
   }
 },

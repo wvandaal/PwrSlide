@@ -46,6 +46,12 @@ $CUSTOMBG-inner-deck-section-header-border:		inherit;
 			background-color: $CUSTOMBG-pre-label-color;
 		}
 	}
+	> section {
+		> header {
+			color: $CUSTOMBG-section-header-color;
+			border-color: $CUSTOMBG-section-header-border;
+		}
+	}
 	pwr-deck.inner-deck {
 		background: $CUSTOMBG-inner-deckBG;
 		border: $CUSTOMBG-inner-deck-border;

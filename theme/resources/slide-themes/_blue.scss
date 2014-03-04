@@ -46,6 +46,12 @@ $blueBG-inner-deck-section-header-border:			$blueBG-inner-deck-text-color;
 			background-color: $blueBG-pre-label-color;
 		}
 	}
+	> section {
+		> header {
+			color: $blueBG-section-header-color;
+			border-color: $blueBG-section-header-border;
+		}
+	}
 	pwr-deck.inner-deck {
 		background: $blueBG-inner-deckBG;
 		border: $blueBG-inner-deck-border;

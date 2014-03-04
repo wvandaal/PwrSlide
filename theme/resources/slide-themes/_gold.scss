@@ -46,6 +46,12 @@ $goldBG-inner-deck-section-header-border:			1px solid lightgrey;
 			background-color: $goldBG-pre-label-color;
 		}
 	}
+	> section {
+		> header {
+			color: $goldBG-section-header-color;
+			border-color: $goldBG-section-header-border;
+		}
+	}
 	pwr-deck.inner-deck {
 		background: $goldBG-inner-deckBG;
 		border: $goldBG-inner-deck-border;

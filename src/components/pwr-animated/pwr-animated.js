@@ -5,9 +5,6 @@
 	// Fallback procedure to animate elements in the event of unsupported 
 	// browsers/polyfills
 	var animateFallback_ = function(animationName) {
-		if (window.getComputedStyle(this).display === "inline") {
-			this.style.display = "inline-block";
-		}
 		if ((this.style.animationName != animationName) || 
 				(this.style.webkitAnimationName != animationName)) {
 					this.style.webkitAnimation = this.style.animation = animationName + " 1s both";

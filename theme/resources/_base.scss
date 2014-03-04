@@ -146,7 +146,7 @@ pwr-slide {
 		@include flex-direction(column);
 		> header, {
 			width: 60%;
-			margin: 0 auto .625em;
+			margin: 0 auto 1em;
 		}
 		> section {
 			width: 60%;

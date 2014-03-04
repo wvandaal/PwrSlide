@@ -46,6 +46,12 @@ $salmonBG-inner-deck-section-header-border:		1px solid lightgrey;
 			background-color: $salmonBG-pre-label-color;
 		}
 	}
+	> section {
+		> header {
+			color: $salmonBG-section-header-color;
+			border-color: $salmonBG-section-header-border;
+		}
+	}
 	pwr-deck.inner-deck {
 		background: $salmonBG-inner-deckBG;
 		border: $salmonBG-inner-deck-border;

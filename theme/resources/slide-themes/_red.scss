@@ -46,6 +46,12 @@ $redBG-inner-deck-section-header-border:	1px solid lightgrey;
 			background-color: $redBG-pre-label-color;
 		}
 	}
+	> section {
+		> header {
+			color: $redBG-section-header-color;
+			border-color: $redBG-section-header-border;
+		}
+	}
 	pwr-deck.inner-deck {
 		background: $redBG-inner-deckBG;
 		border: $redBG-inner-deck-border;

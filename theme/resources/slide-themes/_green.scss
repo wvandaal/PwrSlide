@@ -1,6 +1,6 @@
 /* Green Theme Styles */
 $greenBG: 																		$green2;
-$greenBG-link-color:													$blue3;
+$greenBG-link-color:													$gold;
 $greenBG-visited-link-color:									$blue4;
 $greenBG-text-color:													white;
 $greenBG-heading-color: 											$gold;
@@ -44,6 +44,12 @@ $greenBG-inner-deck-section-header-border:		1px solid lightgrey;
 		background: $greenBG-preBG;
 		&[data-lang]:after {
 			background-color: $greenBG-pre-label-color;
+		}
+	}
+	> section {
+		> header {
+			color: $greenBG-section-header-color;
+			border-color: $greenBG-section-header-border;
 		}
 	}
 	pwr-deck.inner-deck {
