@@ -124,7 +124,7 @@ In addition to the core components, PwrSlide includes an optional responsive the
 </pwr-deck>
 ```
 
-Check out the [Theming Guide](./theme/README.md) for a detailed walkthrough.
+Check out the [Theming Guide](./theme) for a detailed walkthrough.
 
 ## Components
 ### PwrBase
@@ -149,7 +149,7 @@ The PwrAnimated constructor is the parent class for all animated components in t
 
 Attribute  | Options                   | Default             | Description
 ---        | ---                       | ---                 | ---
-`entrance`      | *string*             | `""`          | This attribute specifies the keyframe name of the entrance animation of the slide. PwrSlide ships with the basic "fadeIn" and "fadeOut" animations standard, however you can define your own keyframes or load an animation library (like [Animate.css](https://daneden.me/animate/), which is packaged with the [PwrSlide Base Theme](./theme/README.md#basetheme))
+`entrance`      | *string*             | `""`          | This attribute specifies the keyframe name of the entrance animation of the slide. PwrSlide ships with the basic "fadeIn" and "fadeOut" animations standard, however you can define your own keyframes or load an animation library (like [Animate.css](https://daneden.me/animate/), which is packaged with the [PwrSlide Base Theme](./theme#base-theme))
 `exit`      | *string*             | `""`          | Similar to the `entrance` attribute, this specifies the keyframe name for the exit animation.
 `onentry`      | *string*             | `""`          | Entrance animation callback. This attribute allows the user to specify JavaScript code to be executed **at the end** of the entrance animation. This attribute functions similarly to the `onclick` attribute in standard HTML. **Note:** For convenience, both entrance and exit callbacks are bound to the element on which they are called.
 `onexit`      | *string*             | `""`          | Exit animation callback. Similar to `onentry`, this attribute allows the user to specify JavaScript code to be executed **at the start** of the exit animation. This attribute functions similarly to the `onclick` attribute in standard HTML. **Note:** For convenience, both entrance and exit callbacks are bound to the element on which they are called.
