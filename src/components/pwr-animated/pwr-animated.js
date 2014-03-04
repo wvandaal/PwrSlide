@@ -28,9 +28,12 @@
 		// Returns the animated component.
 		animateOut: function() {
 			if (this.onexit) {
-
-				// Note: callback is bound to the element
-				new Function(this.onexit).call(this);  
+				try {
+					// Note: callback is bound to the element
+					new Function(this.onexit).call(this);  
+				} catch(e) {
+					console.log("onexit callback error: " + e);
+				}
 			}		
 			return this.applyAnimation(this.exit);
 		},

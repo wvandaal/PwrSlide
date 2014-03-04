@@ -21,6 +21,12 @@
 
 	<!-- Opens links in new tabs -->
 	<base target="_blank"></base>
+
+	<style type="text/css">
+		pwr-slide > header {
+			text-align: center;
+		}
+	</style>
 </head>
 <body>
 	<pwr-deck unresolved current="11">
@@ -340,7 +346,7 @@ PwrAnimated = {
 		</pwr-slide>
 
 		<!-- Slide 11 -->
-		<pwr-slide class="green animated centered-column">
+		<pwr-slide class="red animated centered-column">
 			<header>
 				<h1>Thank You!</h1>
 				<h2>For More Information, Check Out the Links Below</h2>
@@ -361,6 +367,8 @@ PwrAnimated = {
 
 	<!-- Presentation-specific code, not part of PwrSlide -->
 	<script type="text/javascript">
+		// var timeout = null;
+
 		// Custom function to rotate colors of the current slide
 		function rotateSlideColors() {
 			var colors 				= ['red', 'green', 'blue', 'gold', 'black', 'salmon'],

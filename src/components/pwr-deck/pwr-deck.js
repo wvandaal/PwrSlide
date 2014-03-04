@@ -79,7 +79,11 @@
 					// NOTE: onexit callback called before exit animation begins
 					// (see PwrAnimated)
 					if (el.onentry) {
-						new Function(el.onentry).call(el);	
+						try {
+							new Function(el.onentry).call(el);	
+						} catch(e) {
+							console.log("onentry callback error: " + e);
+						}
 					}
 				}
 			}
