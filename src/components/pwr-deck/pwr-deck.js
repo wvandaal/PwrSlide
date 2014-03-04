@@ -226,6 +226,8 @@
     nextSlide: function() {
       var slide = this.getSlide(this.current - 1);
 
+      console.log(slide);
+
       if (slide.animateNextPiece()) {
         return;
       }
