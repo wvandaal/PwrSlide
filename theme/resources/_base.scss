@@ -220,7 +220,7 @@ pwr-slide.title-slide {
     border-radius: 10em;
     padding: 2.5em;
     content: '';
-    background: url(../images/title-icon.png) center center no-repeat;
+    background: url(./images/title-icon.png) center center no-repeat;
     background-size: 5em;
     background-color: $title-icon-color;
   }
@@ -264,7 +264,7 @@ pwr-slide.segue-slide {
     border-radius: 10em;
     padding: 2.5em;
     content: '';
-    background: url(../images/segue-icon.png) center center no-repeat;
+    background: url(./images/segue-icon.png) center center no-repeat;
     background-size: 5em;
     background-color: $segue-icon-color;
   }
