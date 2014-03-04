@@ -225,7 +225,7 @@
     // transition to the next slide in this.slides
     nextSlide: function() {
       var slide = this.getSlide(this.current - 1);
-
+      
       console.log(slide);
 
       if (slide.animateNextPiece()) {
