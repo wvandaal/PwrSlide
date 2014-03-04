@@ -29,7 +29,7 @@
 	</style>
 </head>
 <body>
-	<pwr-deck unresolved current="11" onready="prettyPrint();">
+	<pwr-deck unresolved onready="prettyPrint();">
 
 		<!-- Slide 1 -->
 		<pwr-slide id="slide1" class="title-slide red animated" entrance="bounceInDown" exit="fadeOutRightBig" onexit="prettyPrint();">
@@ -79,10 +79,10 @@
 			<section>
 				<ul>
 					<pwr-piece>
-						<li>PwrSlide was built with developers in mind</li>
+						<li>PwrSlide was built with developers in mind and ships with a number of tools aimed at technical presentations</li>
 					</pwr-piece>
 					<pwr-piece>
-						<li>The PwrSlide Theme ships with Google prettyPrint for easy code highlighting</li>
+						<li>The PwrSlide theme ships with Google prettyPrint for easy code highlighting</li>
 					</pwr-piece>
 					<pwr-piece>
 						<li>Best of all, because PwrSlide was designed to be modular, it's easy to include/exclude features as needed</li>
@@ -147,7 +147,7 @@
 						<li>It's declarative: no more confusing code that's impossible to read and maintain</li>
 					</pwr-piece>
 					<pwr-piece>
-						<li>Style and function encapsulation make previously difficult or impossible tasks easy (imagine embedding a presentation inside a presentation)</li>
+						<li>Style and function encapsulation make previously difficult or impossible tasks easy (imagine embedding a presentation inside a presentation - see slide 8)</li>
 					</pwr-piece>
 					<pwr-piece>
 						<li>It's modular: another benefit of encapsulation, now you can start building presentations within existing apps without worrying about cross-contamination of JS</li>
@@ -175,6 +175,9 @@
 					</pwr-piece>
 					<pwr-piece>
 						<li>Because PwrSlide uses Shadow DOM, HTML Imports, and other developing specs, only the evergreen browsers are supported (and even then, I would recommend that you stay away from IE, for your own sake)</li>
+					</pwr-piece>
+					<pwr-piece>
+						<li>Due to the fact that many features required by web components must be polyfilled, even in modern browsers, some of PwrSlide's features may detriment page load times</li>
 					</pwr-piece>
 				</ul>
 			</section>
@@ -316,7 +319,7 @@ PwrAnimated = {
 		</pwr-slide>
 
 		<!-- Slide 10 -->
-		<pwr-slide onentry="timeout=null; this.style.transition='all 1s'; this.style.webkitTransition='all 1s'; timeout=window.setInterval(function(){rotateSlideColors();}, 3000);" onexit="window.clearInterval(timeout);" class="centered-column">
+		<pwr-slide onentry="this.style.transition='all 1s'; this.style.webkitTransition='all 1s'; timeout=window.setInterval(function(){rotateSlideColors();}, 3000);" onexit="window.clearInterval(timeout);" class="centered-column">
 			<header>
 				<h1>Custom Color Themes</h1>
 				<h2>Add A Splash of Color to Your Presentations</h2>
@@ -378,9 +381,7 @@ PwrAnimated = {
 			}
 
 			colors.forEach(function(color) {
-				if (slideClasses.contains(color)) {
-					slideClasses.remove(color);
-				}
+				slideClasses.remove(color);
 			});
 
 			slideClasses.add(colors[randIdx]);

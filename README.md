@@ -199,6 +199,13 @@ Method  | Arguments                   | Return             | Description
 
 The PwrDeck object serves as the main container for your presentation deck, keeping track of all your slides and providing you with a number of methods to access them. A new deck is created by inserting the `<pwr-deck>` tags into your HTML and filling them with zero or more `<pwr-slide>` tags.
 
+#### Keyboard Controls
+The `right →`, `space`, `PgDwn`, and `down ↓` will queue the next presentation animation (either the next slide or next [PwrPiece](#pwrpiece)). Holding down the `shift` key allows the user to skip to the next slide without queuing any intermediate [PwrPieces](#pwrpiece).  
+
+Similarly, the `left ←`, `PgUp`, and `up ↑` will go back to the previous slide. Any previously animated [PwrPieces](#pwrpiece) will be shown as before.
+
+Pressing the `F` key will enable fullscreen mode. Press `esc` when in fullscreen mode to return to the browser window.
+
 #### Attributes
 Attribute  | Options                   | Default             | Description
 ---        | ---                       | ---                 | ---
@@ -241,6 +248,8 @@ Method  | Arguments                   | Return             | Description
 `nextSlide()`   | N/A                     | N/A               | Animates the next `PwrPiece` or transitions to the next slide in order. This method is called on when `controlsActive=true` and the user presses right, down, space, or PgDwn. Fires a `slidechange` event.
 `prevSlide()`   | N/A                     | N/A               | Transitions to the previous slide in order. This method is called on when `controlsActive=true` and the user presses left, up, or PgUp. Fires a `slidechange` event.
 `getSlide(slideNum)`   | *integer*     | `PwrSlide`            | Returns the slide in the current deck corresponding to its index in the `slides` NodeList.
+
+> **Note:** Holding the down `shift` allows you to skip ahead to the next slide without animating any un-animated PwrPieces
 
 ##### The `slidechange` Event
 The `slidechange` event is fired when the currently displayed slide leaves the view and is replaced by another slide. The `event.details` contains an object representing the current state of the PwrDeck, namely the `slideIndex` and the `curSlide`. This event can be used to synchronize different decks, allowing you to queue presenter notes, trigger slide changes in other presentations, etc. 
