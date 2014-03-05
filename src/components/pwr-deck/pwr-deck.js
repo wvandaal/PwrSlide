@@ -17,7 +17,7 @@
           case 32: // space
           case 34: // PgDwn
           case 40: // down arrow
-            if (!!e.shiftKey) {    // hold the shift key to skip ahead a slide
+            if (!!e.shiftKey && (this.current < this.totalSlides)) {    // hold the shift key to skip ahead a slide
               this.current++;
             } else {
               this.nextSlide();
