@@ -24,7 +24,6 @@
 *.sql
 *.sqlite
 *.sass-cache
-CNAME
 
 # OS generated files #
 ######################
