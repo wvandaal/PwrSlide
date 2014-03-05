@@ -5,7 +5,7 @@
   <title>PwrSlide</title>
 
   <!-- Template Fonts -->
-  <!-- Note: Template fonts have been moved outside of PwrSlide.html import file 
+  <!-- Note: Template fonts have been moved outside of config.html import file 
        to improve load times and prevent FOUC -->
   <link href='http://fonts.googleapis.com/css?family=Average+Sans' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
@@ -17,11 +17,12 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.4/polymer.js"></script>
 
   <!-- Importing PwrSlide Suite -->
-   <link rel="import" href="src/PwrSlide.html">
+   <link rel="import" href="src/config.html">
 
   <!-- Opens links in new tabs -->
   <base target="_blank"></base>
 
+	<!-- Demo styles, not included in theme -->
   <style type="text/css">
     pwr-slide > header {
       text-align: center;
@@ -232,6 +233,8 @@
 
           <!-- Inner Deck -->
           <pwr-deck entrance="rollIn" id="animations-minideck" class="inner-deck" slidenumbers="false">
+
+	          <!-- Inner Deck: Slide 1 -->
             <pwr-slide>
               <header>
                 <h2>PwrAnimated</h2>
@@ -255,6 +258,8 @@
                 </ul>
               </section>
             </pwr-slide>
+
+            <!-- Inner Deck: Slide 2 -->
             <pwr-slide>
               <header>
                 <h2>PwrAnimated</h2>

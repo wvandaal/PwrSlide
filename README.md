@@ -48,7 +48,7 @@ To begin using PwrSlide in your website, you must first clone this repository to
     <script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.4/polymer.js"></script>
 
     <!-- Importing PwrSlide Suite -->
-    <link rel="import" href="vendor/PwrSlide/src/PwrSlide.html">
+    <link rel="import" href="vendor/PwrSlide/src/config.html">
 
     ...
 
@@ -57,7 +57,7 @@ To begin using PwrSlide in your website, you must first clone this repository to
 
 You will notice that the usual `<link>` tag, normally associated with `rel="stylesheet"`, is being used as an HTML import, a part of the Web Components spec that allows HTML code to be imported into another document. This enables HTML, CSS, and JavaScript to be packaged neatly together without requiring the loading of separate libraries. However, since this is a new spec and not fully implemented in all browsers, the Polymer polyfills must be included separately and prior to the HTML import in order for it to work in standard browsers. 
 
-Exploring the `PwrSlide.html` file will reveal that the various components, stylesheets, fonts and themes have all been loaded within this HTML import. To add or remove elements from your project, simply edit this file to contain the resources you wish to include. By default, PwrSlide comes packaged with the three core web components required to build a presentation, the PwrSlide base theme, six custom slide color themes, four custom theme fonts, and the [Google code prettifier](http://google-code-prettify.googlecode.com/svn/trunk/README.html).
+Exploring the `config.html` file will reveal that the various components, stylesheets, fonts and themes have all been loaded within this HTML import. To add or remove elements from your project, simply edit this file to contain the resources you wish to include. By default, PwrSlide comes packaged with the three core web components required to build a presentation, the PwrSlide base theme, six custom slide color themes, four custom theme fonts, and the [Google code prettifier](http://google-code-prettify.googlecode.com/svn/trunk/README.html).
 
 ### PwrSlide Components
 PwrSlide was designed to be modular - you pick what you want and leave the rest behind. The core of the framework resides in the custom Web Components, which encapsulate the basic logic and styling of the presentation: 
