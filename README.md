@@ -34,7 +34,13 @@ document.querySelector('pwr-deck').current = 4;
 ## Usage
 
 ### Setup
-To begin using PwrSlide in your website, you must first clone this repository to your `/vendor/` directory and then include the following in your document head:
+To begin using PwrSlide in your website, I recommend that you use bower to install the various components, themes, and dependencies:
+
+```
+bower install PwrSlide
+```
+
+Once you have installed PwrSlide, import the files into your project page in the following order:
 
 ```html
 <!DOCTYPE html>
@@ -43,12 +49,11 @@ To begin using PwrSlide in your website, you must first clone this repository to
     <meta charset="UTF-8">
     <title>Your Project Title</title>
 
-    <!-- Importing Polymer Polyfills -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.4/platform.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.4/polymer.js"></script>
+    <script src="bower_components/platform/platform.js"></script>
+    <script src="bower_components/polymer/polymer.js"></script>
 
     <!-- Importing PwrSlide Suite -->
-    <link rel="import" href="vendor/PwrSlide/src/config.html">
+    <link rel="import" href="bower_components/PwrSlide/src/config.html">
 
     ...
 

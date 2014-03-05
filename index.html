@@ -4,15 +4,13 @@
   <meta charset="UTF-8">
   <title>PwrSlide</title>
 
-  <!-- Template Fonts -->
-  <!-- Note: Template fonts have been moved outside of config.html import file 
-       to improve load times and prevent FOUC -->
-  <link href='http://fonts.googleapis.com/css?family=Average+Sans' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
-
   <!-- Importing Web Component's Polyfill -->
+  <!-- 
+       Note: The demo site uses Polymer 0.1.4 from Cloudflare CDN to improve load times.
+       For projects using PwrSlide natively, it is recommended to use the latest version
+       of Polymer installed with bower. For more information, check out the README:
+       https://github.com/wvandaal/PwrSlide#setup
+  -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.4/platform.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/polymer/0.1.4/polymer.js"></script>
 
@@ -22,7 +20,7 @@
   <!-- Opens links in new tabs -->
   <base target="_blank"></base>
 
-	<!-- Demo styles, not included in theme -->
+  <!-- Demo styles, not included in theme -->
   <style type="text/css">
     pwr-slide > header {
       text-align: center;
@@ -234,7 +232,7 @@
           <!-- Inner Deck -->
           <pwr-deck entrance="rollIn" id="animations-minideck" class="inner-deck" slidenumbers="false">
 
-	          <!-- Inner Deck: Slide 1 -->
+            <!-- Inner Deck: Slide 1 -->
             <pwr-slide>
               <header>
                 <h2>PwrAnimated</h2>
