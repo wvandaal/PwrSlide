@@ -24,7 +24,7 @@
     "CNAME",
     ".gitignore"
   ],
-  "dependencies": [
+  "dependencies": {
     "polymer": "~0.2.0"
-  ]
+  }
 }
